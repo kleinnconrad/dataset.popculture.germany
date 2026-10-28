@@ -5,10 +5,9 @@ The summary is built from the last line of ``data/state/run_log.jsonl``: the
 status and records of each collector, the changed and failed charts, the
 counts of the feeds collector and the Gemini tokens with an estimate of
 their cost; with ``--window-hours``, also the runs, failures, records and
-Gemini cost of the last hours, for the daily notification of the runs every
-six hours. The notification workflow
-posts it as a commit comment that mentions the repository owner, so that
-GitHub sends an email.
+Gemini cost of the last hours. The notification workflow posts it as a
+commit comment that mentions the repository owner, so that GitHub sends an
+email.
 
 Usage:
     python scripts/run_summary.py --run-log data/state/run_log.jsonl --output summary.md

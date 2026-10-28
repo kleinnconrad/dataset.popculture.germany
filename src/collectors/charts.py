@@ -10,8 +10,8 @@ what it showed, observed at the time of the run (``observed_at``).
 
 Two periods are handled:
 - ``live``: the current list, dated by the day of observation. A change later
-  on the same day writes the next revision of that day's record, so that the
-  runs every six hours keep the changes within a day.
+  on the same day (e.g. seen by a manual run) writes the next revision of that
+  day's record.
 - ``day``: the list of a past day (the most-read Wikipedia articles). Every
   day since the last stored day is fetched; a new chart starts
   ``history_days`` days before the run. A list that the source changes later

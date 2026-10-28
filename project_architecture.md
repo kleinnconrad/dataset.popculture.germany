@@ -32,14 +32,14 @@ This document describes the structure of the pipeline: scope and decisions, the 
 
 - **Scope:** German pop culture, understood as the popular and everyday culture that German media present and that people in Germany consume: music, film, TV and streaming, celebrities and royals, influencers, games, books, podcasts, comedy, fashion and beauty, food, fitness, relationships, family, home and consumer products, and the opinions that pop culture voices on politics, religion and ways of living.
 - **Unit of analysis:** the ISO week. Every source is stored with its own dates; `scripts/build_weekly.py` aggregates them to weeks, the unit in which the other datasets of the series are compared.
-- **Volatile sources first.** Charts and trending lists show only their current state, and feeds of celebrity media cover a few hours. They are the core of the dataset and are read every six hours. A stable backbone (the daily Wikipedia views of a fixed registry of 215 entities since 2015) gives series that keep their meaning over the years.
+- **Volatile sources first.** Charts and trending lists show only their current state, and feeds of celebrity media cover a few hours. They are the core of the dataset and are read in every run: the live lists twice a week, the daily Wikipedia lists for every day. A stable backbone (the daily Wikipedia views of a fixed registry of 215 entities since 2015) gives series that keep their meaning over the years.
 - **Horizon:** the data is collected over many years and analyzed as long time series. The design favors stable definitions, durable sources and a moderate data volume over the completeness of single items.
 - **Repository:** public. No license is granted for the code or the data of this repository while the dataset builds its history. Every record names the license or terms of its source in the field `license`; the sources are listed in the [README](README.md#sources-and-attribution).
-- **Schedule:** one workflow runs the due collectors every six hours (03:17, 09:17, 15:17 and 21:17 Europe/Berlin). A run takes at most 30 minutes; the history is imported by a separate `backfill` run or by the first runs.
-- **Model and cost:** Google Gemini (`gemini-2.5-flash` by default, thinking off) labels up to 25 news articles and press releases per run, about 100 per day, with the request handling of the other datasets. The cost depends on the number of labelled items, not on the number of runs; at the list prices it is about 0.01 US dollars per request of ten items, about 3 to 4 US dollars per month. The run summary reports the measured tokens and cost.
+- **Schedule:** one workflow runs the due collectors on Tuesdays and Fridays at 02:07 Europe/Berlin, the schedule of dataset.politics.germany and dataset.economics.germany, so that the news of the datasets cover the same windows. The runs are three and four days apart. The Tuesday run sees the charts and the coverage after the release weekend (new music and many series appear on Fridays, shows on Saturdays and Sundays), the Friday run the state at the end of the week. A run takes at most 30 minutes; the history is imported by a separate `backfill` run or by the first runs.
+- **Model and cost:** Google Gemini (`gemini-2.5-flash` by default, thinking off) labels up to 350 news articles and press releases per run, about 700 per week, with the request handling of the other datasets. The cost depends on the number of labelled items, not on the number of runs; at the list prices it is about 0.01 US dollars per request of ten items, about 0.35 US dollars per run and 3 to 4 US dollars per month. The run summary reports the measured tokens and cost.
 - **No paid access:** every source is free and needs no key. The Gemini API key is the only secret.
 
-**Consequence of the schedule for news.** RSS feeds and news sitemaps list only recent items; the feeds of Promiflash and Mein-MMO cover a few hours. With runs every six hours and a lookback of 72 hours, the pipeline collects what the feeds list at run time, so news coverage is a sample, not a complete record. The labelled share is smaller still: about 100 of several hundred pop culture items per day (Section 11).
+**Consequence of the schedule for news.** RSS feeds and news sitemaps list only recent items; the feeds of Promiflash and Mein-MMO cover a few hours. With runs every three or four days and a lookback of 96 hours, the pipeline collects what the feeds still list at run time, so news coverage is a sample, not a complete record; feeds that cover a few hours contribute only the items of the hours before a run. The labelled share is smaller still: about 350 of more than 1,000 new pop culture items per run (Section 11).
 
 ---
 
@@ -241,7 +241,7 @@ data/
 - **Format:** one JSON list per file with one record per line.
 - **Seen stores:** the keys of news and press items are kept for 30 days; charts, entities and catalog entries permanently.
 - **Measured sizes** (test run on 2026-10-28): an Apple list of 100 entries takes 28 to 37 KB, a list of trending searches 4 KB, a news item about 1 KB, the registry of 215 entities 116 KB.
-- **Expected volume:** the charts dominate. If every Apple list changes once a day, the charts add about 300 KB per day (about 110 MB per year); if they change between all four runs, up to 1.1 MB per day (about 400 MB per year). The news add about 150 MB per year, the annotations about 50 MB, the pageviews a few MB. Git compresses the files to a fraction of their size. The change rate of the Apple lists is measured in the first weeks (Section 13).
+- **Expected volume:** the news dominate with about 150 MB per year, the annotations add about 55 MB. The charts add about 45 MB per year: about 270 KB per run if every Apple list changed since the previous run (about 28 MB per year), two daily Wikipedia lists of about 24 KB (about 17 MB per year) and the trending searches. The pageviews add a few MB. Git compresses the files to a fraction of their size.
 - **Long-term plan:** when the repository approaches 1 GB, the snapshots and news of completed years move to a separate data repository with the same layout, or are archived as compressed Parquet files per year and dataset.
 
 ---
@@ -255,7 +255,7 @@ dataset.popculture.germany/
 │   └── workflows/
 │       ├── ci.yml              # lint, tests, commit messages
 │       ├── notify.yml          # run summary as a commit comment that mentions the owner
-│       ├── pipeline.yml        # due collectors every six hours; backfill by hand
+│       ├── pipeline.yml        # due collectors, Tuesdays and Fridays 02:07 Europe/Berlin; backfill by hand
 │       └── source_review.yml   # monthly review of the sources as a pull request
 ├── config/
 │   ├── charts.toml             # chart providers, charts and excluded candidates
@@ -300,9 +300,9 @@ dataset.popculture.germany/
 
 1. **chart_catalog, entities:** write new and changed entries of the registries (no requests).
 2. **charts:** read every due chart with conditional requests; store live lists that changed; fetch the missing days of the daily lists. The state of the charts (validators, pauses, days fetched) is saved after every chart.
-3. **feeds:** read the RSS/Atom feeds and news sitemaps of all due sources; keep new pop culture items published within 72 hours; select up to 25 items (press releases first, then news items in turns across the outlets); fetch article pages where permitted, annotate ten items per Gemini request with up to four requests at the same time, resolve the named people, and write items and annotations; write the other new items without labels.
+3. **feeds:** read the RSS/Atom feeds and news sitemaps of all due sources; keep new pop culture items published within 96 hours; select up to 350 items (press releases first, then news items in turns across the outlets); fetch article pages where permitted, annotate ten items per Gemini request with up to four requests at the same time, resolve the named people, and write items and annotations; write the other new items without labels.
 4. **wikipedia_pageviews** (weekly): fetch the days since the last stored day per entity.
-5. The workflow updates the README overview and commits `data/` and `README.md`. `notify.yml` then posts a summary as a commit comment that mentions the repository owner: for failed and manual runs at once, and once a day for the runs of the last 24 hours.
+5. The workflow updates the README overview and commits `data/` and `README.md`. `notify.yml` then posts a summary of the run, with the Gemini tokens and their estimated cost, as a commit comment that mentions the repository owner.
 
 **Run modes.** A regular run (`normal`) has a deadline of 25 minutes (`RUN_DEADLINE_MINUTES`) and a job timeout of 30 minutes. A `backfill` run imports the history of the charts and the pageviews without the run intervals (deadline 85 minutes, timeout 90 minutes). `shadow` and `dry-run` work on a copy of the state and commit nothing.
 
@@ -313,7 +313,7 @@ dataset.popculture.germany/
 | chart_catalog, entities | under 1 s |
 | charts: 10 lists of Apple and Google (robots.txt of Apple answered with server errors and was requested again) | 2.7 min |
 | feeds: reading 22 sources (dry run, 1,271 new pop culture items within 72 hours) | 1.4 min |
-| feeds: pages and Gemini (25 items) | about 1 min (estimate) |
+| feeds: pages and Gemini (350 items) | 6 to 8 min (estimate, as for the 400 items of dataset.economics.germany) |
 | wikipedia_pageviews (215 articles, weekly) | about 2 min (estimate; the test environment had no access to the API) |
 
 ---
@@ -333,8 +333,9 @@ dataset.popculture.germany/
 
 ## 11. Known Data Issues
 
-- **Labelled sample.** About 100 of several hundred new pop culture items per day are labelled. The selection takes press releases first and then news items in turns across the outlets, newest first, so every outlet is represented, but large outlets are labelled at a lower rate than small ones. Weight by the item counts of `news_items` per outlet when estimating shares of all coverage.
-- **Feeds that cover a few hours.** Promiflash and Mein-MMO list only the items of a few hours; items published between two runs can be missed.
+- **Labelled sample.** About 350 of more than 1,000 new pop culture items per run are labelled. The selection takes press releases first and then news items in turns across the outlets, newest first, so every outlet is represented, but large outlets are labelled at a lower rate than small ones. Weight by the item counts of `news_items` per outlet when estimating shares of all coverage.
+- **Feeds that cover a few hours.** Promiflash and Mein-MMO list only the items of a few hours; most of their items published between two runs are missed.
+- **Live charts twice a week.** The Apple charts and the trending searches are observed only at the runs; states between two runs are not seen. Trending searches that rise and fall within a few days are therefore mostly missed. The daily Wikipedia lists are not affected.
 - **Publication times.** The feeds of Quotenmeter.de have no publication times, and every item of the laut.de feeds carries the generation time of the feed; `published_at` is then unknown or the time of the first observation.
 - **Apple update times.** Apple states the time at which it generated the response as `updated`, not the time at which the chart changed; `source_updated` of Apple lists is therefore close to `observed_at`.
 - **Trending searches.** Google publishes the search terms in lower case and with approximate volumes (`500+`); `metric` is the lower bound. Terms and linked news titles can name people; they are stored as Google publishes them.
@@ -350,10 +351,10 @@ Changes of sources, charts, filters, vocabularies and counting rules, and known 
 
 | Date | Dataset | Change |
 |---|---|---|
-| 2026-10-28 | all | Design of the pipeline; 12 charts of Apple, Google Trends and Wikimedia, registry of 215 entities, 21 outlets and 1 press source, all checked live on this day (Wikimedia through curl, because the Pageviews API refused the HTTP client of the test environment). |
+| 2026-10-28 | all | Design of the pipeline, with runs on Tuesdays and Fridays at 02:07 Europe/Berlin and a news lookback of 96 hours; 12 charts of Apple, Google Trends and Wikimedia, registry of 215 entities, 21 outlets and 1 press source, all checked live on this day (Wikimedia through curl, because the Pageviews API refused the HTTP client of the test environment). |
 | 2026-10-28 | `chart_snapshots` | Live lists dated by the UTC day of observation; one revision per new state of a day. Daily Wikipedia lists without main page, special pages and pages outside the article namespace; 100 entries. |
 | 2026-10-28 | `news_items` | Prefilter for general outlets: pop culture feeds and URL sections (`POP_PATH_TOKENS`, path segments of at most two words) or terms (`POP_TERMS`); sports sections only through a pop culture section; outlets with a `focus` pass without the filter. Media sections (`medien`) do not count as pop culture sections; the crime series Tatort counts as a term only in quotes or as `Tatort-` and `Tatort:`. |
-| 2026-10-28 | `text_annotations` | Vocabularies of Section 3.6; values outside them become `Other` or `Mentioned` or are dropped. People resolved to German Wikipedia articles; redirects to sections and disambiguation pages do not count. Up to 25 items per run. |
+| 2026-10-28 | `text_annotations` | Vocabularies of Section 3.6; values outside them become `Other` or `Mentioned` or are dropped. People resolved to German Wikipedia articles; redirects to sections and disambiguation pages do not count. Up to 350 items per run. |
 
 ---
 
@@ -367,7 +368,6 @@ Changes of sources, charts, filters, vocabularies and counting rules, and known 
 | News items, press releases, Gemini annotations with people resolved to Wikidata ids | implemented |
 | Monthly source review with pull requests, probe of candidates, checks of charts, providers and registry titles | implemented |
 | Weekly indicators (`scripts/build_weekly.py`) | implemented |
-| Measure the change rate and the data volume of the Apple lists after the first weeks; reduce `max_entries` or set `check_days` if the volume exceeds the plan | planned |
 | Check the `unchecked` candidates (Bunte, Gala, Brigitte, 1LIVE, PULS and others) with the source review; check the Offizielle Deutsche Charts with the probe | planned |
 | Film and TV charts from a source whose terms permit collection (cinema admissions, streaming rankings) | planned |
 | Festival and concert calendars as a dataset of events | planned |

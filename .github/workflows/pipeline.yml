@@ -3,11 +3,10 @@ run-name: German pop culture pipeline (${{ inputs.mode || 'normal' }})
 
 on:
   schedule:
-    # Every six hours, 03:17, 09:17, 15:17 and 21:17 Berlin time: the charts show only their current state and
-    # the trending searches change within hours, and some feeds list only the items of a few hours. The Gemini
-    # cost depends on the annotated items, not on the runs: each run annotates up to MAX_ANNOTATIONS_PER_RUN
-    # items. GitHub delays schedules at the full hour.
-    - cron: '17 3,9,15,21 * * *'
+    # Tuesdays and Fridays 02:07 Berlin time, the schedule of dataset.politics.germany and
+    # dataset.economics.germany, so that the news of the datasets cover the same windows; the runs are three and
+    # four days apart, within the lookback of 96 hours. GitHub delays schedules at the full hour.
+    - cron: '7 2 * * 2,5'
       timezone: 'Europe/Berlin'
   workflow_dispatch:
     inputs:
@@ -26,7 +25,7 @@ on:
         required: false
         default: ''
       max_annotations:
-        description: 'Maximum number of news articles and press releases annotated with Gemini; empty uses the default of 25'
+        description: 'Maximum number of news articles and press releases annotated with Gemini; empty uses the default of 350'
         type: string
         required: false
         default: ''

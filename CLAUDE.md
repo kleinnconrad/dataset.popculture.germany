@@ -63,7 +63,7 @@ This file contains foundational instructions and conventions for developing in t
 - Do not store full texts of articles or press releases. Text fetched for annotation is discarded after use; only titles, URLs, metadata and derived variables are stored.
 - Store people only as articles of the German Wikipedia, by Wikidata id and title. Names of persons without an article are not stored, only counted. Author names are not stored.
 - Every record carries the license or terms of its source in the `license` field.
-- Keep the Gemini cost low: the cost grows with `MAX_ANNOTATIONS_PER_RUN` and the number of runs per day. Do not raise them, add Gemini requests (e.g. to the source review) or turn thinking on without stating the expected cost per month.
+- Keep the Gemini cost low: the cost grows with `MAX_ANNOTATIONS_PER_RUN` and the number of runs per week. Do not raise them, add Gemini requests (e.g. to the source review) or turn thinking on without stating the expected cost per month.
 
 ## 9. Long-Term Stability Rules
 The dataset is collected over many years. Changes must keep the time series comparable:

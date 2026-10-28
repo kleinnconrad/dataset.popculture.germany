@@ -114,10 +114,10 @@ class Settings:
     """
     gemini_model: str = DEFAULT_GEMINI_MODEL
     gemini_api_key: Optional[str] = None
-    max_gemini_calls_per_run: int = 8
-    max_annotations_per_run: int = 25
+    max_gemini_calls_per_run: int = 50
+    max_annotations_per_run: int = 350
     gemini_concurrency: int = 4
-    news_lookback_hours: int = 72
+    news_lookback_hours: int = 96
     fetch_pages: bool = True
     run_deadline_minutes: int = 25
     collectors: Optional[tuple[str, ...]] = None

@@ -1,7 +1,7 @@
 # German Pop Culture Dataset
 [![CI](https://github.com/kleinnconrad/dataset.popculture.germany/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kleinnconrad/dataset.popculture.germany/actions/workflows/ci.yml)
 
-A dataset of the state of German pop culture, week by week: what people listen to, watch, read, play and search for, which artists, shows, films, festivals and products the media push, which ways of living they recommend, and which opinions pop culture voices on politics (e.g. the Bundeswehr), religion, family, marriage, children and alternative lifestyles. A pipeline in GitHub Actions runs every six hours for at most 30 minutes. It stores volatile sources as they change (music, podcast, app, book and audiobook charts, trending searches, the most viewed Wikipedia articles), keeps a stable backbone of daily Wikipedia views of 215 registered artists, shows, festivals, brands, institutions and concepts since 2015, and collects the pop culture news of German outlets and the press releases of industry associations, labelled with Google Gemini (`gemini-2.5-flash`). Everything is stored as partitioned JSON files in this repository and can be correlated with the other datasets of this series.
+A dataset of the state of German pop culture, week by week: what people listen to, watch, read, play and search for, which artists, shows, films, festivals and products the media push, which ways of living they recommend, and which opinions pop culture voices on politics (e.g. the Bundeswehr), religion, family, marriage, children and alternative lifestyles. A pipeline in GitHub Actions runs twice a week (Tuesdays and Fridays) for at most 30 minutes. It stores volatile sources as they change (music, podcast, app, book and audiobook charts, trending searches, the most viewed Wikipedia articles), keeps a stable backbone of daily Wikipedia views of 215 registered artists, shows, festivals, brands, institutions and concepts since 2015, and collects the pop culture news of German outlets and the press releases of industry associations, labelled with Google Gemini (`gemini-2.5-flash`). Everything is stored as partitioned JSON files in this repository and can be correlated with the other datasets of this series.
 
 ## Table of Contents
 - [Variable Overview](#variable-overview)
@@ -190,7 +190,7 @@ The table lists the variables that carry content and the dataset (table) that st
 | `wikipedia_pageviews` | Daily views of the German Wikipedia articles of the registered entities, since July 2015 | Wikimedia | day series |
 | `news_items` | Metadata of pop culture articles of German news outlets, tabloids, celebrity, music, film, games and lifestyle magazines and media trade publications | RSS feeds, news sitemaps, article pages | event |
 | `press_releases` | Metadata of press releases of pop culture industry associations, broadcasters and companies | RSS feeds | event |
-| `text_annotations` | Gemini labels of up to 25 news articles and press releases per run (press releases first): fields, works, people, products and platforms, purchase recommendations, lifestyle advice, forms of family, opinions on fixed targets, values, generations, tone, controversy and upcoming events | Gemini | event |
+| `text_annotations` | Gemini labels of up to 350 news articles and press releases per run (press releases first): fields, works, people, products and platforms, purchase recommendations, lifestyle advice, forms of family, opinions on fixed targets, values, generations, tone, controversy and upcoming events | Gemini | event |
 
 **Fields of every record:** `record_id`, `revision`, `dataset`, `schema_version`, `observed_at`, `source_id`, `source_url`, `license`, `backfilled`. All other fields are defined with descriptions in [src/schema.py](src/schema.py); the design, the vocabularies and the known data issues are described in [project_architecture.md](project_architecture.md).
 
@@ -198,13 +198,13 @@ The table lists the variables that carry content and the dataset (table) that st
 
 **No full texts, no private persons.** News articles and press releases are stored as titles, URLs, metadata and derived variables; the lead text that Gemini reads is not stored. People in the annotations are stored only if they have an article in the German Wikipedia, by its Wikidata id and title; the names of other persons are not stored, only counted. Author names are not stored.
 
-**Annotated sample.** Every new pop culture item of a run is stored in `news_items` or `press_releases`. Up to 25 of them are annotated per run, about 100 per day: all press releases, then news items in turns across the outlets, newest first. The other items are stored from the feed data without labels, so that the item counts per outlet stay complete and the annotated sample can be weighted against them.
+**Annotated sample.** Every new pop culture item of a run is stored in `news_items` or `press_releases`. Up to 350 of them are annotated per run, about 700 per week: all press releases, then news items in turns across the outlets, newest first. The other items are stored from the feed data without labels, so that the item counts per outlet stay complete and the annotated sample can be weighted against them.
 
 ### Volatile Sources: Chart Snapshots
 
-Charts and trending lists show only their current state; what is not stored when it is shown is lost. The pipeline therefore reads them in every run, every six hours, and stores a list only when it changed:
+Charts and trending lists show only their current state; what is not stored when it is shown is lost. The pipeline reads them in every run and stores a list only when it changed. The live lists are therefore observed twice a week, at the runs; the daily lists are complete, because every missing day is fetched:
 
-- **Live lists** (`period: live`: Apple charts, Google trending searches) are dated by the day of observation (`chart_date`, UTC). The first state of a day is revision 0 of the record `chart:<chart_id>:<day>`; every later change on the same day is the next revision. The last revision of a day is the state at the end of the day as far as the runs saw it; a run that sees the same list stores nothing.
+- **Live lists** (`period: live`: Apple charts, Google trending searches) are dated by the day of observation (`chart_date`, UTC). The first state of a day is revision 0 of the record `chart:<chart_id>:<day>`; a later change on the same day (e.g. seen by a manual run) is the next revision. A run that sees the same list stores nothing.
 - **Daily lists** (`period: day`: Wikimedia top articles) are published for each past day. Every run fetches the days that are missing since the last stored day, up to 30 days back for a new chart and up to a year in a `backfill` run. A list that is not published yet is tried again in the next run; a list still missing after three days is skipped.
 - `entries` holds up to 100 positions with `rank`, `title`, `creator`, the id and URL at the source, `genres`, `release_date`, a `metric` (views or approximate searches, meaning given by `metric_name`) and further `details` (e.g. the content advisory of a song, the first news article of a trending search).
 - Conditional requests (ETag, Last-Modified) avoid downloading an unchanged list. A chart that blocks requests is paused for 30 days. A chart can name the expected title of its list (`expect`); a list with another title is then not stored, so that a changed address cannot write other data under the id.
@@ -272,7 +272,7 @@ The output is derived data and is not committed (`features/` is in `.gitignore`)
 
 The dataset is built to be correlated with [dataset.sociodemographics.germany](https://github.com/kleinnconrad/dataset.sociodemographics.germany), [dataset.politics.germany](https://github.com/kleinnconrad/dataset.politics.germany), [dataset.economics.germany](https://github.com/kleinnconrad/dataset.economics.germany) and later datasets:
 
-- **Time:** all records have `observed_at` and their own dates (`chart_date`, `published_at`, `daily_views`); aggregate all datasets to days, ISO weeks or months. `scripts/build_weekly.py` builds the weekly table.
+- **Time:** all records have `observed_at` and their own dates (`chart_date`, `published_at`, `daily_views`); aggregate all datasets to days, ISO weeks or months. `scripts/build_weekly.py` builds the weekly table. The pipeline runs on the days and at the time of dataset.politics.germany and dataset.economics.germany (Tuesdays and Fridays, 02:07 Europe/Berlin), so the news of the three datasets cover the same windows.
 - **Articles:** the `record_id` of a news item is built from the normalized URL in the same way as in the other datasets, so an article that several pipelines collected has the same `record_id` in each, with its political, economic, social and pop culture labels.
 - **Outlets:** outlets that several datasets collect have the same id (e.g. `spiegel`, `welt`, `bild`, `t_online`, `tagesspiegel`, `zdfheute`, `dwdl`).
 - **Entities:** people and registry entities carry Wikidata ids, like the politicians of dataset.politics.germany and the companies of dataset.economics.germany; countries use ISO 3166 codes.
@@ -787,12 +787,12 @@ sequenceDiagram
     participant Wiki as Wikipedia / Wikimedia
     participant Store as storage.py / state.py
 
-    Action->>Run: Pipeline run (every six hours, 03:17, 09:17, 15:17, 21:17 Europe/Berlin)
+    Action->>Run: Pipeline run (Tuesdays and Fridays, 02:07 Europe/Berlin)
     Run->>Store: New and changed entries of the chart catalog and the entity registry
     Run->>Charts: Every due chart (conditional requests); missing days of the daily lists
     Run->>Store: Lists that changed
     Run->>Web: Feeds and news sitemaps of all due sources
-    loop Up to 25 new items (press releases first), in turns across the sources
+    loop Up to 350 new items (press releases first), in turns across the sources
         Run->>Web: Article page (metadata, lead text), where permitted
         Run->>Gemini: Batches of 10 items, up to 4 at the same time
         Gemini-->>Run: Labels per item
@@ -831,8 +831,8 @@ news = duckdb.sql("select * from read_json('data/news_items/**/*.json', hive_par
 
 | Workflow | Schedule | Purpose |
 |---|---|---|
-| `pipeline.yml` | Every six hours, 03:17, 09:17, 15:17 and 21:17 Europe/Berlin | Runs the due collectors (timeout 30 minutes), updates the overview and commits `data/` and `README.md` |
-| `notify.yml` | After each `normal` or `backfill` run of `pipeline.yml` | Posts a summary as a commit comment that mentions the repository owner: for failed and manual runs, and once a day for the first scheduled run of the day, with the runs of the last 24 hours (status and records per collector, changed charts, annotated items, Gemini tokens and estimated cost) |
+| `pipeline.yml` | Tuesdays and Fridays, 02:07 Europe/Berlin | Runs the due collectors (timeout 30 minutes), updates the overview and commits `data/` and `README.md` |
+| `notify.yml` | After each `normal` or `backfill` run of `pipeline.yml` | Posts a summary of the run (status and records per collector, changed and failed charts, annotated items, Gemini tokens and estimated cost) as a commit comment that mentions the repository owner |
 | `source_review.yml` | First day of every month, 07:17 Europe/Berlin | Checks the sources, charts, chart providers and registry titles and proposes changes of `config/sources.toml` as a pull request |
 | `ci.yml` | Pull requests, pushes to `main` | Lint, tests and commit message checks |
 
@@ -860,15 +860,15 @@ The input `collectors` restricts a manual run to a comma-separated list of colle
 |---|---|---|
 | `GEMINI_API_KEY` | none | Gemini API key (required for the annotation of news and press releases) |
 | `GEMINI_MODEL` | `gemini-2.5-flash` | Model for the annotation; stored in every annotation record |
-| `MAX_GEMINI_CALLS_PER_RUN` | 8 | Gemini requests per run, including retries and split batches |
-| `MAX_ANNOTATIONS_PER_RUN` | 25 | News articles and press releases annotated per run; further new items are stored without labels |
+| `MAX_GEMINI_CALLS_PER_RUN` | 50 | Gemini requests per run, including retries and split batches |
+| `MAX_ANNOTATIONS_PER_RUN` | 350 | News articles and press releases annotated per run; further new items are stored without labels |
 | `GEMINI_CONCURRENCY` | 4 | Gemini requests sent at the same time; 1 for the free tier of the Gemini API |
-| `NEWS_LOOKBACK_HOURS` | 72 | Age limit of new feed and sitemap items |
+| `NEWS_LOOKBACK_HOURS` | 96 | Age limit of new feed and sitemap items |
 | `NEWS_FETCH_PAGES` | on | Fetch article pages for metadata and lead text |
 | `RUN_DEADLINE_MINUTES` | 25 | Minutes after the start after which the collectors start no new work (85 in `backfill` runs) |
 | `COLLECTORS` | all due | Comma-separated list of collectors to run; listed collectors run even if they are not due |
 
-**Gemini cost.** The cost depends on the number of annotated items, not on the number of runs. With 25 items per run and four runs a day, about 100 items are annotated per day in about 10 requests, with thinking turned off. At the list prices of `gemini-2.5-flash` (0.30 US dollars per million input tokens, 2.50 per million output tokens) this costs about 0.01 US dollars per request, about 3 to 4 US dollars per month; `gemini-2.5-flash-lite` (`GEMINI_MODEL`) costs about a quarter of that. The run summary of `notify.yml` reports the tokens and the estimated cost of every run. Raise `MAX_ANNOTATIONS_PER_RUN` to annotate a larger share of the items; the cost grows in proportion.
+**Gemini cost.** The cost depends on the number of annotated items, not on the number of runs. With 350 items per run and two runs a week, about 700 items are annotated per week in about 70 requests of ten items, with thinking turned off. At the list prices of `gemini-2.5-flash` (0.30 US dollars per million input tokens, 2.50 per million output tokens) this costs about 0.01 US dollars per request, about 0.35 US dollars per run and 3 to 4 US dollars per month; `MAX_GEMINI_CALLS_PER_RUN` limits a run to about 0.60 US dollars. `gemini-2.5-flash-lite` (`GEMINI_MODEL`) costs about a quarter of that. The run summary of `notify.yml` reports the tokens and the estimated cost of every run. `MAX_ANNOTATIONS_PER_RUN` changes the labelled share of the items; the cost changes in proportion.
 
 The charts, entities and sources are configured in [config/charts.toml](config/charts.toml), [config/entities.toml](config/entities.toml) and [config/sources.toml](config/sources.toml). Fixed thresholds, such as the source status rules, are constants in the modules that use them.
 
