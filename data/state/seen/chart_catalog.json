@@ -1,0 +1,17 @@
+{
+"version": 1,
+"items": {
+"apple.apps_top_free": {"data": {}, "first_seen": "2026-10-28", "hash": "c52ef7af8b9cce8f", "last_seen": "2026-10-28", "revision": 0},
+"apple.apps_top_paid": {"data": {}, "first_seen": "2026-10-28", "hash": "6bf30431fb510812", "last_seen": "2026-10-28", "revision": 0},
+"apple.audiobooks_top": {"data": {}, "first_seen": "2026-10-28", "hash": "f523a093548c62da", "last_seen": "2026-10-28", "revision": 0},
+"apple.books_top_free": {"data": {}, "first_seen": "2026-10-28", "hash": "3769dbb5656bfe0d", "last_seen": "2026-10-28", "revision": 0},
+"apple.books_top_paid": {"data": {}, "first_seen": "2026-10-28", "hash": "b3bc93f3fba62efd", "last_seen": "2026-10-28", "revision": 0},
+"apple.music_top_albums": {"data": {}, "first_seen": "2026-10-28", "hash": "c558494d1018f3cb", "last_seen": "2026-10-28", "revision": 0},
+"apple.music_top_songs": {"data": {}, "first_seen": "2026-10-28", "hash": "25150145ce5bae80", "last_seen": "2026-10-28", "revision": 0},
+"apple.podcasts_top_episodes": {"data": {}, "first_seen": "2026-10-28", "hash": "53cd43bfbb84e4fb", "last_seen": "2026-10-28", "revision": 0},
+"apple.podcasts_top_shows": {"data": {}, "first_seen": "2026-10-28", "hash": "7460b4eb7623471b", "last_seen": "2026-10-28", "revision": 0},
+"google_trends.trending_searches_de": {"data": {}, "first_seen": "2026-10-28", "hash": "10c149daf6d469f8", "last_seen": "2026-10-28", "revision": 0},
+"wikimedia.top_articles_dewiki": {"data": {}, "first_seen": "2026-10-28", "hash": "dbdf7d69d53d45c8", "last_seen": "2026-10-28", "revision": 0},
+"wikimedia.top_articles_germany": {"data": {}, "first_seen": "2026-10-28", "hash": "c61b35652ca1e627", "last_seen": "2026-10-28", "revision": 0}
+}
+}

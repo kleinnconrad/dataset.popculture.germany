@@ -93,44 +93,63 @@ The table lists the variables that carry content and the dataset (table) that st
 
 ## Dataset Overview
 <!-- DATASET_OVERVIEW_START -->
-**Last updated:** 2026-10-28 13:44 UTC
+**Last updated:** 2026-10-28 14:36 UTC
 
 | Dataset | Records | Items | Files | Observed | Content |
 |---|---|---|---|---|---|
-| `chart_snapshots` | 0 | 0 | 0 | none | A chart or ranking as published at one observation; stored again only when the source changes it. |
-| `chart_catalog` | 0 | 0 | 0 | none | An entry of the chart configuration, recorded when it appears or changes. |
-| `entities` | 0 | 0 | 0 | none | An entry of the entity registry, recorded when it appears or changes. |
-| `wikipedia_pageviews` | 0 | 0 | 0 | none | Daily views of the German Wikipedia article of a registered entity. |
+| `chart_snapshots` | 727 | 727 | 1 | 2026-10-28 to 2026-10-28 | A chart or ranking as published at one observation; stored again only when the source changes it. |
+| `chart_catalog` | 12 | 12 | 1 | 2026-10-28 to 2026-10-28 | An entry of the chart configuration, recorded when it appears or changes. |
+| `entities` | 215 | 215 | 1 | 2026-10-28 to 2026-10-28 | An entry of the entity registry, recorded when it appears or changes. |
+| `wikipedia_pageviews` | 215 | 215 | 1 | 2026-10-28 to 2026-10-28 | Daily views of the German Wikipedia article of a registered entity. |
 | `news_items` | 0 | 0 | 0 | none | Metadata of one news article. The text is not stored. |
 | `press_releases` | 0 | 0 | 0 | none | Metadata of one press release. The text is not stored. |
 | `text_annotations` | 0 | 0 | 0 | none | Gemini labels of one news article or press release. |
 
 **Runs**
 
-- No run yet.
+- **Latest run:** 2026-10-28 14:31 UTC (backfill)
+  - `chart_catalog`: ok (chart_catalog 12)
+  - `charts`: ok (chart_snapshots 727)
+  - `entities`: ok (entities 215)
+  - `wikipedia_pageviews`: ok (wikipedia_pageviews 215)
 
 **Charts**
 
-- **Active charts:** 12; with stored lists: 0
+- **Active charts:** 12; with stored lists: 12
 
 | Chart | Lists | Latest list | First entries |
 |---|---|---|---|
-| Apple Music: most played songs, Germany | 0 | none | |
-| Apple Music: most played albums, Germany | 0 | none | |
-| Apple Podcasts: top shows, Germany | 0 | none | |
-| Apple Podcasts: trending episodes, Germany | 0 | none | |
-| App Store: top free iPhone apps, Germany | 0 | none | |
-| App Store: top paid iPhone apps, Germany | 0 | none | |
-| Apple Books: top paid books, Germany | 0 | none | |
-| Apple Books: top free books, Germany | 0 | none | |
-| Apple Books: top audiobooks, Germany | 0 | none | |
-| Google Trends: trending searches, Germany | 0 | none | |
-| German Wikipedia: most viewed articles per day | 0 | none | |
-| Wikipedia: most viewed articles from Germany per day, all editions | 0 | none | |
+| Apple Music: most played songs, Germany | 1 | 2026-10-28 | 1. Housewife (Tate McRae); 2. Movin' To The Sun (HUGEL, Imael Angel & Ultra Naté); 3. Stop The Wedding! (Ashe) |
+| Apple Music: most played albums, Germany | 1 | 2026-10-28 | 1. The Life of a Showgirl: The Encore (Taylor Swift); 2. Regen - Regengeräusche (Torsten Abrolat & Regen Macher); 3. Dopamine Chamber (Fontaines D.C.) |
+| Apple Podcasts: top shows, Germany | 1 | 2026-10-28 | 1. RONZHEIMER. (Paul Ronzheimer); 2. Apokalypse & Filterkaffee (Micky Beisenherz & Studio Bummens); 3. Mordlust (Paulina Krasa & Laura Wohlers) |
+| Apple Podcasts: trending episodes, Germany | 1 | 2026-10-28 | 1. Israel: Ein Land, zwei Wirklichkeiten / Handel: Merz für Freihandel mit Asien (Friederike Hofmann, Sven Prange und die Handelsblatt Redaktion, Handelsblatt); 2. Bye Bye, Bibi? (mit Philipp Oehmke) (Micky Beisenherz & Studio Bummens); 3. EIL: Stürzt Netanjahu? Wahlkrimi in Israel. Mit Richard C. Schneider (Paul Ronzheimer) |
+| App Store: top free iPhone apps, Germany | 1 | 2026-10-28 | 1. AOK Ident (AOK Mein Leben GbR); 2. Claude by Anthropic (Anthropic PBC); 3. Nect Wallet (Nect) |
+| App Store: top paid iPhone apps, Germany | 1 | 2026-10-28 | 1. Blitzer.de PRO (Eifrig Media); 2. Threema. Der sichere Messenger (Threema GmbH); 3. AnkiMobile Flashcards (Anki Software, LLC) |
+| Apple Books: top paid books, Germany | 1 | 2026-10-28 | 1. A Court of Splintered Harmony (Sarah J. Maas); 2. Mr. & Mrs. Rodríguez - Bis dass der Tod uns scheidet (J.G. Rose); 3. A Court of Splintered Harmony (Sarah J. Maas) |
+| Apple Books: top free books, Germany | 1 | 2026-10-28 | 1. Ausgerechnet Sylt (Thomas Herzberg); 2. Absolute Bedrohung (Ein Jake Mercer Politthriller — Band 1) (Jack Mars); 3. Mamies kleinster Coup (René Laffite) |
+| Apple Books: top audiobooks, Germany | 1 | 2026-10-28 | 1. Der erste Fall für Detective Cross - Der Kriminalist, Band 1 (ungekürzt) (Tim Sullivan); 2. Der Nachtzug (Sebastian Fitzek); 3. Die verschlossene Tür (Ungekürzt) (Freida McFadden) |
+| Google Trends: trending searches, Germany | 1 | 2026-10-28 | 1. landshut; 2. ali g: who iz i?; 3. sarah vogel |
+| German Wikipedia: most viewed articles per day | 355 | 2026-10-24 | 1. Kehlsteinhaus; 2. Das Vergessen – Spurlos im Moor; 3. Ehrlich Brothers |
+| Wikipedia: most viewed articles from Germany per day, all editions | 362 | 2026-10-27 | 1. Ballon d’Or (de.wikipedia); 2. Walter Koenig (de.wikipedia); 3. Harry Kane (de.wikipedia) |
 
 **Entities and Wikipedia views**
 
 - **Registered entities:** 215 (person 62, concept 39, platform 20, festival or event 18, tv show 17, product 11, brand 10, sports 9, music group 8, video game 8, institution 5, film series 4, movement 3, award 1)
+
+**Most viewed entities, 2026-10-21 to 2026-10-27**
+
+| Entity | Views |
+|---|---|
+| YouTube | 62,050 |
+| ChatGPT | 61,581 |
+| Halloween | 27,648 |
+| Amazon | 25,609 |
+| Shirin David | 17,957 |
+| James Bond | 17,769 |
+| Helene Fischer | 15,059 |
+| FC Bayern München | 13,490 |
+| AnnenMayKantereit | 13,229 |
+| Peter Maffay | 13,068 |
 
 **Sources**
 
@@ -178,6 +197,116 @@ The table lists the variables that carry content and the dataset (table) that st
 **Annotations**
 
 - No news articles or press releases yet.
+
+**Fields** (Filled: records with a value that is not null and not empty)
+
+<details>
+<summary><code>chart_snapshots</code>: 21 fields</summary>
+
+| Field | Description | Filled | Distinct values |
+|---|---|---|---|
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (727) | 727 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (727) | 1 |
+| `dataset` | Name of the dataset. | 100.0% (727) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (727) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (727) | 140 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (727) | 12 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (727) | 727 |
+| `license` | License or terms of the source. | 100.0% (727) | 3 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (727) | 2 |
+| `chart_id` | Stable id of the chart in config/charts.toml, e.g. 'apple.music_top_songs'. | 100.0% (727) | 12 |
+| `chart_name` | Name of the chart. | 100.0% (727) | 12 |
+| `domain` | Field of pop culture the chart measures. | 100.0% (727) | 6 |
+| `provider` | Provider id of config/charts.toml. | 100.0% (727) | 3 |
+| `country` | Country of the chart (ISO 3166-1 alpha-2); null for a chart of a language edition such as de.wikipedia. | 51.2% (372) | 1 |
+| `period` | live: the current list of a source without history, dated by the day of observation; day: the list of a past day as published by the source. | 100.0% (727) | 2 |
+| `chart_date` | Day the list refers to: the day of observation (UTC) for live lists, the day of the list for daily lists. | 100.0% (727) | 366 |
+| `source_updated` | Time at which the source states it updated the list (UTC), if given. | 1.2% (9) | 9 |
+| `entry_kind` | Kind of the entries. | 100.0% (727) | 9 |
+| `metric_name` | Meaning of the metric of the entries, e.g. 'views' or 'approximate searches'; null if the chart has no metric. | 98.8% (718) | 3 |
+| `entries` | The positions of the list in order of rank. | 100.0% (727) | 72,479 |
+| `entry_count` | Number of entries. | 100.0% (727) | 3 |
+
+</details>
+
+<details>
+<summary><code>chart_catalog</code>: 22 fields</summary>
+
+| Field | Description | Filled | Distinct values |
+|---|---|---|---|
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (12) | 12 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (12) | 1 |
+| `dataset` | Name of the dataset. | 100.0% (12) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (12) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (12) | 1 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (12) | 1 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (12) | 1 |
+| `license` | License or terms of the source. | 100.0% (12) | 1 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (12) | 1 |
+| `chart_id` | Stable id of the chart, '<provider>.<chart>'. | 100.0% (12) | 12 |
+| `name` | Name of the chart. | 100.0% (12) | 12 |
+| `domain` | Field of pop culture the chart measures. | 100.0% (12) | 6 |
+| `provider` | Provider id. | 100.0% (12) | 3 |
+| `format` | How the chart is read; the name of its parser. | 100.0% (12) | 4 |
+| `url` | Address of the chart; the address of a daily list contains {year}, {month} and {day}. | 100.0% (12) | 12 |
+| `country` | Country of the chart (ISO 3166-1 alpha-2); null for a language edition. | 91.7% (11) | 1 |
+| `period` | live or day. | 100.0% (12) | 2 |
+| `entry_kind` | Kind of the entries. | 100.0% (12) | 9 |
+| `max_entries` | Number of entries that are stored at most. | 100.0% (12) | 1 |
+| `added` | Day on which the chart was added; start of collection. | 100.0% (12) | 1 |
+| `removed` | Day on which the chart was removed; end of collection. | 0.0% (0) | 0 |
+| `removed_reason` | Why the chart was removed. | 0.0% (0) | 0 |
+
+</details>
+
+<details>
+<summary><code>entities</code>: 17 fields</summary>
+
+| Field | Description | Filled | Distinct values |
+|---|---|---|---|
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (215) | 215 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (215) | 1 |
+| `dataset` | Name of the dataset. | 100.0% (215) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (215) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (215) | 1 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (215) | 1 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (215) | 1 |
+| `license` | License or terms of the source. | 100.0% (215) | 1 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (215) | 1 |
+| `entity_id` | Stable id of the entity, e.g. 'helene_fischer' or 'bundeswehr'. | 100.0% (215) | 215 |
+| `name` | Name of the entity. | 100.0% (215) | 215 |
+| `entity_type` | Type of the entity. | 100.0% (215) | 14 |
+| `domain` | Field of pop culture or society the entity belongs to. | 100.0% (215) | 21 |
+| `wikipedia_title` | Title of the German Wikipedia article as configured; resolved through redirects at run time. | 100.0% (215) | 215 |
+| `added` | Day on which the entity was added to the registry. | 100.0% (215) | 1 |
+| `removed` | Day on which the entity was removed from the registry. | 0.0% (0) | 0 |
+| `removed_reason` | Why the entity was removed. | 0.0% (0) | 0 |
+
+</details>
+
+<details>
+<summary><code>wikipedia_pageviews</code>: 16 fields</summary>
+
+| Field | Description | Filled | Distinct values |
+|---|---|---|---|
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (215) | 215 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (215) | 1 |
+| `dataset` | Name of the dataset. | 100.0% (215) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (215) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (215) | 75 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (215) | 1 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (215) | 215 |
+| `license` | License or terms of the source. | 100.0% (215) | 1 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (215) | 1 |
+| `entity_id` | Id of the entity in the registry. | 100.0% (215) | 215 |
+| `entity_type` | Type of the entity. | 100.0% (215) | 14 |
+| `domain` | Field of the entity. | 100.0% (215) | 21 |
+| `wikipedia_project` | Wikipedia edition, de.wikipedia. | 100.0% (215) | 1 |
+| `wikipedia_title` | Title of the article at the time of the request. | 100.0% (215) | 215 |
+| `wikidata_qid` | Wikidata id of the article, the key to the people of text_annotations and to other datasets. | 100.0% (215) | 215 |
+| `daily_views` | Views by human users per day (UTC), for the days since the previous record. | 100.0% (215) | 4,137 |
+
+</details>
 <!-- DATASET_OVERVIEW_END -->
 
 ## Datasets
