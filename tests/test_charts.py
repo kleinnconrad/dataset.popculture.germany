@@ -268,10 +268,12 @@ def test_backfill_reads_again_the_days_of_an_older_parser(make_ctx, fake_web, tm
     _serve_wikimedia(fake_web, days)
     _result, entry = _collect(make_ctx, CollectorEntry(first_run=FIRST_RUN), collector)
 
-    # A new parser version reads one of the days differently
+    # A new parser version reads one of the days differently; another day is reported as missing
     monkeypatch.setitem(charts_module.PARSER_VERSIONS, "wikimedia_top", 99)
     fake_web.add(WIKI_URL.format(day=days[1]), _wikimedia_day(days[1], ["Halloween", "Oktoberfest"]))
-    result, entry = _collect(make_ctx, entry, collector, started=RUN_STARTED + timedelta(hours=1), backfill=True)
+    fake_web.add(WIKI_URL.format(day=days[2]), {"detail": "not loaded yet"}, status=404)
+    backfill = RUN_STARTED + timedelta(days=5)
+    result, entry = _collect(make_ctx, entry, collector, started=backfill, backfill=True)
     assert result.counters["days_parsed_again"] == 3
 
     records = [record for record in read_dataset(tmp_path / "data", "chart_snapshots")
@@ -279,9 +281,18 @@ def test_backfill_reads_again_the_days_of_an_older_parser(make_ctx, fake_web, tm
     assert [(record["chart_date"], record["revision"]) for record in records] == [
         ("2026-10-25", 0), ("2026-10-26", 0), ("2026-10-27", 0), ("2026-10-26", 1)]
     assert [entry["title"] for entry in records[-1]["entries"]] == ["Halloween", "Oktoberfest"]
+    assert "2026-10-27" in _days_progress(make_ctx, backfill)["missing"]
+
+    # The next regular run reads the missing day of the older version again
+    _serve_wikimedia(fake_web, [days[2]])
+    fake_web.requested.clear()
+    regular = RUN_STARTED + timedelta(days=6)
+    _result, entry = _collect(make_ctx, entry, collector, started=regular)
+    assert WIKI_URL.format(day=days[2]) in fake_web.requested
+    assert "2026-10-27" not in _days_progress(make_ctx, regular)["missing"]
 
     fake_web.requested.clear()
-    _collect(make_ctx, entry, collector, started=RUN_STARTED + timedelta(hours=2), backfill=True)
+    _collect(make_ctx, entry, collector, started=RUN_STARTED + timedelta(days=7), backfill=True)
     assert not [url for url in fake_web.requested if url in {WIKI_URL.format(day=day) for day in days}]
 
 

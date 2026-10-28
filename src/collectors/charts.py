@@ -510,7 +510,8 @@ class ChartsCollector(Collector):
         PUBLICATION_DELAY_DAYS days: the chart stops and the next run continues from it. An older day
         that is missing is tried again in the following runs until it is MISSING_RETRY_DAYS days old,
         because the source also reports days as missing that it has. A backfill run fetches the days
-        that are not stored or were read by an older version of the parser.
+        that are not stored or were read by an older version of the parser; a stored day of an older
+        version that was missing when a backfill read it again is tried again like a missing day.
 
         Returns:
             tuple[list[ChartSnapshotRecord], bool]: The records, and False if the run deadline
@@ -542,7 +543,8 @@ class ChartsCollector(Collector):
                 complete = False
                 break
             stored = store.get(day.isoformat())
-            if stored is not None and (not ctx.backfill or stored.data.get("parser", 1) == version):
+            current = stored is not None and stored.data.get("parser", 1) == version
+            if current or (stored is not None and not ctx.backfill and day.isoformat() not in missing):
                 continue
             url = chart.url_for(day)
             fetched += 1

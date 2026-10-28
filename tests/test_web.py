@@ -1,8 +1,9 @@
 """Tests of the HTTP client and its fetch rules."""
+import httpx
 import pytest
 
-from web import (BlockedError, FetchError, NotFoundError, RateLimitError, RobotsDisallowedError, is_challenge,
-                 is_rate_limited, parse_robots)
+from web import (BlockedError, FetchError, NotFoundError, RateLimitError, RobotsDisallowedError, WebClient,
+                 is_challenge, is_rate_limited, parse_robots)
 
 PAGE = "https://site.example/data/page-1"
 
@@ -147,7 +148,7 @@ def test_permanent_redirects_are_reported(fake_web) -> None:
     assert temporary.redirects == (302,) and not temporary.moved_permanently
 
 
-def test_unreachable_robots_txt_is_requested_once_per_run(fake_web) -> None:
+def test_unreachable_robots_txt_is_retried_and_then_kept_for_the_run(fake_web) -> None:
     fake_web.fail("https://site.example/robots.txt")
     client = fake_web.client()
 
@@ -155,8 +156,27 @@ def test_unreachable_robots_txt_is_requested_once_per_run(fake_web) -> None:
         with pytest.raises(FetchError):
             client.get(url)
 
-    assert fake_web.requested.count("https://site.example/robots.txt") == 1
+    assert fake_web.requested.count("https://site.example/robots.txt") == 3
     assert PAGE not in fake_web.requested
+
+
+def test_robots_txt_timeout_is_retried() -> None:
+    requested: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requested.append(str(request.url))
+        if request.url.path == "/robots.txt":
+            if requested.count(str(request.url)) == 1:
+                raise httpx.ReadTimeout("timed out", request=request)
+            return httpx.Response(200, text="User-agent: *\n", headers={"content-type": "text/plain"})
+        if str(request.url) == PAGE:
+            return httpx.Response(200, text="<html></html>", headers={"content-type": "text/html"})
+        return httpx.Response(404, text="Not found", headers={"content-type": "text/plain"})
+
+    client = WebClient(transport=httpx.MockTransport(handler), sleep=lambda seconds: None)
+
+    assert client.get(PAGE).status == 200
+    assert requested.count("https://site.example/robots.txt") == 2
 
 
 def test_tdmrep_rules_are_matched_by_path(fake_web) -> None:

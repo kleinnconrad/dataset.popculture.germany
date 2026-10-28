@@ -400,13 +400,16 @@ class WebClient:
                 MAX_RETRIES retries; RFC 9309 then requires to assume that everything is disallowed.
         """
         url = f"{host}/robots.txt"
-        # Some hosts answer single requests with gateway errors (rss.marketingtools.apple.com: 502 and 504);
-        # a server error is retried, so that one such answer does not stop the host for the run. A host that
-        # does not answer within RULES_TIMEOUT_S is not retried.
+        # Some hosts answer single requests with gateway errors or not at all (rss.marketingtools.apple.com:
+        # 502, 504 and timeouts); server and network errors are retried, so that one such answer does not stop
+        # the host for the run, because the failure is kept for the rest of the run.
         for attempt in range(MAX_RETRIES + 1):
             try:
                 response = self._send(url, None, None, timeout_s=RULES_TIMEOUT_S)
             except httpx.TransportError as e:
+                if attempt < MAX_RETRIES:
+                    self.sleep(RETRY_BACKOFF_S[min(attempt, len(RETRY_BACKOFF_S) - 1)])
+                    continue
                 raise FetchError(url, f"robots.txt unreachable ({e.__class__.__name__})") from e
             if response.status_code < 500:
                 break
