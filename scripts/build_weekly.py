@@ -201,17 +201,29 @@ def item_rows(data_dir: Path) -> list[Row]:
 def chart_rows(data_dir: Path) -> list[Row]:
     """Takes the latest list of every chart in each ISO week and the days on which entries were listed.
 
+    Every state of a live list counts for the days listed, because each was shown on its day. A
+    daily list that was stored again for the same day (a later revision) replaces the earlier one.
+
     Args:
         data_dir: Root folder of the datasets.
 
     Returns:
         list[Row]: The rows of the source ``charts``.
     """
+    records = list(read_dataset(data_dir, "chart_snapshots"))
+    newest_revision: dict[tuple[str, str], int] = {}
+    for record in records:
+        if record.get("period") == "day":
+            day_key = (str(record.get("chart_id")), str(record.get("chart_date")))
+            newest_revision[day_key] = max(newest_revision.get(day_key, 0), int(record.get("revision") or 0))
     latest: dict[tuple[str, str], dict[str, Any]] = {}
     presence: dict[tuple[str, str], dict[str, set[date]]] = defaultdict(lambda: defaultdict(set))
-    for record in read_dataset(data_dir, "chart_snapshots"):
+    for record in records:
         day = _day(record.get("chart_date"))
         if day is None:
+            continue
+        if record.get("period") == "day" and int(record.get("revision") or 0) < newest_revision[
+                (str(record.get("chart_id")), str(record.get("chart_date")))]:
             continue
         key = (iso_week(day), str(record.get("chart_id")))
         order = (str(record.get("chart_date")), int(record.get("revision") or 0), str(record.get("observed_at")))

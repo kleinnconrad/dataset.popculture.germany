@@ -81,6 +81,30 @@ def test_weekly_rows_aggregate_annotations_charts_and_pageviews(tmp_path) -> Non
     assert rows_by(rows, "pageviews") == {("2026-W43", "bundeswehr"): (80.0, 1), ("2026-W44", "bundeswehr"): (250.0, 2)}
 
 
+def test_later_revision_of_a_daily_list_replaces_the_earlier_one(tmp_path) -> None:
+    data_dir = tmp_path / "data"
+    chart = "wikimedia.top_articles_dewiki"
+    write(data_dir, "chart_snapshots", [
+        {"chart_id": chart, "period": "day", "chart_date": "2026-10-26", "revision": 0,
+         "observed_at": "2026-10-28T02:00:00Z", "entries": [{"rank": 1, "title": "wiki.phtml"},
+                                                            {"rank": 2, "title": "Halloween"}]},
+        {"chart_id": chart, "period": "day", "chart_date": "2026-10-26", "revision": 1,
+         "observed_at": "2026-10-30T02:00:00Z", "entries": [{"rank": 1, "title": "Halloween"}]},
+        {"chart_id": "apple.music_top_songs", "period": "live", "chart_date": "2026-10-28", "revision": 0,
+         "observed_at": "2026-10-28T02:00:00Z", "entries": [{"rank": 1, "title": "A", "creator": "X"}]},
+        {"chart_id": "apple.music_top_songs", "period": "live", "chart_date": "2026-10-28", "revision": 1,
+         "observed_at": "2026-10-28T09:00:00Z", "entries": [{"rank": 1, "title": "B", "creator": "Y"}]},
+    ])
+
+    rows = build_weekly.chart_rows(data_dir)
+
+    assert rows_by(rows, "chart_rank") == {("2026-W44", f"{chart} | Halloween"): (1.0, 1),
+                                           ("2026-W44", "apple.music_top_songs | B – Y"): (1.0, 1)}
+    listed = rows_by(rows, "chart_days_listed")
+    assert listed[("2026-W44", f"{chart} | Halloween")] == (1.0, 7)
+    assert not [key for key in listed if "wiki.phtml" in key[1]]
+
+
 def test_main_writes_a_csv_with_a_header(tmp_path) -> None:
     data_dir = tmp_path / "data"
     write(data_dir, "wikipedia_pageviews", [{"entity_id": "x", "daily_views": {"2026-10-26": 5}}])

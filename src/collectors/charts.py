@@ -14,8 +14,11 @@ Two periods are handled:
   day's record.
 - ``day``: the list of a past day (the most-read Wikipedia articles). Every
   day since the last stored day is fetched; a new chart starts
-  ``history_days`` days before the run. A list that the source changes later
-  is stored again with the next revision.
+  ``history_days`` days before the run. A day that the source reports as
+  missing is tried again in later runs for MISSING_RETRY_DAYS days. A backfill
+  run fetches the days again that an older version of the parser read
+  (PARSER_VERSIONS); a list that changes with the new version is stored as the
+  next revision of its day.
 
 Live charts are read with conditional requests (ETag, Last-Modified), so that
 an unchanged list is not downloaded again. A chart that fails is counted and
@@ -57,13 +60,28 @@ MAX_DAYS_PER_RUN = 60
 BACKFILL_DAYS = 365
 # A daily list that is missing for one of the last days is not published yet and is tried again in the next run
 PUBLICATION_DELAY_DAYS = 3
+# An older day that the source reports as missing (HTTP 404, also transiently) is tried again in later runs
+# until it is this many days old
+MISSING_RETRY_DAYS = 30
+# Version of the parser of a daily format; a backfill run fetches the days that an older version parsed again,
+# and a list that changes with the new version is stored as the next revision of its day
+PARSER_VERSIONS = {"wikimedia_top": 2, "wikimedia_top_country": 2}
 MAX_TITLE_CHARS = 300
 MAX_DETAIL_CHARS = 300
 MAX_FAILURES_LISTED = 20
-# Pages of the Wikipedia that are not articles
-WIKIPEDIA_NAMESPACES = ("Spezial:", "Special:", "Wikipedia:", "Datei:", "File:", "Portal:", "Benutzer:", "User:",
-                        "Hilfe:", "Help:", "Kategorie:", "Category:", "Vorlage:", "Template:", "Diskussion:", "Talk:")
-WIKIPEDIA_MAIN_PAGES = frozenset({"Hauptseite", "Main_Page", "-"})
+# Pages of a Wikipedia edition that are not articles. A namespace prefix is followed by the title without a space
+# ("Spezial:Suche", "Benutzer_Diskussion:X", "Speciale:Ricerca"); article titles with a colon have a space after it
+# ("Star_Wars:_Episode_I") or start with a digit ("16:9"). Main pages without a prefix are listed by name, technical
+# entries are recognised by their file extension (wiki.phtml).
+WIKIPEDIA_NAMESPACE_PATTERN = re.compile(r"^[^\W\d_][^:]*:[^_\s]")
+WIKIPEDIA_MAIN_PAGES = frozenset({
+    "-", "Main_Page", "Hauptseite", "Заглавная_страница", "Pagina_principale", "Hoofdpagina", "Anasayfa",
+    "Головна_сторінка", "Hlavní_strana", "メインページ",
+})
+WIKIPEDIA_TECHNICAL_PATTERN = re.compile(r"\.(?:php\d?|phtml|html?)$", re.IGNORECASE)
+# Projects of the list across editions that are kept; other Wikimedia projects (Wiktionary, Commons) are not
+# Wikipedia articles
+WIKIPEDIA_PROJECT_SUFFIX = ".wikipedia"
 # Approximate search volumes of Google Trends, e.g. "2000+", "20.000+", "50K+", "1 Mio.+"
 TRAFFIC_PATTERN = re.compile(r"([\d.,\s]+)\s*(k|tsd\.?|m|mio\.?)?\s*\+?", re.IGNORECASE)
 TRAFFIC_FACTORS = {"k": 1_000, "tsd": 1_000, "m": 1_000_000, "mio": 1_000_000}
@@ -270,8 +288,9 @@ def _wikipedia_url(project: str, article: str) -> str:
 
 
 def _is_article(article: str) -> bool:
-    """Tells whether a page title of the Wikimedia top lists is an article."""
-    return article not in WIKIPEDIA_MAIN_PAGES and not article.startswith(WIKIPEDIA_NAMESPACES)
+    """Tells whether a page title of the Wikimedia top lists (with underscores) is an article."""
+    return (article not in WIKIPEDIA_MAIN_PAGES and not WIKIPEDIA_NAMESPACE_PATTERN.match(article)
+            and not WIKIPEDIA_TECHNICAL_PATTERN.search(article))
 
 
 def _wikimedia_day(item: dict[str, Any]) -> Optional[date]:
@@ -285,8 +304,9 @@ def _wikimedia_day(item: dict[str, Any]) -> Optional[date]:
 def parse_wikimedia_top(content: bytes, chart: Chart) -> list[ChartList]:
     """Parses the most-viewed articles of a Wikipedia edition on a day (Wikimedia REST API).
 
-    Main pages and pages that are not articles (special pages, files, portals) are left out;
-    the other articles are numbered from 1, and their rank in the source is kept in the details.
+    Main pages, pages of other namespaces (special, talk, user and project pages, files, portals)
+    and technical entries are left out; the other articles are numbered from 1, and their rank in
+    the source is kept in the details.
 
     Args:
         content: The JSON document.
@@ -328,7 +348,8 @@ def parse_wikimedia_top_country(content: bytes, chart: Chart) -> list[ChartList]
     """Parses the most-viewed articles from a country on a day, across all Wikipedia editions.
 
     The Wikimedia API rounds the views up to the next thousand (``views_ceil``) and
-    lists only articles above a privacy threshold.
+    lists only articles above a privacy threshold. Pages of other Wikimedia projects
+    (Wiktionary, Commons) and pages that are not articles are left out.
 
     Args:
         content: The JSON document.
@@ -355,7 +376,7 @@ def parse_wikimedia_top_country(content: bytes, chart: Chart) -> list[ChartList]
                 continue
             title = str(article.get("article", ""))
             project = str(article.get("project", ""))
-            if not title or not project or not _is_article(title):
+            if not title or not project.endswith(WIKIPEDIA_PROJECT_SUFFIX) or not _is_article(title):
                 continue
             views = article.get("views_ceil")
             entries.append(make_entry(
@@ -431,6 +452,8 @@ class ChartsCollector(Collector):
                first_run: date) -> Optional[ChartSnapshotRecord]:
         """Marks a list in the seen store and returns its record, or None if it did not change.
 
+        The entry of a daily list keeps the version of the parser that read it (``PARSER_VERSIONS``).
+
         Raises:
             ChartError: If the list is empty or its title does not match ``expect``.
         """
@@ -448,9 +471,10 @@ class ChartsCollector(Collector):
         if chart_list.chart_date is None:
             raise ChartError("the list has no date")
         key = chart_list.chart_date.isoformat()
-        if store.classify(key, item_hash) == "unchanged":
+        status = store.classify(key, item_hash)
+        revision = store.mark(key, item_hash, ctx.today, data={"parser": PARSER_VERSIONS.get(chart.format, 1)})
+        if status == "unchanged":
             return None
-        revision = store.mark(key, item_hash, ctx.today)
         return self._record(ctx, chart, provider, chart_list, chart_list.chart_date, revision, url, first_run)
 
     def _read_file(self, ctx: RunContext, chart: Chart, provider: Provider, state: dict[str, Any],
@@ -480,7 +504,13 @@ class ChartsCollector(Collector):
 
     def _read_days(self, ctx: RunContext, chart: Chart, provider: Provider, first_run: date,
                    counters: dict[str, Any]) -> tuple[list[ChartSnapshotRecord], bool]:
-        """Reads the lists of the days since the last fetched day.
+        """Reads the lists of the days that were missing and of the days since the last fetched day.
+
+        A day that the source does not have (HTTP 404) is not published yet if it is one of the last
+        PUBLICATION_DELAY_DAYS days: the chart stops and the next run continues from it. An older day
+        that is missing is tried again in the following runs until it is MISSING_RETRY_DAYS days old,
+        because the source also reports days as missing that it has. A backfill run fetches the days
+        that are not stored or were read by an older version of the parser.
 
         Returns:
             tuple[list[ChartSnapshotRecord], bool]: The records, and False if the run deadline
@@ -489,6 +519,10 @@ class ChartsCollector(Collector):
         store = ctx.seen(DATASET, chart.id)
         progress = store.get(DAYS_KEY)
         last_day = progress.data.get("last_day") if progress else None
+        retry_from = ctx.today - timedelta(days=MISSING_RETRY_DAYS)
+        missing = {day for day in (progress.data.get("missing") or [] if progress else [])
+                   if date.fromisoformat(day) >= retry_from}
+        version = PARSER_VERSIONS.get(chart.format, 1)
         end = ctx.today - timedelta(days=1)
         if ctx.backfill:
             start = ctx.today - timedelta(days=max(chart.history_days, BACKFILL_DAYS))
@@ -496,37 +530,44 @@ class ChartsCollector(Collector):
             start = date.fromisoformat(last_day) + timedelta(days=1)
         else:
             start = ctx.today - timedelta(days=chart.history_days)
+        retried = sorted(date.fromisoformat(day) for day in missing if date.fromisoformat(day) < start)
+        days = retried + [start + timedelta(days=offset) for offset in range((end - start).days + 1)]
         limit = BACKFILL_DAYS if ctx.backfill else MAX_DAYS_PER_RUN
         records: list[ChartSnapshotRecord] = []
         fetched = 0
         newest = date.fromisoformat(last_day) if last_day else None
-        day = start
         complete = True
-        while day <= end:
+        for day in days:
             if ctx.past_deadline() or fetched >= limit:
                 complete = False
                 break
-            if day.isoformat() in store:
-                day += timedelta(days=1)
+            stored = store.get(day.isoformat())
+            if stored is not None and (not ctx.backfill or stored.data.get("parser", 1) == version):
                 continue
             url = chart.url_for(day)
             fetched += 1
+            if stored is not None:
+                counters["days_parsed_again"] += 1
+            elif day.isoformat() in missing:
+                counters["days_retried"] += 1
             try:
                 response = ctx.web.get(url, respect_robots=chart.respect_robots, timeout_s=REQUEST_TIMEOUT_S)
             except NotFoundError:
                 if day >= ctx.today - timedelta(days=PUBLICATION_DELAY_DAYS):
                     break
                 counters["days_missing"] += 1
-                day += timedelta(days=1)
+                if day >= retry_from:
+                    missing.add(day.isoformat())
                 continue
+            missing.discard(day.isoformat())
             for chart_list in PARSERS[chart.format](response.content, chart):
                 record = self._store(ctx, chart, provider, chart_list, url, first_run)
                 if record is not None:
                     records.append(record)
             newest = max(newest, day) if newest else day
-            day += timedelta(days=1)
-        if newest is not None:
-            store.mark(DAYS_KEY, DAYS_KEY, ctx.today, data={"last_day": newest.isoformat()})
+        if newest is not None or missing or progress is not None:
+            store.mark(DAYS_KEY, DAYS_KEY, ctx.today, data={
+                "last_day": newest.isoformat() if newest else None, "missing": sorted(missing)})
         counters["days_fetched"] += fetched
         return records, complete
 
