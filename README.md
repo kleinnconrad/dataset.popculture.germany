@@ -93,11 +93,11 @@ The table lists the variables that carry content and the dataset (table) that st
 
 ## Dataset Overview
 <!-- DATASET_OVERVIEW_START -->
-**Last updated:** 2026-10-28 14:36 UTC
+**Last updated:** 2026-10-28 15:02 UTC
 
 | Dataset | Records | Items | Files | Observed | Content |
 |---|---|---|---|---|---|
-| `chart_snapshots` | 727 | 727 | 1 | 2026-10-28 to 2026-10-28 | A chart or ranking as published at one observation; stored again only when the source changes it. |
+| `chart_snapshots` | 1,162 | 737 | 1 | 2026-10-28 to 2026-10-28 | A chart or ranking as published at one observation; stored again only when the source changes it. |
 | `chart_catalog` | 12 | 12 | 1 | 2026-10-28 to 2026-10-28 | An entry of the chart configuration, recorded when it appears or changes. |
 | `entities` | 215 | 215 | 1 | 2026-10-28 to 2026-10-28 | An entry of the entity registry, recorded when it appears or changes. |
 | `wikipedia_pageviews` | 215 | 215 | 1 | 2026-10-28 to 2026-10-28 | Daily views of the German Wikipedia article of a registered entity. |
@@ -107,11 +107,11 @@ The table lists the variables that carry content and the dataset (table) that st
 
 **Runs**
 
-- **Latest run:** 2026-10-28 14:31 UTC (backfill)
-  - `chart_catalog`: ok (chart_catalog 12)
-  - `charts`: ok (chart_snapshots 727)
-  - `entities`: ok (entities 215)
-  - `wikipedia_pageviews`: ok (wikipedia_pageviews 215)
+- **Latest run:** 2026-10-28 14:58 UTC (backfill)
+  - `chart_catalog`: ok
+  - `charts`: ok (chart_snapshots 435)
+  - `entities`: ok
+  - `wikipedia_pageviews`: ok
 
 **Charts**
 
@@ -128,9 +128,9 @@ The table lists the variables that carry content and the dataset (table) that st
 | Apple Books: top paid books, Germany | 1 | 2026-10-28 | 1. A Court of Splintered Harmony (Sarah J. Maas); 2. Mr. & Mrs. Rodríguez - Bis dass der Tod uns scheidet (J.G. Rose); 3. A Court of Splintered Harmony (Sarah J. Maas) |
 | Apple Books: top free books, Germany | 1 | 2026-10-28 | 1. Ausgerechnet Sylt (Thomas Herzberg); 2. Absolute Bedrohung (Ein Jake Mercer Politthriller — Band 1) (Jack Mars); 3. Mamies kleinster Coup (René Laffite) |
 | Apple Books: top audiobooks, Germany | 1 | 2026-10-28 | 1. Der erste Fall für Detective Cross - Der Kriminalist, Band 1 (ungekürzt) (Tim Sullivan); 2. Der Nachtzug (Sebastian Fitzek); 3. Die verschlossene Tür (Ungekürzt) (Freida McFadden) |
-| Google Trends: trending searches, Germany | 1 | 2026-10-28 | 1. landshut; 2. ali g: who iz i?; 3. sarah vogel |
-| German Wikipedia: most viewed articles per day | 355 | 2026-10-24 | 1. Kehlsteinhaus; 2. Das Vergessen – Spurlos im Moor; 3. Ehrlich Brothers |
-| Wikipedia: most viewed articles from Germany per day, all editions | 362 | 2026-10-27 | 1. Ballon d’Or (de.wikipedia); 2. Walter Koenig (de.wikipedia); 3. Harry Kane (de.wikipedia) |
+| Google Trends: trending searches, Germany | 2 | 2026-10-28 | 1. feuerwehr düsseldorf; 2. madrid; 3. malo gusto |
+| German Wikipedia: most viewed articles per day | 436 | 2026-10-27 | 1. Ballon d’Or; 2. Walter Koenig; 3. Harry Kane |
+| Wikipedia: most viewed articles from Germany per day, all editions | 715 | 2026-10-27 | 1. Ballon d’Or (de.wikipedia); 2. Walter Koenig (de.wikipedia); 3. Harry Kane (de.wikipedia) |
 
 **Entities and Wikipedia views**
 
@@ -205,27 +205,27 @@ The table lists the variables that carry content and the dataset (table) that st
 
 | Field | Description | Filled | Distinct values |
 |---|---|---|---|
-| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (727) | 727 |
-| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (727) | 1 |
-| `dataset` | Name of the dataset. | 100.0% (727) | 1 |
-| `schema_version` | Version of the record schema. | 100.0% (727) | 1 |
-| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (727) | 140 |
-| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (727) | 12 |
-| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (727) | 727 |
-| `license` | License or terms of the source. | 100.0% (727) | 3 |
-| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (727) | 2 |
-| `chart_id` | Stable id of the chart in config/charts.toml, e.g. 'apple.music_top_songs'. | 100.0% (727) | 12 |
-| `chart_name` | Name of the chart. | 100.0% (727) | 12 |
-| `domain` | Field of pop culture the chart measures. | 100.0% (727) | 6 |
-| `provider` | Provider id of config/charts.toml. | 100.0% (727) | 3 |
-| `country` | Country of the chart (ISO 3166-1 alpha-2); null for a chart of a language edition such as de.wikipedia. | 51.2% (372) | 1 |
-| `period` | live: the current list of a source without history, dated by the day of observation; day: the list of a past day as published by the source. | 100.0% (727) | 2 |
-| `chart_date` | Day the list refers to: the day of observation (UTC) for live lists, the day of the list for daily lists. | 100.0% (727) | 366 |
-| `source_updated` | Time at which the source states it updated the list (UTC), if given. | 1.2% (9) | 9 |
-| `entry_kind` | Kind of the entries. | 100.0% (727) | 9 |
-| `metric_name` | Meaning of the metric of the entries, e.g. 'views' or 'approximate searches'; null if the chart has no metric. | 98.8% (718) | 3 |
-| `entries` | The positions of the list in order of rank. | 100.0% (727) | 72,479 |
-| `entry_count` | Number of entries. | 100.0% (727) | 3 |
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (1,162) | 737 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (1,162) | 2 |
+| `dataset` | Name of the dataset. | 100.0% (1,162) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (1,162) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (1,162) | 218 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (1,162) | 12 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (1,162) | 737 |
+| `license` | License or terms of the source. | 100.0% (1,162) | 3 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (1,162) | 2 |
+| `chart_id` | Stable id of the chart in config/charts.toml, e.g. 'apple.music_top_songs'. | 100.0% (1,162) | 12 |
+| `chart_name` | Name of the chart. | 100.0% (1,162) | 12 |
+| `domain` | Field of pop culture the chart measures. | 100.0% (1,162) | 6 |
+| `provider` | Provider id of config/charts.toml. | 100.0% (1,162) | 3 |
+| `country` | Country of the chart (ISO 3166-1 alpha-2); null for a chart of a language edition such as de.wikipedia. | 62.5% (726) | 1 |
+| `period` | live: the current list of a source without history, dated by the day of observation; day: the list of a past day as published by the source. | 100.0% (1,162) | 2 |
+| `chart_date` | Day the list refers to: the day of observation (UTC) for live lists, the day of the list for daily lists. | 100.0% (1,162) | 366 |
+| `source_updated` | Time at which the source states it updated the list (UTC), if given. | 0.8% (9) | 9 |
+| `entry_kind` | Kind of the entries. | 100.0% (1,162) | 9 |
+| `metric_name` | Meaning of the metric of the entries, e.g. 'views' or 'approximate searches'; null if the chart has no metric. | 99.2% (1,153) | 3 |
+| `entries` | The positions of the list in order of rank. | 100.0% (1,162) | 102,796 |
+| `entry_count` | Number of entries. | 100.0% (1,162) | 3 |
 
 </details>
 
