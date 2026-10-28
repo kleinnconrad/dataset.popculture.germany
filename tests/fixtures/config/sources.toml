@@ -1,0 +1,69 @@
+# Test configuration of the feeds collector
+
+[[outlet]]
+id = "general_daily"
+name = "General Daily"
+homepage = "https://news.example/"
+outlet_type = "national_daily"
+owner_group = "Example Media"
+paywall_model = "mixed"
+feeds = ["https://news.example/kultur/rss.xml", "https://news.example/alles/rss.xml"]
+news_sitemap = "https://news.example/news-sitemap.xml"
+fetch_pages = true
+added = 2026-10-28
+
+[[outlet]]
+id = "music_magazine"
+name = "Music Magazine"
+homepage = "https://music.example/"
+outlet_type = "music_magazine"
+owner_group = "Music Media"
+focus = "Music"
+audience = "youth"
+paywall_model = "free"
+feeds = ["https://music.example/feed/"]
+fetch_pages = false
+added = 2026-10-28
+
+[[outlet]]
+id = "removed_outlet"
+name = "Removed Outlet"
+homepage = "https://gone.example/"
+outlet_type = "online_only"
+owner_group = "Gone"
+paywall_model = "free"
+feeds = ["https://gone.example/feed/"]
+added = 2026-10-01
+removed = 2026-10-20
+removed_reason = "test of a removed entry"
+
+[[press_source]]
+id = "games_association"
+name = "Games Association"
+homepage = "https://games.example/"
+actor_type = "industry_association"
+jurisdiction = "DE"
+feeds = ["https://games.example/feed/"]
+fetch_pages = false
+added = 2026-10-28
+
+[[excluded]]
+id = "candidate_outlet"
+name = "Candidate Outlet"
+homepage = "https://candidate.example/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "celebrity_magazine"
+owner_group = "Candidate Media"
+focus = "Celebrities and royals"
+paywall_model = "free"
+
+[[excluded]]
+id = "blocked_outlet"
+name = "Blocked Outlet"
+homepage = "https://blocked.example/"
+status = "blocked"
+reason = "homepage blocked (HTTP 403)"
+checked = 2026-10-28

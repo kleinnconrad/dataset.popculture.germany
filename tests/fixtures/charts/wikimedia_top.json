@@ -1,0 +1,8 @@
+{"items": [{"project": "de.wikipedia", "access": "all-access", "year": "2026", "month": "10", "day": "26", "articles": [
+ {"article": "Wikipedia:Hauptseite", "views": 512000, "rank": 1},
+ {"article": "Spezial:Suche", "views": 180000, "rank": 2},
+ {"article": "Peter_Maffay", "views": 61000, "rank": 3},
+ {"article": "Better_Call_Saul", "views": 32000, "rank": 4},
+ {"article": "-", "views": 20000, "rank": 5},
+ {"article": "Halloween", "views": 18500, "rank": 6}
+]}]}

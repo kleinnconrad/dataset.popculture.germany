@@ -1,0 +1,89 @@
+# Test configuration of the charts collector
+
+[[provider]]
+id = "apple"
+name = "Apple"
+homepage = "https://rss.marketingtools.apple.com/"
+terms_url = "https://www.apple.com/legal/internet-services/terms/site.html"
+license = "Copyright Apple Inc.; chart positions and metadata only"
+added = 2026-10-28
+
+[[provider]]
+id = "google_trends"
+name = "Google Trends"
+homepage = "https://trends.google.com/trending?geo=DE"
+terms_url = "https://policies.google.com/terms"
+license = "Google Terms of Service; search terms and approximate volumes as published"
+added = 2026-10-28
+
+[[provider]]
+id = "wikimedia"
+name = "Wikimedia Foundation"
+homepage = "https://wikimedia.org/api/rest_v1/"
+terms_url = "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use"
+license = "CC0-1.0"
+added = 2026-10-28
+
+[[chart]]
+id = "apple.music_top_songs"
+name = "Apple Music: most played songs, Germany"
+provider = "apple"
+domain = "music"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/music/most-played/100/songs.json"
+country = "DE"
+period = "live"
+entry_kind = "song"
+expect = "Top"
+added = 2026-10-28
+
+[[chart]]
+id = "google_trends.trending_searches_de"
+name = "Google Trends: trending searches, Germany"
+provider = "google_trends"
+domain = "search"
+format = "google_trends_rss"
+url = "https://trends.google.com/trending/rss?geo=DE"
+country = "DE"
+period = "live"
+entry_kind = "search_term"
+metric_name = "approximate searches (lower bound)"
+check_days = 2
+added = 2026-10-28
+
+[[chart]]
+id = "wikimedia.top_articles_dewiki"
+name = "German Wikipedia: most viewed articles per day"
+provider = "wikimedia"
+domain = "attention"
+format = "wikimedia_top"
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/de.wikipedia.org/all-access/{year}/{month}/{day}"
+period = "day"
+entry_kind = "article"
+metric_name = "views"
+respect_robots = false
+history_days = 3
+max_entries = 3
+options = { project = "de.wikipedia" }
+added = 2026-10-28
+
+[[chart]]
+id = "wikimedia.removed_chart"
+name = "A removed chart"
+provider = "wikimedia"
+domain = "attention"
+format = "wikimedia_top"
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access/{year}/{month}/{day}"
+period = "day"
+entry_kind = "article"
+respect_robots = false
+added = 2026-10-01
+removed = 2026-10-20
+removed_reason = "test of a removed entry"
+
+[[excluded]]
+id = "netflix.top10_de"
+name = "Netflix Top 10"
+url = "https://www.netflix.com/tudum/top10/data/all-weeks-countries.tsv"
+checked = 2026-10-28
+reason = "robots.txt disallows all paths"

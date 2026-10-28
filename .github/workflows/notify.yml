@@ -1,0 +1,68 @@
+name: Run Notification
+
+# Posts a summary of pipeline runs as a commit comment that mentions the repository owner, so that GitHub
+# sends an email. The pipeline runs every six hours; to keep the emails few, a comment is posted for every
+# failed run and every manual run, and once a day for the scheduled run of 03:17 Berlin time, with a summary
+# of the last 24 hours. The workflow name below must match the name in pipeline.yml.
+on:
+  workflow_run:
+    workflows: ["German Pop Culture Pipeline"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Only runs that commit data (normal and backfill); the run name contains the mode (see pipeline.yml).
+    # Cancelled runs commit nothing; failed runs commit what was collected.
+    if: >-
+      ${{ (github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == 'failure')
+      && (contains(github.event.workflow_run.display_title, '(normal)')
+      || contains(github.event.workflow_run.display_title, '(backfill)')) }}
+    permissions:
+      contents: write
+    steps:
+    - name: Decide Whether to Notify
+      id: decide
+      env:
+        CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+        TRIGGER: ${{ github.event.workflow_run.event }}
+        RUN_STARTED_AT: ${{ github.event.workflow_run.run_started_at }}
+      run: |
+        post=true
+        if [ "$CONCLUSION" = "success" ] && [ "$TRIGGER" = "schedule" ]; then
+          hour=$(TZ=Europe/Berlin date -d "$RUN_STARTED_AT" +%-H)
+          # The 03:17 run, also if GitHub delays it; the runs of 09:17, 15:17 and 21:17 post only on failure
+          if [ "$hour" -ge 8 ]; then
+            post=false
+          fi
+        fi
+        echo "post=$post" >> "$GITHUB_OUTPUT"
+
+    - name: Checkout Repository
+      if: steps.decide.outputs.post == 'true'
+      uses: actions/checkout@v7
+      with:
+        ref: ${{ github.event.workflow_run.head_branch }}
+
+    - name: Write Run Summary
+      if: steps.decide.outputs.post == 'true'
+      env:
+        CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+        RUN_URL: ${{ github.event.workflow_run.html_url }}
+        RUN_STARTED_AT: ${{ github.event.workflow_run.run_started_at }}
+        OWNER: ${{ github.repository_owner }}
+      run: |
+        python3 scripts/run_summary.py --run-log data/state/run_log.jsonl --output "$RUNNER_TEMP/summary.md" \
+          --conclusion "$CONCLUSION" --run-url "$RUN_URL" --mention "$OWNER" --not-before "$RUN_STARTED_AT" \
+          --window-hours 24
+
+    - name: Post Commit Comment
+      if: steps.decide.outputs.post == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPOSITORY: ${{ github.repository }}
+      run: |
+        gh api --method POST -H "Accept: application/vnd.github+json" \
+          "/repos/$REPOSITORY/commits/$(git rev-parse HEAD)/comments" -F body=@"$RUNNER_TEMP/summary.md"

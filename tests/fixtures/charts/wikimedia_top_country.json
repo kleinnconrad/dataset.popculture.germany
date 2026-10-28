@@ -1,0 +1,6 @@
+{"items": [{"country": "DE", "access": "all-access", "year": "2026", "month": "10", "day": "26", "articles": [
+ {"article": "Hauptseite", "project": "de.wikipedia", "views_ceil": 600000, "rank": 1},
+ {"article": "Peter_Maffay", "project": "de.wikipedia", "views_ceil": 58000, "rank": 2},
+ {"article": "Special:Search", "project": "en.wikipedia", "views_ceil": 41000, "rank": 3},
+ {"article": "Taylor_Swift", "project": "en.wikipedia", "views_ceil": 22000, "rank": 4}
+]}]}

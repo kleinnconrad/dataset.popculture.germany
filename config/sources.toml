@@ -1,0 +1,734 @@
+# News outlets and press-release sources of the feeds collector.
+#
+# [[outlet]]: a news outlet. Items of an outlet with `focus` (a field of pop culture, see
+#   schema.PopDomain) all count as pop culture; items of a general outlet pass if their feed or URL
+#   names a culture, entertainment or lifestyle section or if they contain a pop culture term.
+# [[press_source]]: an issuer of press releases; all its items pass.
+# [[excluded]]: candidates that were checked and not admitted. blocked, tdm_reserved, terms,
+#   duplicate and not_relevant are permanent; no_feed, inactive, robots and unchecked are checked
+#   again by every source review, which can admit the candidate.
+#
+# Admission rules (see CLAUDE.md, section 8): robots.txt allows the feeds; no machine-readable TDM
+# reservation; no bot protection; the terms or the imprint do not forbid the inclusion in databases,
+# the automated collection of content or its transfer into a machine-readable form. A TDM reservation
+# stated in natural language (robots.txt or imprint) sets fetch_pages = false, so that only feed data
+# is used. Only titles, URLs and metadata are stored.
+#
+# The comment above each entry records the check: the time span covered by the items of each feed
+# (h = hours) and the robots.txt and imprint findings. Ids are permanent; a source that is no longer
+# collected keeps its entry with `removed` and `removed_reason`.
+
+# =============================================================================
+# General outlets: culture, entertainment, people and lifestyle sections
+# =============================================================================
+
+# Checked on 2026-10-28: feeds kultur (49 h), panorama/leute (167 h), familie (1013 h); news sitemap
+# (199 items; outlet and sitemap also in dataset.politics.germany); robots.txt states a TDM reservation
+# (§ 44b UrhG) in natural language, therefore fetch_pages = false
+[[outlet]]
+id = "spiegel"
+name = "Der Spiegel"
+homepage = "https://www.spiegel.de/"
+outlet_type = "weekly_magazine"
+owner_group = "Spiegel-Verlag"
+paywall_model = "mixed"
+feeds = ["https://www.spiegel.de/kultur/index.rss", "https://www.spiegel.de/panorama/leute/index.rss", "https://www.spiegel.de/familie/index.rss"]
+news_sitemap = "https://www.spiegel.de/sitemaps/news-de.xml"
+fetch_pages = false
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds kultur (102 h), vermischtes (45 h, filtered by terms), kmpkt (youth
+# section, 1671 h); news sitemap (1000 items); robots.txt without TDM reservation; feed icon redirects
+# to the homepage and is omitted
+[[outlet]]
+id = "welt"
+name = "Die Welt"
+homepage = "https://www.welt.de/"
+outlet_type = "national_daily"
+owner_group = "Axel Springer"
+paywall_model = "mixed"
+feeds = ["https://www.welt.de/feeds/section/kultur.rss", "https://www.welt.de/feeds/section/vermischtes.rss", "https://www.welt.de/feeds/section/kmpkt.rss"]
+news_sitemap = "https://www.welt.de/sitemaps/newssitemap/newssitemap.xml"
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds Kultur (48 h), Leben (142 h), Panorama (71 h, filtered by terms); robots.txt
+# states a TDM reservation (§ 44b UrhG) in natural language, therefore fetch_pages = false; feed Stil omitted
+# (newest item 119 h old, three-feed limit)
+[[outlet]]
+id = "sueddeutsche"
+name = "Süddeutsche Zeitung"
+homepage = "https://www.sueddeutsche.de/"
+outlet_type = "national_daily"
+owner_group = "Südwestdeutsche Medienholding"
+paywall_model = "mixed"
+feeds = ["https://rss.sueddeutsche.de/rss/Kultur", "https://rss.sueddeutsche.de/rss/Leben", "https://rss.sueddeutsche.de/rss/Panorama"]
+fetch_pages = false
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds kultur (100 items, newest 2 h), gesellschaft (66 h) and gesellschaft/medien
+# (mostly agency news on tech companies), both filtered by terms; news sitemap (480 items); robots.txt states
+# a TDM reservation (§ 44b UrhG) in natural language, therefore fetch_pages = false
+[[outlet]]
+id = "tagesspiegel"
+name = "Der Tagesspiegel"
+homepage = "https://www.tagesspiegel.de/"
+outlet_type = "national_daily"
+owner_group = "Dieter von Holtzbrinck Medien"
+paywall_model = "mixed"
+feeds = ["https://www.tagesspiegel.de/contentexport/feed/kultur", "https://www.tagesspiegel.de/contentexport/feed/gesellschaft", "https://www.tagesspiegel.de/contentexport/feed/gesellschaft/medien"]
+news_sitemap = "https://www.tagesspiegel.de/news.xml"
+fetch_pages = false
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds kultur (400 items, 320 h; mostly celebrities and TV shows), familie
+# (400 items, 6989 h), panorama (433 h, filtered by terms); robots.txt without TDM reservation
+[[outlet]]
+id = "focus"
+name = "Focus Online"
+homepage = "https://www.focus.de/"
+outlet_type = "weekly_magazine"
+owner_group = "Hubert Burda Media"
+paywall_model = "free"
+feeds = ["https://www.focus.de/kultur/rss", "https://www.focus.de/familie/rss", "https://www.focus.de/panorama/rss"]
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds unterhaltung (402 h), unterhaltung/stars (73 h), leben (30 items over many
+# years, newest 1 h); robots.txt states a TDM reservation (§ 44b UrhG) in natural language, therefore
+# fetch_pages = false; the imprint requires consent for reprints and the inclusion in online services
+# (general copyright notice, as for the other outlets; only metadata is stored)
+[[outlet]]
+id = "t_online"
+name = "t-online"
+homepage = "https://www.t-online.de/"
+outlet_type = "online_only"
+owner_group = "Ströer"
+paywall_model = "free"
+feeds = ["https://www.t-online.de/unterhaltung/feed.rss", "https://www.t-online.de/unterhaltung/stars/feed.rss", "https://www.t-online.de/leben/feed.rss"]
+fetch_pages = false
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds leute (43 h), panorama (46 h, filtered by terms); news sitemap (751 items);
+# robots.txt without TDM reservation
+[[outlet]]
+id = "n_tv"
+name = "n-tv.de"
+homepage = "https://www.n-tv.de/"
+outlet_type = "online_only"
+owner_group = "Gruner + Jahr/RTL"
+paywall_model = "free"
+feeds = ["https://www.n-tv.de/leute/rss", "https://www.n-tv.de/panorama/rss"]
+news_sitemap = "https://www.n-tv.de/news.xml"
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds unterhaltung (100 items, 51 h), lifestyle (2509 h), alles (1.4 h, filtered by
+# terms); news sitemap (664 items); robots.txt without TDM reservation; some feed times lie up to an hour in
+# the future and are treated as unknown
+[[outlet]]
+id = "bild"
+name = "Bild"
+homepage = "https://www.bild.de/"
+outlet_type = "tabloid"
+owner_group = "Axel Springer"
+paywall_model = "mixed"
+feeds = ["https://www.bild.de/feed/unterhaltung.xml", "https://www.bild.de/feed/lifestyle.xml", "https://www.bild.de/feed/alles.xml"]
+news_sitemap = "https://www.bild.de/sitemap-news.xml"
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds panorama (149 items) and nachrichten (176 items), both filtered by terms;
+# feed nachrichten/kultur does not exist (HTTP 404); robots.txt without TDM reservation
+[[outlet]]
+id = "zdfheute"
+name = "ZDFheute"
+homepage = "https://www.zdfheute.de/"
+outlet_type = "public_broadcaster_national"
+owner_group = "public"
+paywall_model = "free"
+feeds = ["https://www.zdfheute.de/rss/zdf/nachrichten/panorama", "https://www.zdfheute.de/rss/zdf/nachrichten"]
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feed (100 items, 69 h, filtered by terms); news sitemap (186 items); robots.txt
+# crawl-delay 10 s (check of dataset.politics.germany)
+[[outlet]]
+id = "berliner_zeitung"
+name = "Berliner Zeitung"
+homepage = "https://www.berliner-zeitung.de/"
+outlet_type = "regional_daily"
+owner_group = "Berliner Verlag"
+home_state = "DE-BE"
+paywall_model = "mixed"
+feeds = ["https://www.berliner-zeitung.de/feed.xml"]
+news_sitemap = "https://www.berliner-zeitung.de/news-sitemap.xml"
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: front page feed (50 items, 25 h, filtered by terms; rss.xml redirects to it); news
+# sitemap (216 items); robots.txt states a TDM reservation (§ 44b UrhG) in natural language, therefore
+# fetch_pages = false
+[[outlet]]
+id = "taz"
+name = "taz"
+homepage = "https://taz.de/"
+outlet_type = "national_daily"
+owner_group = "taz Verlagsgenossenschaft"
+paywall_model = "free"
+feeds = ["https://taz.de/!p4608;rss/"]
+news_sitemap = "https://taz.de/sitemap-google-news.xml"
+fetch_pages = false
+added = 2026-10-28
+
+# Checked on 2026-10-28: front page feed rss (100 items, newest 0.1 h, filtered by terms); news sitemap (346
+# items, newest of the day); the section feeds kultur-live and vermischtes have no item of the last two years
+# and are omitted; robots.txt without TDM reservation; the imprint reserves text and data mining (§ 44b UrhG)
+# in natural language, therefore fetch_pages = false
+[[outlet]]
+id = "abendblatt"
+name = "Hamburger Abendblatt"
+homepage = "https://www.abendblatt.de/"
+outlet_type = "regional_daily"
+owner_group = "Funke"
+home_state = "DE-HH"
+paywall_model = "mixed"
+feeds = ["https://www.abendblatt.de/rss"]
+news_sitemap = "https://www.abendblatt.de/sitemaps/news.xml"
+fetch_pages = false
+added = 2026-10-28
+
+# =============================================================================
+# Celebrity, music, film, TV and games media
+# =============================================================================
+
+# Checked on 2026-10-28: feed (20 items, 3 h; the feed covers a few hours, so items between runs are
+# missed); robots.txt without TDM reservation; imprint without restrictions of reuse (Celebrity News AG)
+[[outlet]]
+id = "promiflash"
+name = "Promiflash"
+homepage = "https://www.promiflash.de/"
+outlet_type = "celebrity_magazine"
+owner_group = "Celebrity News AG"
+focus = "Celebrities and royals"
+paywall_model = "free"
+feeds = ["https://www.promiflash.de/feed/"]
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feed (100 items, 302 h); robots.txt without TDM reservation; the imprint
+# reserves text and data mining (§ 44b UrhG) in natural language, therefore fetch_pages = false, and
+# requires consent for reprints and the inclusion in online services
+[[outlet]]
+id = "musikexpress"
+name = "Musikexpress"
+homepage = "https://www.musikexpress.de/"
+outlet_type = "music_magazine"
+owner_group = "Mediahouse Berlin"
+focus = "Music"
+paywall_model = "free"
+feeds = ["https://www.musikexpress.de/feed/"]
+fetch_pages = false
+added = 2026-10-28
+
+# Checked on 2026-10-28: feed (30 items, 24 h); robots.txt without TDM reservation; the imprint reserves
+# text and data mining (§ 44b UrhG) in natural language, therefore fetch_pages = false
+[[outlet]]
+id = "rolling_stone"
+name = "Rolling Stone (Deutschland)"
+homepage = "https://www.rollingstone.de/"
+outlet_type = "music_magazine"
+owner_group = "Mediahouse Berlin"
+focus = "Music"
+paywall_model = "free"
+feeds = ["https://www.rollingstone.de/feed/"]
+fetch_pages = false
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds news and alben (album reviews; 20 items each; the feed of www.laut.de
+# moved to laut.de); robots.txt without TDM reservation; all items of a feed carry the generation time
+# of the feed as pubDate, so published_at is the time of the first observation of the feed, not of the article
+[[outlet]]
+id = "laut_de"
+name = "laut.de"
+homepage = "https://laut.de/"
+outlet_type = "music_magazine"
+owner_group = "LAUT AG"
+focus = "Music"
+paywall_model = "free"
+feeds = ["https://laut.de/_feeds/news/rss", "https://laut.de/_feeds/alben/rss"]
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feed allethemen (30 items, 49 h); robots.txt without TDM reservation; imprint
+# without restrictions of reuse
+[[outlet]]
+id = "dwdl"
+name = "DWDL.de"
+homepage = "https://www.dwdl.de/"
+outlet_type = "trade_press"
+owner_group = "DWDL.de GmbH"
+focus = "TV and streaming"
+paywall_model = "free"
+feeds = ["https://www.dwdl.de/rss/allethemen.xml"]
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feeds nachrichten, quoten (TV ratings) and meinungen (reviews and commentary),
+# 25 items each, without publication times; robots.txt without TDM reservation; the imprint offers
+# licences for press reviews and content and does not restrict reuse
+[[outlet]]
+id = "quotenmeter"
+name = "Quotenmeter.de"
+homepage = "https://www.quotenmeter.de/"
+outlet_type = "trade_press"
+owner_group = "Quotenmeter GmbH"
+focus = "TV and streaming"
+paywall_model = "free"
+feeds = ["https://www.quotenmeter.de/xml/nachrichten.rss", "https://www.quotenmeter.de/xml/quoten.rss", "https://www.quotenmeter.de/xml/meinungen.rss"]
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feed moviepilot-standard (20 items, 20 h; found on the homepage); robots.txt
+# without TDM reservation; imprint without restrictions of reuse
+[[outlet]]
+id = "moviepilot"
+name = "Moviepilot"
+homepage = "https://www.moviepilot.de/"
+outlet_type = "film_tv_magazine"
+owner_group = "Webedia"
+focus = "Film and cinema"
+paywall_model = "free"
+feeds = ["https://www.moviepilot.de/rss/moviepilot-standard"]
+fetch_pages = true
+added = 2026-10-28
+
+# Checked on 2026-10-28: feed (10 items, 2 h; the feed covers a few hours); robots.txt without TDM
+# reservation; imprint without restrictions of reuse
+[[outlet]]
+id = "mein_mmo"
+name = "Mein-MMO"
+homepage = "https://mein-mmo.de/"
+outlet_type = "games_magazine"
+owner_group = "Webedia"
+focus = "Games and esports"
+paywall_model = "free"
+feeds = ["https://mein-mmo.de/feed/"]
+fetch_pages = true
+added = 2026-10-28
+
+# =============================================================================
+# Lifestyle media
+# =============================================================================
+
+# Checked on 2026-10-28: feed (20 items, 24 h; sustainable living, food, household); robots.txt states a
+# TDM reservation (§ 44b UrhG) in natural language, therefore fetch_pages = false
+[[outlet]]
+id = "utopia"
+name = "Utopia"
+homepage = "https://utopia.de/"
+outlet_type = "lifestyle_magazine"
+owner_group = "UTOPIA GmbH"
+focus = "Home and living"
+paywall_model = "free"
+feeds = ["https://utopia.de/feed/"]
+fetch_pages = false
+added = 2026-10-28
+
+# =============================================================================
+# Press releases of the culture industry
+# =============================================================================
+
+# Checked on 2026-10-28: feed (10 items, 1366 h; game charts, market figures and studies of the games
+# industry); robots.txt without TDM reservation; imprint without restrictions of reuse
+[[press_source]]
+id = "game_verband"
+name = "game - Verband der deutschen Games-Branche"
+homepage = "https://www.game.de/"
+actor_type = "industry_association"
+jurisdiction = "DE"
+feeds = ["https://www.game.de/feed/"]
+fetch_pages = true
+added = 2026-10-28
+
+# =============================================================================
+# Candidates that were checked and not admitted
+# =============================================================================
+
+[[excluded]]
+id = "vogue"
+name = "Vogue (Deutschland)"
+homepage = "https://www.vogue.de/"
+status = "terms"
+reason = "the imprint of Condé Nast Germany forbids using the website to collect content, data, indexes or repositories without prior permission and reserves text and data mining"
+checked = 2026-10-28
+kind = "outlet"
+feeds = ["https://www.vogue.de/feed/rss"]
+outlet_type = "womens_magazine"
+owner_group = "Condé Nast"
+focus = "Fashion and beauty"
+audience = "women"
+paywall_model = "free"
+
+[[excluded]]
+id = "gq"
+name = "GQ (Deutschland)"
+homepage = "https://www.gq-magazin.de/"
+status = "terms"
+reason = "the imprint of Condé Nast Germany forbids using the website to collect content, data, indexes or repositories without prior permission and reserves text and data mining"
+checked = 2026-10-28
+kind = "outlet"
+feeds = ["https://www.gq-magazin.de/feed/rss"]
+outlet_type = "mens_magazine"
+owner_group = "Condé Nast"
+focus = "Fashion and beauty"
+audience = "men"
+paywall_model = "free"
+
+[[excluded]]
+id = "glamour"
+name = "Glamour (Deutschland)"
+homepage = "https://www.glamour.de/"
+status = "terms"
+reason = "published by Condé Nast Germany, whose imprints of Vogue and GQ forbid the collection of content without prior permission"
+checked = 2026-10-28
+kind = "outlet"
+feeds = ["https://www.glamour.de/feed"]
+outlet_type = "womens_magazine"
+owner_group = "Condé Nast"
+focus = "Fashion and beauty"
+audience = "women"
+paywall_model = "free"
+
+[[excluded]]
+id = "watson"
+name = "watson.de"
+homepage = "https://www.watson.de/"
+status = "terms"
+reason = "the imprint forbids reproducing any content of the website in any form or transferring it into a machine-readable form without written permission"
+checked = 2026-10-28
+kind = "outlet"
+feeds = ["https://www.watson.de/api/2.0/rss/index.xml?tag=Front"]
+outlet_type = "online_only"
+owner_group = "Ströer"
+audience = "youth"
+paywall_model = "free"
+
+[[excluded]]
+id = "gamestar"
+name = "GameStar"
+homepage = "https://www.gamestar.de/"
+status = "blocked"
+reason = "homepage and feed blocked (HTTP 403)"
+checked = 2026-10-28
+
+[[excluded]]
+id = "gamepro"
+name = "GamePro"
+homepage = "https://www.gamepro.de/"
+status = "blocked"
+reason = "homepage blocked (HTTP 403)"
+checked = 2026-10-28
+
+[[excluded]]
+id = "serienjunkies"
+name = "Serienjunkies"
+homepage = "https://www.serienjunkies.de/"
+status = "robots"
+reason = "robots.txt disallows the homepage; robots.txt also states a TDM reservation in natural language"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "film_tv_magazine"
+owner_group = "Serienjunkies"
+focus = "TV and streaming"
+paywall_model = "free"
+
+[[excluded]]
+id = "giga"
+name = "GIGA"
+homepage = "https://www.giga.de/"
+status = "no_feed"
+reason = "no feed link on the homepage; /feed/ returns HTTP 404"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "games_magazine"
+owner_group = "Ströer"
+focus = "Technology and internet"
+paywall_model = "free"
+
+[[excluded]]
+id = "filmstarts"
+name = "Filmstarts"
+homepage = "https://www.filmstarts.de/"
+status = "no_feed"
+reason = "no feed link on the homepage"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "film_tv_magazine"
+owner_group = "Webedia"
+focus = "Film and cinema"
+paywall_model = "free"
+
+[[excluded]]
+id = "rap_de"
+name = "rap.de"
+homepage = "https://rap.de/"
+status = "no_feed"
+reason = "the homepage did not answer within 30 seconds; /feed/ returns HTTP 404"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "music_magazine"
+owner_group = "rap.de"
+focus = "Music"
+audience = "youth"
+paywall_model = "free"
+
+[[excluded]]
+id = "jetzt"
+name = "jetzt"
+homepage = "https://www.jetzt.de/"
+status = "no_feed"
+reason = "no feed link on the homepage; robots.txt states a TDM reservation in natural language"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "youth_magazine"
+owner_group = "Südwestdeutsche Medienholding"
+audience = "youth"
+paywall_model = "free"
+
+[[excluded]]
+id = "familie_de"
+name = "familie.de"
+homepage = "https://www.familie.de/"
+status = "no_feed"
+reason = "no feed link on the homepage; /feed/ returns HTTP 404"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "family_magazine"
+owner_group = "familie.de"
+focus = "Family and parenting"
+audience = "parents"
+paywall_model = "free"
+
+[[excluded]]
+id = "bitkom"
+name = "Bitkom"
+homepage = "https://www.bitkom.org/"
+status = "no_feed"
+reason = "no feed link on the homepage"
+checked = 2026-10-28
+kind = "press_source"
+actor_type = "industry_association"
+jurisdiction = "DE"
+
+[[excluded]]
+id = "bvmi"
+name = "Bundesverband Musikindustrie"
+homepage = "https://www.musikindustrie.de/"
+status = "no_feed"
+reason = "the homepage links only a podcast feed on another host"
+checked = 2026-10-28
+kind = "press_source"
+actor_type = "industry_association"
+jurisdiction = "DE"
+
+[[excluded]]
+id = "stern"
+name = "Stern"
+homepage = "https://www.stern.de/"
+status = "blocked"
+reason = "blocks automated requests (check of dataset.politics.germany)"
+checked = 2026-10-19
+
+[[excluded]]
+id = "zeit"
+name = "ZEIT ONLINE"
+homepage = "https://www.zeit.de/"
+status = "tdm_reserved"
+reason = "machine-readable text-and-data-mining reservation (check of dataset.politics.germany)"
+checked = 2026-10-19
+
+# Candidates that were not checked yet: their hosts were not reachable from the development environment.
+# Every source review checks them (robots.txt, TDM reservation, feeds linked on the homepage, imprint) and
+# proposes those that pass.
+
+[[excluded]]
+id = "bunte"
+name = "Bunte"
+homepage = "https://www.bunte.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "celebrity_magazine"
+owner_group = "Hubert Burda Media"
+focus = "Celebrities and royals"
+paywall_model = "free"
+
+[[excluded]]
+id = "gala"
+name = "Gala"
+homepage = "https://www.gala.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "celebrity_magazine"
+owner_group = "RTL Deutschland"
+focus = "Celebrities and royals"
+paywall_model = "free"
+
+[[excluded]]
+id = "brigitte"
+name = "Brigitte"
+homepage = "https://www.brigitte.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "womens_magazine"
+owner_group = "RTL Deutschland"
+focus = "Relationships and sexuality"
+audience = "women"
+paywall_model = "free"
+
+[[excluded]]
+id = "elle"
+name = "Elle (Deutschland)"
+homepage = "https://www.elle.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "womens_magazine"
+owner_group = "Hubert Burda Media"
+focus = "Fashion and beauty"
+audience = "women"
+paywall_model = "free"
+
+[[excluded]]
+id = "mens_health"
+name = "Men's Health (Deutschland)"
+homepage = "https://www.menshealth.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "mens_magazine"
+owner_group = "Motor Presse Stuttgart"
+focus = "Fitness and wellness"
+audience = "men"
+paywall_model = "free"
+
+[[excluded]]
+id = "eltern"
+name = "Eltern"
+homepage = "https://www.eltern.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "family_magazine"
+owner_group = "RTL Deutschland"
+focus = "Family and parenting"
+audience = "parents"
+paywall_model = "free"
+
+[[excluded]]
+id = "einslive"
+name = "1LIVE"
+homepage = "https://www1.wdr.de/radio/1live/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "public_youth_media"
+owner_group = "public"
+home_state = "DE-NW"
+focus = "Music"
+audience = "youth"
+paywall_model = "free"
+
+[[excluded]]
+id = "puls"
+name = "PULS (BR)"
+homepage = "https://www.br.de/puls/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "public_youth_media"
+owner_group = "public"
+home_state = "DE-BY"
+audience = "youth"
+paywall_model = "free"
+
+[[excluded]]
+id = "deutschlandfunk_nova"
+name = "Deutschlandfunk Nova"
+homepage = "https://www.deutschlandfunknova.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "public_youth_media"
+owner_group = "public"
+audience = "youth"
+paywall_model = "free"
+
+[[excluded]]
+id = "deutschlandfunk_kultur"
+name = "Deutschlandfunk Kultur"
+homepage = "https://www.deutschlandfunkkultur.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "outlet"
+outlet_type = "public_broadcaster_national"
+owner_group = "public"
+focus = "Art, stage and museums"
+paywall_model = "free"
+
+[[excluded]]
+id = "boersenverein"
+name = "Börsenverein des Deutschen Buchhandels"
+homepage = "https://www.boersenverein.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "press_source"
+actor_type = "industry_association"
+jurisdiction = "DE"
+
+[[excluded]]
+id = "ffa"
+name = "Filmförderungsanstalt (FFA)"
+homepage = "https://www.ffa.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "press_source"
+actor_type = "public_agency"
+jurisdiction = "DE"
+
+[[excluded]]
+id = "zdf_presse"
+name = "ZDF Presseportal"
+homepage = "https://presseportal.zdf.de/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "press_source"
+actor_type = "broadcaster"
+jurisdiction = "DE"
+
+[[excluded]]
+id = "prosiebensat1"
+name = "ProSiebenSat.1 Media"
+homepage = "https://www.prosiebensat1.com/"
+status = "unchecked"
+reason = "not checked yet"
+checked = 2026-10-28
+kind = "press_source"
+actor_type = "broadcaster"
+jurisdiction = "DE"

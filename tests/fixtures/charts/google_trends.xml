@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:ht="https://trends.google.com/trending/rss" version="2.0">
+	<channel>
+		<title>Daily Search Trends</title>
+		<description>Recent searches</description>
+		<link>https://trends.google.com/trending/rss?geo=DE</link>
+		<atom:link href="https://trends.google.com/trending/rss?geo=DE" rel="self" type="application/rss+xml"/>
+		<item>
+			<title>peter maffay</title>
+			<ht:approx_traffic>1000+</ht:approx_traffic>
+			<description/>
+			<link>https://trends.google.com/trending/rss?geo=DE</link>
+			<pubDate>Wed, 28 Oct 2026 05:10:00 -0700</pubDate>
+			<ht:picture_source>T-Online</ht:picture_source>
+			<ht:news_item>
+				<ht:news_item_title>Er war schon auf Abschiedstour: Peter Maffay erklärt, warum er doch nicht kürzertritt</ht:news_item_title>
+				<ht:news_item_snippet/>
+				<ht:news_item_url>https://www.t-online.de/unterhaltung/stars/id_101501200/peter-maffay-saenger-tritt-trotz-abschiedstour-nicht-kuerzer-der-grund.html</ht:news_item_url>
+				<ht:news_item_source>T-Online</ht:news_item_source>
+			</ht:news_item>
+			<ht:news_item>
+				<ht:news_item_title>Peter Maffay</ht:news_item_title>
+				<ht:news_item_snippet/>
+				<ht:news_item_url>https://www.phoenix.de/sendungen/dokumentationen/peter-maffay-a-5202870.html</ht:news_item_url>
+				<ht:news_item_source>Phoenix.de</ht:news_item_source>
+			</ht:news_item>
+			<ht:news_item>
+				<ht:news_item_title>phoenix history: Ein Leben in zehn Fotos am 28. Oktober 2026 um 04:30 Uhr auf Phoenix</ht:news_item_title>
+				<ht:news_item_snippet/>
+				<ht:news_item_url>https://www.tvmovie.de/tv/phoenix-history-ein-leben-in-zehn-fotos-epg-237887738</ht:news_item_url>
+				<ht:news_item_source>TV Movie</ht:news_item_source>
+			</ht:news_item>
+		</item>
+		<item>
+			<title>better call saul</title>
+			<ht:approx_traffic>200+</ht:approx_traffic>
+			<description/>
+			<link>https://trends.google.com/trending/rss?geo=DE</link>
+			<pubDate>Wed, 28 Oct 2026 05:10:00 -0700</pubDate>
+			<ht:picture_source>Comic Book Resources</ht:picture_source>
+			<ht:news_item>
+				<ht:news_item_title>Bob Odenkirk&apos;s 89-Minute John Wick Meets Better Call Saul Action Thriller Announces Streaming Departure</ht:news_item_title>
+				<ht:news_item_snippet/>
+				<ht:news_item_url>https://www.cbr.com/bob-odenkirk-nobody-action-leaving-peacock-november/</ht:news_item_url>
+				<ht:news_item_source>Comic Book Resources</ht:news_item_source>
+			</ht:news_item>
+			<ht:news_item>
+				<ht:news_item_title>Was diese Krimiserie besser macht als alle anderen – sechs Staffeln bei Netflix</ht:news_item_title>
+				<ht:news_item_snippet/>
+				<ht:news_item_url>https://www.serienjunkies.de/news/serien/better-call-saul-warum-die-serie-breaking-bad-uebertrifft-94561783.html</ht:news_item_url>
+				<ht:news_item_source>Serienjunkies.de</ht:news_item_source>
+			</ht:news_item>
+		</item>
+	</channel>
+</rss>

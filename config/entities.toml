@@ -1,0 +1,1799 @@
+# Entities whose attention the pipeline measures with the daily views of their German Wikipedia
+# articles (collector `wikipedia_pageviews`, the stable backbone of the dataset).
+#
+# type: see schema.EntityType; domain: see schema.PopDomain; wikipedia: title of the article on
+# de.wikipedia.org. Concepts such as marriage, the Bundeswehr or veganism are the topics on which the
+# annotation records the opinions of pop culture media (schema.StanceTarget).
+#
+# Every title was resolved through the MediaWiki API on 2026-10-28 (an existing article, not a
+# disambiguation page; redirects replaced by their target). Ids are permanent; an entity that is no
+# longer collected keeps its entry with `removed` and `removed_reason`. A new entity gets the daily
+# views since 2015-07-01.
+
+# =============================================================================
+# Music: artists and groups
+# =============================================================================
+
+[[entity]]
+id = "helene_fischer"
+name = "Helene Fischer"
+type = "person"
+domain = "Music"
+wikipedia = "Helene Fischer"
+added = 2026-10-28
+
+[[entity]]
+id = "apache_207"
+name = "Apache 207"
+type = "person"
+domain = "Music"
+wikipedia = "Apache 207"
+added = 2026-10-28
+
+[[entity]]
+id = "shirin_david"
+name = "Shirin David"
+type = "person"
+domain = "Music"
+wikipedia = "Shirin David"
+added = 2026-10-28
+
+[[entity]]
+id = "ayliva"
+name = "Ayliva"
+type = "person"
+domain = "Music"
+wikipedia = "Ayliva"
+added = 2026-10-28
+
+[[entity]]
+id = "nina_chuba"
+name = "Nina Chuba"
+type = "person"
+domain = "Music"
+wikipedia = "Nina Chuba"
+added = 2026-10-28
+
+[[entity]]
+id = "ski_aggu"
+name = "Ski Aggu"
+type = "person"
+domain = "Music"
+wikipedia = "Ski Aggu"
+added = 2026-10-28
+
+[[entity]]
+id = "luciano"
+name = "Luciano"
+type = "person"
+domain = "Music"
+wikipedia = "Luciano (Rapper)"
+added = 2026-10-28
+
+[[entity]]
+id = "capital_bra"
+name = "Capital Bra"
+type = "person"
+domain = "Music"
+wikipedia = "Capital Bra"
+added = 2026-10-28
+
+[[entity]]
+id = "raf_camora"
+name = "RAF Camora"
+type = "person"
+domain = "Music"
+wikipedia = "RAF Camora"
+added = 2026-10-28
+
+[[entity]]
+id = "bonez_mc"
+name = "Bonez MC"
+type = "person"
+domain = "Music"
+wikipedia = "Bonez MC"
+added = 2026-10-28
+
+[[entity]]
+id = "kontra_k"
+name = "Kontra K"
+type = "person"
+domain = "Music"
+wikipedia = "Kontra K"
+added = 2026-10-28
+
+[[entity]]
+id = "pashanim"
+name = "Pashanim"
+type = "person"
+domain = "Music"
+wikipedia = "Pashanim"
+added = 2026-10-28
+
+[[entity]]
+id = "badmomzjay"
+name = "Badmómzjay"
+type = "person"
+domain = "Music"
+wikipedia = "Badmómzjay"
+added = 2026-10-28
+
+[[entity]]
+id = "mark_forster"
+name = "Mark Forster"
+type = "person"
+domain = "Music"
+wikipedia = "Mark Forster"
+added = 2026-10-28
+
+[[entity]]
+id = "peter_fox"
+name = "Peter Fox"
+type = "person"
+domain = "Music"
+wikipedia = "Peter Fox"
+added = 2026-10-28
+
+[[entity]]
+id = "herbert_groenemeyer"
+name = "Herbert Grönemeyer"
+type = "person"
+domain = "Music"
+wikipedia = "Herbert Grönemeyer"
+added = 2026-10-28
+
+[[entity]]
+id = "udo_lindenberg"
+name = "Udo Lindenberg"
+type = "person"
+domain = "Music"
+wikipedia = "Udo Lindenberg"
+added = 2026-10-28
+
+[[entity]]
+id = "peter_maffay"
+name = "Peter Maffay"
+type = "person"
+domain = "Music"
+wikipedia = "Peter Maffay"
+added = 2026-10-28
+
+[[entity]]
+id = "roland_kaiser"
+name = "Roland Kaiser"
+type = "person"
+domain = "Music"
+wikipedia = "Roland Kaiser"
+added = 2026-10-28
+
+[[entity]]
+id = "andrea_berg"
+name = "Andrea Berg"
+type = "person"
+domain = "Music"
+wikipedia = "Andrea Berg"
+added = 2026-10-28
+
+[[entity]]
+id = "florian_silbereisen"
+name = "Florian Silbereisen"
+type = "person"
+domain = "Music"
+wikipedia = "Florian Silbereisen"
+added = 2026-10-28
+
+[[entity]]
+id = "giovanni_zarrella"
+name = "Giovanni Zarrella"
+type = "person"
+domain = "Music"
+wikipedia = "Giovanni Zarrella"
+added = 2026-10-28
+
+[[entity]]
+id = "lena_meyer_landrut"
+name = "Lena Meyer-Landrut"
+type = "person"
+domain = "Music"
+wikipedia = "Lena Meyer-Landrut"
+added = 2026-10-28
+
+[[entity]]
+id = "rammstein"
+name = "Rammstein"
+type = "music_group"
+domain = "Music"
+wikipedia = "Rammstein"
+added = 2026-10-28
+
+[[entity]]
+id = "tokio_hotel"
+name = "Tokio Hotel"
+type = "music_group"
+domain = "Music"
+wikipedia = "Tokio Hotel"
+added = 2026-10-28
+
+[[entity]]
+id = "die_toten_hosen"
+name = "Die Toten Hosen"
+type = "music_group"
+domain = "Music"
+wikipedia = "Die Toten Hosen"
+added = 2026-10-28
+
+[[entity]]
+id = "die_aerzte"
+name = "Die Ärzte"
+type = "music_group"
+domain = "Music"
+wikipedia = "Die Ärzte"
+added = 2026-10-28
+
+[[entity]]
+id = "kraftklub"
+name = "Kraftklub"
+type = "music_group"
+domain = "Music"
+wikipedia = "Kraftklub"
+added = 2026-10-28
+
+[[entity]]
+id = "annenmaykantereit"
+name = "AnnenMayKantereit"
+type = "music_group"
+domain = "Music"
+wikipedia = "AnnenMayKantereit"
+added = 2026-10-28
+
+[[entity]]
+id = "taylor_swift"
+name = "Taylor Swift"
+type = "person"
+domain = "Music"
+wikipedia = "Taylor Swift"
+added = 2026-10-28
+
+[[entity]]
+id = "billie_eilish"
+name = "Billie Eilish"
+type = "person"
+domain = "Music"
+wikipedia = "Billie Eilish"
+added = 2026-10-28
+
+[[entity]]
+id = "ed_sheeran"
+name = "Ed Sheeran"
+type = "person"
+domain = "Music"
+wikipedia = "Ed Sheeran"
+added = 2026-10-28
+
+[[entity]]
+id = "beyonce"
+name = "Beyoncé"
+type = "person"
+domain = "Music"
+wikipedia = "Beyoncé"
+added = 2026-10-28
+
+[[entity]]
+id = "sabrina_carpenter"
+name = "Sabrina Carpenter"
+type = "person"
+domain = "Music"
+wikipedia = "Sabrina Carpenter"
+added = 2026-10-28
+
+[[entity]]
+id = "bad_bunny"
+name = "Bad Bunny"
+type = "person"
+domain = "Music"
+wikipedia = "Bad Bunny"
+added = 2026-10-28
+
+[[entity]]
+id = "the_weeknd"
+name = "The Weeknd"
+type = "person"
+domain = "Music"
+wikipedia = "The Weeknd"
+added = 2026-10-28
+
+[[entity]]
+id = "harry_styles"
+name = "Harry Styles"
+type = "person"
+domain = "Music"
+wikipedia = "Harry Styles"
+added = 2026-10-28
+
+[[entity]]
+id = "coldplay"
+name = "Coldplay"
+type = "music_group"
+domain = "Music"
+wikipedia = "Coldplay"
+added = 2026-10-28
+
+[[entity]]
+id = "bts"
+name = "BTS"
+type = "music_group"
+domain = "Music"
+wikipedia = "BTS (Band)"
+added = 2026-10-28
+
+# =============================================================================
+# Music: genres and events
+# =============================================================================
+
+[[entity]]
+id = "k_pop"
+name = "K-Pop"
+type = "concept"
+domain = "Music"
+wikipedia = "K-Pop"
+added = 2026-10-28
+
+[[entity]]
+id = "schlager"
+name = "Schlager"
+type = "concept"
+domain = "Music"
+wikipedia = "Schlager"
+added = 2026-10-28
+
+[[entity]]
+id = "deutscher_hip_hop"
+name = "German hip-hop"
+type = "concept"
+domain = "Music"
+wikipedia = "Deutscher Hip-Hop"
+added = 2026-10-28
+
+[[entity]]
+id = "eurovision_song_contest"
+name = "Eurovision Song Contest"
+type = "festival_or_event"
+domain = "Music"
+wikipedia = "Eurovision Song Contest"
+added = 2026-10-28
+
+# =============================================================================
+# TV shows
+# =============================================================================
+
+[[entity]]
+id = "tatort"
+name = "Tatort"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Tatort (Fernsehreihe)"
+added = 2026-10-28
+
+[[entity]]
+id = "gntm"
+name = "Germany's Next Topmodel"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Germany’s Next Topmodel"
+added = 2026-10-28
+
+[[entity]]
+id = "ich_bin_ein_star"
+name = "Ich bin ein Star – Holt mich hier raus!"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Ich bin ein Star – Holt mich hier raus!"
+added = 2026-10-28
+
+[[entity]]
+id = "lets_dance"
+name = "Let's Dance"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Let’s Dance (Fernsehsendung)"
+added = 2026-10-28
+
+[[entity]]
+id = "wer_wird_millionaer"
+name = "Wer wird Millionär?"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Wer wird Millionär?"
+added = 2026-10-28
+
+[[entity]]
+id = "bauer_sucht_frau"
+name = "Bauer sucht Frau"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Bauer sucht Frau"
+added = 2026-10-28
+
+[[entity]]
+id = "hoehle_der_loewen"
+name = "Die Höhle der Löwen"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Die Höhle der Löwen"
+added = 2026-10-28
+
+[[entity]]
+id = "the_voice_of_germany"
+name = "The Voice of Germany"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "The Voice of Germany"
+added = 2026-10-28
+
+[[entity]]
+id = "sommerhaus_der_stars"
+name = "Das Sommerhaus der Stars"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Das Sommerhaus der Stars – Kampf der Promipaare"
+added = 2026-10-28
+
+[[entity]]
+id = "promi_big_brother"
+name = "Promi Big Brother"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Promi Big Brother"
+added = 2026-10-28
+
+[[entity]]
+id = "joko_klaas_gegen_prosieben"
+name = "Joko & Klaas gegen ProSieben"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Joko & Klaas gegen ProSieben"
+added = 2026-10-28
+
+[[entity]]
+id = "wetten_dass"
+name = "Wetten, dass..?"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Wetten, dass..?"
+added = 2026-10-28
+
+[[entity]]
+id = "tv_total"
+name = "TV total"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "TV total"
+added = 2026-10-28
+
+[[entity]]
+id = "heute_show"
+name = "heute-show"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Heute-show"
+added = 2026-10-28
+
+[[entity]]
+id = "zdf_magazin_royale"
+name = "ZDF Magazin Royale"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "ZDF Magazin Royale"
+added = 2026-10-28
+
+[[entity]]
+id = "sturm_der_liebe"
+name = "Sturm der Liebe"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Sturm der Liebe"
+added = 2026-10-28
+
+[[entity]]
+id = "gzsz"
+name = "Gute Zeiten, schlechte Zeiten"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Gute Zeiten, schlechte Zeiten"
+added = 2026-10-28
+
+# =============================================================================
+# TV presenters and celebrities
+# =============================================================================
+
+[[entity]]
+id = "stefan_raab"
+name = "Stefan Raab"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Stefan Raab"
+added = 2026-10-28
+
+[[entity]]
+id = "joko_winterscheidt"
+name = "Joko Winterscheidt"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Joko Winterscheidt"
+added = 2026-10-28
+
+[[entity]]
+id = "klaas_heufer_umlauf"
+name = "Klaas Heufer-Umlauf"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Klaas Heufer-Umlauf"
+added = 2026-10-28
+
+[[entity]]
+id = "jan_boehmermann"
+name = "Jan Böhmermann"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Jan Böhmermann"
+added = 2026-10-28
+
+[[entity]]
+id = "thomas_gottschalk"
+name = "Thomas Gottschalk"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Thomas Gottschalk"
+added = 2026-10-28
+
+[[entity]]
+id = "guenther_jauch"
+name = "Günther Jauch"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Günther Jauch"
+added = 2026-10-28
+
+[[entity]]
+id = "dieter_bohlen"
+name = "Dieter Bohlen"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Dieter Bohlen"
+added = 2026-10-28
+
+[[entity]]
+id = "heidi_klum"
+name = "Heidi Klum"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Heidi Klum"
+added = 2026-10-28
+
+[[entity]]
+id = "barbara_schoeneberger"
+name = "Barbara Schöneberger"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Barbara Schöneberger"
+added = 2026-10-28
+
+[[entity]]
+id = "markus_lanz"
+name = "Markus Lanz"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Markus Lanz"
+added = 2026-10-28
+
+[[entity]]
+id = "hape_kerkeling"
+name = "Hape Kerkeling"
+type = "person"
+domain = "TV and streaming"
+wikipedia = "Hape Kerkeling"
+added = 2026-10-28
+
+[[entity]]
+id = "oliver_pocher"
+name = "Oliver Pocher"
+type = "person"
+domain = "Celebrities and royals"
+wikipedia = "Oliver Pocher"
+added = 2026-10-28
+
+[[entity]]
+id = "daniela_katzenberger"
+name = "Daniela Katzenberger"
+type = "person"
+domain = "Celebrities and royals"
+wikipedia = "Daniela Katzenberger"
+added = 2026-10-28
+
+# =============================================================================
+# Influencers and streamers
+# =============================================================================
+
+[[entity]]
+id = "montanablack"
+name = "MontanaBlack"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "MontanaBlack"
+added = 2026-10-28
+
+[[entity]]
+id = "knossi"
+name = "Knossi"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Jens Knossalla"
+added = 2026-10-28
+
+[[entity]]
+id = "papaplatte"
+name = "Papaplatte"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Papaplatte"
+added = 2026-10-28
+
+[[entity]]
+id = "trymacs"
+name = "Trymacs"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Trymacs"
+added = 2026-10-28
+
+[[entity]]
+id = "rezo"
+name = "Rezo"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Rezo"
+added = 2026-10-28
+
+[[entity]]
+id = "julien_bam"
+name = "Julien Bam"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Julien Bam"
+added = 2026-10-28
+
+[[entity]]
+id = "bibi"
+name = "Bianca Heinicke (BibisBeautyPalace)"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Bianca Heinicke"
+added = 2026-10-28
+
+[[entity]]
+id = "pamela_reif"
+name = "Pamela Reif"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Pamela Reif"
+added = 2026-10-28
+
+[[entity]]
+id = "dagi_bee"
+name = "Dagi Bee"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Dagi Bee"
+added = 2026-10-28
+
+[[entity]]
+id = "gronkh"
+name = "Gronkh"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Gronkh"
+added = 2026-10-28
+
+[[entity]]
+id = "handofblood"
+name = "HandOfBlood"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "HandOfBlood"
+added = 2026-10-28
+
+[[entity]]
+id = "younes_zarou"
+name = "Younes Zarou"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Younes Zarou"
+added = 2026-10-28
+
+[[entity]]
+id = "influencer"
+name = "Influencer"
+type = "concept"
+domain = "Influencers and social media"
+wikipedia = "Influencer"
+added = 2026-10-28
+
+# =============================================================================
+# Royals
+# =============================================================================
+
+[[entity]]
+id = "charles_iii"
+name = "King Charles III"
+type = "person"
+domain = "Celebrities and royals"
+wikipedia = "Charles III."
+added = 2026-10-28
+
+[[entity]]
+id = "prince_william"
+name = "William, Prince of Wales"
+type = "person"
+domain = "Celebrities and royals"
+wikipedia = "William, Prince of Wales"
+added = 2026-10-28
+
+[[entity]]
+id = "princess_catherine"
+name = "Catherine, Princess of Wales"
+type = "person"
+domain = "Celebrities and royals"
+wikipedia = "Catherine, Princess of Wales"
+added = 2026-10-28
+
+[[entity]]
+id = "prince_harry"
+name = "Harry, Duke of Sussex"
+type = "person"
+domain = "Celebrities and royals"
+wikipedia = "Harry, Duke of Sussex"
+added = 2026-10-28
+
+[[entity]]
+id = "meghan"
+name = "Meghan, Duchess of Sussex"
+type = "person"
+domain = "Celebrities and royals"
+wikipedia = "Meghan, Duchess of Sussex"
+added = 2026-10-28
+
+# =============================================================================
+# Film
+# =============================================================================
+
+[[entity]]
+id = "marvel_cinematic_universe"
+name = "Marvel Cinematic Universe"
+type = "film_series"
+domain = "Film and cinema"
+wikipedia = "Marvel Cinematic Universe"
+added = 2026-10-28
+
+[[entity]]
+id = "star_wars"
+name = "Star Wars"
+type = "film_series"
+domain = "Film and cinema"
+wikipedia = "Star Wars"
+added = 2026-10-28
+
+[[entity]]
+id = "harry_potter"
+name = "Harry Potter"
+type = "film_series"
+domain = "Film and cinema"
+wikipedia = "Harry Potter"
+added = 2026-10-28
+
+[[entity]]
+id = "james_bond"
+name = "James Bond"
+type = "film_series"
+domain = "Film and cinema"
+wikipedia = "James Bond"
+added = 2026-10-28
+
+[[entity]]
+id = "berlinale"
+name = "Berlinale"
+type = "festival_or_event"
+domain = "Film and cinema"
+wikipedia = "Internationale Filmfestspiele Berlin"
+added = 2026-10-28
+
+[[entity]]
+id = "oscar"
+name = "Oscar"
+type = "award"
+domain = "Film and cinema"
+wikipedia = "Oscar"
+added = 2026-10-28
+
+# =============================================================================
+# Streaming, social media and platforms
+# =============================================================================
+
+[[entity]]
+id = "netflix"
+name = "Netflix"
+type = "platform"
+domain = "TV and streaming"
+wikipedia = "Netflix"
+added = 2026-10-28
+
+[[entity]]
+id = "disney_plus"
+name = "Disney+"
+type = "platform"
+domain = "TV and streaming"
+wikipedia = "Disney+"
+added = 2026-10-28
+
+[[entity]]
+id = "prime_video"
+name = "Prime Video"
+type = "platform"
+domain = "TV and streaming"
+wikipedia = "Prime Video"
+added = 2026-10-28
+
+[[entity]]
+id = "rtl_plus"
+name = "RTL+"
+type = "platform"
+domain = "TV and streaming"
+wikipedia = "RTL+"
+added = 2026-10-28
+
+[[entity]]
+id = "ard_mediathek"
+name = "ARD Mediathek"
+type = "platform"
+domain = "TV and streaming"
+wikipedia = "ARD Mediathek"
+added = 2026-10-28
+
+[[entity]]
+id = "zdf_streaming"
+name = "ZDF (streaming portal)"
+type = "platform"
+domain = "TV and streaming"
+wikipedia = "ZDF (Streamingportal)"
+added = 2026-10-28
+
+[[entity]]
+id = "spotify"
+name = "Spotify"
+type = "platform"
+domain = "Music"
+wikipedia = "Spotify"
+added = 2026-10-28
+
+[[entity]]
+id = "youtube"
+name = "YouTube"
+type = "platform"
+domain = "Influencers and social media"
+wikipedia = "YouTube"
+added = 2026-10-28
+
+[[entity]]
+id = "tiktok"
+name = "TikTok"
+type = "platform"
+domain = "Influencers and social media"
+wikipedia = "TikTok"
+added = 2026-10-28
+
+[[entity]]
+id = "instagram"
+name = "Instagram"
+type = "platform"
+domain = "Influencers and social media"
+wikipedia = "Instagram"
+added = 2026-10-28
+
+[[entity]]
+id = "twitch"
+name = "Twitch"
+type = "platform"
+domain = "Influencers and social media"
+wikipedia = "Twitch"
+added = 2026-10-28
+
+[[entity]]
+id = "x"
+name = "X"
+type = "platform"
+domain = "Influencers and social media"
+wikipedia = "X (soziales Netzwerk)"
+added = 2026-10-28
+
+[[entity]]
+id = "bluesky"
+name = "Bluesky"
+type = "platform"
+domain = "Influencers and social media"
+wikipedia = "Bluesky"
+added = 2026-10-28
+
+[[entity]]
+id = "snapchat"
+name = "Snapchat"
+type = "platform"
+domain = "Influencers and social media"
+wikipedia = "Snapchat"
+added = 2026-10-28
+
+[[entity]]
+id = "whatsapp"
+name = "WhatsApp"
+type = "platform"
+domain = "Technology and internet"
+wikipedia = "WhatsApp"
+added = 2026-10-28
+
+[[entity]]
+id = "telegram"
+name = "Telegram"
+type = "platform"
+domain = "Technology and internet"
+wikipedia = "Telegram"
+added = 2026-10-28
+
+[[entity]]
+id = "onlyfans"
+name = "OnlyFans"
+type = "platform"
+domain = "Relationships and sexuality"
+wikipedia = "OnlyFans"
+added = 2026-10-28
+
+[[entity]]
+id = "singleboerse"
+name = "Dating apps and online dating"
+type = "concept"
+domain = "Relationships and sexuality"
+wikipedia = "Singlebörse"
+added = 2026-10-28
+
+[[entity]]
+id = "chatgpt"
+name = "ChatGPT"
+type = "platform"
+domain = "Technology and internet"
+wikipedia = "ChatGPT"
+added = 2026-10-28
+
+[[entity]]
+id = "kuenstliche_intelligenz"
+name = "Artificial intelligence"
+type = "concept"
+domain = "Technology and internet"
+wikipedia = "Künstliche Intelligenz"
+added = 2026-10-28
+
+[[entity]]
+id = "amazon"
+name = "Amazon"
+type = "platform"
+domain = "Shopping and consumer products"
+wikipedia = "Amazon"
+added = 2026-10-28
+
+[[entity]]
+id = "temu"
+name = "Temu"
+type = "platform"
+domain = "Shopping and consumer products"
+wikipedia = "Temu (Online-Marktplatz)"
+added = 2026-10-28
+
+[[entity]]
+id = "shein"
+name = "Shein"
+type = "brand"
+domain = "Shopping and consumer products"
+wikipedia = "Shein"
+added = 2026-10-28
+
+# =============================================================================
+# Games
+# =============================================================================
+
+[[entity]]
+id = "fortnite"
+name = "Fortnite"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "Fortnite"
+added = 2026-10-28
+
+[[entity]]
+id = "minecraft"
+name = "Minecraft"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "Minecraft"
+added = 2026-10-28
+
+[[entity]]
+id = "gta_vi"
+name = "Grand Theft Auto VI"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "Grand Theft Auto VI"
+added = 2026-10-28
+
+[[entity]]
+id = "ea_sports_fc"
+name = "EA Sports FC (FIFA series)"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "FIFA (Computerspielreihe)"
+added = 2026-10-28
+
+[[entity]]
+id = "pokemon"
+name = "Pokémon"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "Pokémon"
+added = 2026-10-28
+
+[[entity]]
+id = "roblox"
+name = "Roblox"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "Roblox"
+added = 2026-10-28
+
+[[entity]]
+id = "league_of_legends"
+name = "League of Legends"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "League of Legends"
+added = 2026-10-28
+
+[[entity]]
+id = "counter_strike_2"
+name = "Counter-Strike 2"
+type = "video_game"
+domain = "Games and esports"
+wikipedia = "Counter-Strike 2"
+added = 2026-10-28
+
+[[entity]]
+id = "nintendo_switch_2"
+name = "Nintendo Switch 2"
+type = "product"
+domain = "Games and esports"
+wikipedia = "Nintendo Switch 2"
+added = 2026-10-28
+
+[[entity]]
+id = "playstation_5"
+name = "PlayStation 5"
+type = "product"
+domain = "Games and esports"
+wikipedia = "PlayStation 5"
+added = 2026-10-28
+
+[[entity]]
+id = "gamescom"
+name = "Gamescom"
+type = "festival_or_event"
+domain = "Games and esports"
+wikipedia = "Gamescom"
+added = 2026-10-28
+
+# =============================================================================
+# Books
+# =============================================================================
+
+[[entity]]
+id = "frankfurter_buchmesse"
+name = "Frankfurter Buchmesse"
+type = "festival_or_event"
+domain = "Books and literature"
+wikipedia = "Frankfurter Buchmesse"
+added = 2026-10-28
+
+[[entity]]
+id = "leipziger_buchmesse"
+name = "Leipziger Buchmesse"
+type = "festival_or_event"
+domain = "Books and literature"
+wikipedia = "Leipziger Buchmesse"
+added = 2026-10-28
+
+[[entity]]
+id = "booktok"
+name = "BookTok"
+type = "concept"
+domain = "Books and literature"
+wikipedia = "BookTok"
+added = 2026-10-28
+
+[[entity]]
+id = "romantasy"
+name = "Romantasy"
+type = "concept"
+domain = "Books and literature"
+wikipedia = "Romantasy"
+added = 2026-10-28
+
+# =============================================================================
+# Festivals and events
+# =============================================================================
+
+[[entity]]
+id = "rock_am_ring"
+name = "Rock am Ring"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Rock am Ring"
+added = 2026-10-28
+
+[[entity]]
+id = "wacken_open_air"
+name = "Wacken Open Air"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Wacken Open Air"
+added = 2026-10-28
+
+[[entity]]
+id = "hurricane_festival"
+name = "Hurricane Festival"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Hurricane Festival"
+added = 2026-10-28
+
+[[entity]]
+id = "southside_festival"
+name = "Southside Festival"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Southside (Festival)"
+added = 2026-10-28
+
+[[entity]]
+id = "lollapalooza"
+name = "Lollapalooza"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Lollapalooza"
+added = 2026-10-28
+
+[[entity]]
+id = "fusion_festival"
+name = "Fusion Festival"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Fusion Festival"
+added = 2026-10-28
+
+[[entity]]
+id = "parookaville"
+name = "Parookaville"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Parookaville"
+added = 2026-10-28
+
+[[entity]]
+id = "oktoberfest"
+name = "Oktoberfest"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Oktoberfest"
+added = 2026-10-28
+
+[[entity]]
+id = "cannstatter_volksfest"
+name = "Cannstatter Volksfest"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Cannstatter Volksfest"
+added = 2026-10-28
+
+[[entity]]
+id = "koelner_karneval"
+name = "Kölner Karneval"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Kölner Karneval"
+added = 2026-10-28
+
+[[entity]]
+id = "christopher_street_day"
+name = "Christopher Street Day"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Christopher Street Day"
+added = 2026-10-28
+
+[[entity]]
+id = "halloween"
+name = "Halloween"
+type = "festival_or_event"
+domain = "Events and festivals"
+wikipedia = "Halloween"
+added = 2026-10-28
+
+[[entity]]
+id = "black_friday"
+name = "Black Friday"
+type = "festival_or_event"
+domain = "Shopping and consumer products"
+wikipedia = "Black Friday"
+added = 2026-10-28
+
+# =============================================================================
+# Sports
+# =============================================================================
+
+[[entity]]
+id = "bundesliga"
+name = "Fußball-Bundesliga"
+type = "sports"
+domain = "Sports"
+wikipedia = "Fußball-Bundesliga"
+added = 2026-10-28
+
+[[entity]]
+id = "fc_bayern"
+name = "FC Bayern München"
+type = "sports"
+domain = "Sports"
+wikipedia = "FC Bayern München"
+added = 2026-10-28
+
+[[entity]]
+id = "borussia_dortmund"
+name = "Borussia Dortmund"
+type = "sports"
+domain = "Sports"
+wikipedia = "Borussia Dortmund"
+added = 2026-10-28
+
+[[entity]]
+id = "dfb_team"
+name = "German national football team"
+type = "sports"
+domain = "Sports"
+wikipedia = "Deutsche Fußballnationalmannschaft"
+added = 2026-10-28
+
+[[entity]]
+id = "formel_1"
+name = "Formula 1"
+type = "sports"
+domain = "Sports"
+wikipedia = "Formel 1"
+added = 2026-10-28
+
+[[entity]]
+id = "nfl"
+name = "National Football League"
+type = "sports"
+domain = "Sports"
+wikipedia = "National Football League"
+added = 2026-10-28
+
+[[entity]]
+id = "darts"
+name = "Darts"
+type = "sports"
+domain = "Sports"
+wikipedia = "Darts"
+added = 2026-10-28
+
+[[entity]]
+id = "padel"
+name = "Padel"
+type = "sports"
+domain = "Fitness and wellness"
+wikipedia = "Padel"
+added = 2026-10-28
+
+[[entity]]
+id = "pickleball"
+name = "Pickleball"
+type = "sports"
+domain = "Fitness and wellness"
+wikipedia = "Pickleball"
+added = 2026-10-28
+
+# =============================================================================
+# Brands and products
+# =============================================================================
+
+[[entity]]
+id = "labubu"
+name = "Labubu"
+type = "product"
+domain = "Shopping and consumer products"
+wikipedia = "Labubu"
+added = 2026-10-28
+
+[[entity]]
+id = "dubai_schokolade"
+name = "Dubai chocolate"
+type = "product"
+domain = "Food and drink"
+wikipedia = "Dubai-Schokolade"
+added = 2026-10-28
+
+[[entity]]
+id = "lidl"
+name = "Lidl"
+type = "brand"
+domain = "Shopping and consumer products"
+wikipedia = "Lidl"
+added = 2026-10-28
+
+[[entity]]
+id = "aldi"
+name = "Aldi"
+type = "brand"
+domain = "Shopping and consumer products"
+wikipedia = "Aldi"
+added = 2026-10-28
+
+[[entity]]
+id = "primark"
+name = "Primark"
+type = "brand"
+domain = "Shopping and consumer products"
+wikipedia = "Primark"
+added = 2026-10-28
+
+[[entity]]
+id = "ikea"
+name = "IKEA"
+type = "brand"
+domain = "Home and living"
+wikipedia = "IKEA"
+added = 2026-10-28
+
+[[entity]]
+id = "apple"
+name = "Apple"
+type = "brand"
+domain = "Technology and internet"
+wikipedia = "Apple"
+added = 2026-10-28
+
+[[entity]]
+id = "iphone"
+name = "iPhone"
+type = "product"
+domain = "Technology and internet"
+wikipedia = "IPhone"
+added = 2026-10-28
+
+[[entity]]
+id = "nike"
+name = "Nike"
+type = "brand"
+domain = "Shopping and consumer products"
+wikipedia = "Nike (Unternehmen)"
+added = 2026-10-28
+
+[[entity]]
+id = "adidas"
+name = "Adidas"
+type = "brand"
+domain = "Shopping and consumer products"
+wikipedia = "Adidas"
+added = 2026-10-28
+
+[[entity]]
+id = "red_bull"
+name = "Red Bull"
+type = "brand"
+domain = "Food and drink"
+wikipedia = "Red Bull"
+added = 2026-10-28
+
+[[entity]]
+id = "monster_energy"
+name = "Monster Energy"
+type = "brand"
+domain = "Food and drink"
+wikipedia = "Monster Energy"
+added = 2026-10-28
+
+[[entity]]
+id = "deutschlandticket"
+name = "Deutschlandticket"
+type = "product"
+domain = "Travel and leisure"
+wikipedia = "Deutschlandticket"
+added = 2026-10-28
+
+[[entity]]
+id = "doener_kebab"
+name = "Döner kebab"
+type = "product"
+domain = "Food and drink"
+wikipedia = "Döner Kebab"
+added = 2026-10-28
+
+[[entity]]
+id = "matcha"
+name = "Matcha"
+type = "product"
+domain = "Food and drink"
+wikipedia = "Matcha"
+added = 2026-10-28
+
+[[entity]]
+id = "bubble_tea"
+name = "Bubble tea"
+type = "product"
+domain = "Food and drink"
+wikipedia = "Bubble Tea"
+added = 2026-10-28
+
+[[entity]]
+id = "semaglutid"
+name = "Semaglutide (Ozempic, Wegovy)"
+type = "product"
+domain = "Health and body"
+wikipedia = "Semaglutid"
+added = 2026-10-28
+
+[[entity]]
+id = "e_zigarette"
+name = "E-cigarette"
+type = "product"
+domain = "Health and body"
+wikipedia = "Elektrische Zigarette"
+added = 2026-10-28
+
+# =============================================================================
+# Ways of living
+# =============================================================================
+
+[[entity]]
+id = "veganismus"
+name = "Veganism"
+type = "concept"
+domain = "Food and drink"
+wikipedia = "Veganismus"
+added = 2026-10-28
+
+[[entity]]
+id = "vegetarismus"
+name = "Vegetarianism"
+type = "concept"
+domain = "Food and drink"
+wikipedia = "Vegetarismus"
+added = 2026-10-28
+
+[[entity]]
+id = "intermittierendes_fasten"
+name = "Intermittent fasting"
+type = "concept"
+domain = "Health and body"
+wikipedia = "Intermittierendes Fasten"
+added = 2026-10-28
+
+[[entity]]
+id = "yoga"
+name = "Yoga"
+type = "concept"
+domain = "Fitness and wellness"
+wikipedia = "Yoga"
+added = 2026-10-28
+
+[[entity]]
+id = "einfaches_leben"
+name = "Simple living and minimalism"
+type = "concept"
+domain = "Home and living"
+wikipedia = "Einfaches Leben"
+added = 2026-10-28
+
+[[entity]]
+id = "work_life_balance"
+name = "Work-life balance"
+type = "concept"
+domain = "Money and career"
+wikipedia = "Work-Life-Balance"
+added = 2026-10-28
+
+[[entity]]
+id = "vier_tage_woche"
+name = "Four-day week"
+type = "concept"
+domain = "Money and career"
+wikipedia = "4-Tage-Woche"
+added = 2026-10-28
+
+[[entity]]
+id = "innere_kuendigung"
+name = "Quiet quitting"
+type = "concept"
+domain = "Money and career"
+wikipedia = "Innere Kündigung"
+added = 2026-10-28
+
+[[entity]]
+id = "body_positivity"
+name = "Body positivity"
+type = "movement"
+domain = "Health and body"
+wikipedia = "Body Positivity"
+added = 2026-10-28
+
+[[entity]]
+id = "tradwife"
+name = "Tradwife"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Tradwife"
+added = 2026-10-28
+
+[[entity]]
+id = "astrologie"
+name = "Astrology"
+type = "concept"
+domain = "Religion and spirituality"
+wikipedia = "Astrologie"
+added = 2026-10-28
+
+# =============================================================================
+# Family, relationships and partnership
+# =============================================================================
+
+[[entity]]
+id = "ehe"
+name = "Marriage"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Ehe"
+added = 2026-10-28
+
+[[entity]]
+id = "scheidung"
+name = "Divorce"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Scheidung"
+added = 2026-10-28
+
+[[entity]]
+id = "kinderlosigkeit"
+name = "Childlessness"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Kinderlosigkeit"
+added = 2026-10-28
+
+[[entity]]
+id = "stieffamilie"
+name = "Stepfamily and patchwork family"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Stieffamilie"
+added = 2026-10-28
+
+[[entity]]
+id = "alleinerziehende"
+name = "Single parents"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Alleinerziehende"
+added = 2026-10-28
+
+[[entity]]
+id = "regenbogenfamilie"
+name = "Rainbow family"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Regenbogenfamilie"
+added = 2026-10-28
+
+[[entity]]
+id = "elternzeit"
+name = "Parental leave"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Elternzeit"
+added = 2026-10-28
+
+[[entity]]
+id = "hausfrau"
+name = "Housewife"
+type = "concept"
+domain = "Family and parenting"
+wikipedia = "Hausfrau"
+added = 2026-10-28
+
+[[entity]]
+id = "gleichgeschlechtliche_ehe"
+name = "Same-sex marriage"
+type = "concept"
+domain = "Relationships and sexuality"
+wikipedia = "Gleichgeschlechtliche Ehe"
+added = 2026-10-28
+
+[[entity]]
+id = "polyamorie"
+name = "Polyamory"
+type = "concept"
+domain = "Relationships and sexuality"
+wikipedia = "Polyamorie"
+added = 2026-10-28
+
+[[entity]]
+id = "offene_beziehung"
+name = "Open relationship"
+type = "concept"
+domain = "Relationships and sexuality"
+wikipedia = "Offene Beziehung"
+added = 2026-10-28
+
+# =============================================================================
+# Religion
+# =============================================================================
+
+[[entity]]
+id = "katholische_kirche_deutschland"
+name = "Catholic Church in Germany"
+type = "institution"
+domain = "Religion and spirituality"
+wikipedia = "Römisch-katholische Kirche in Deutschland"
+added = 2026-10-28
+
+[[entity]]
+id = "ekd"
+name = "Evangelische Kirche in Deutschland"
+type = "institution"
+domain = "Religion and spirituality"
+wikipedia = "Evangelische Kirche in Deutschland"
+added = 2026-10-28
+
+[[entity]]
+id = "kirchenaustritt"
+name = "Leaving the church"
+type = "concept"
+domain = "Religion and spirituality"
+wikipedia = "Kirchenaustritt"
+added = 2026-10-28
+
+[[entity]]
+id = "islam_in_deutschland"
+name = "Islam in Germany"
+type = "concept"
+domain = "Religion and spirituality"
+wikipedia = "Islam in Deutschland"
+added = 2026-10-28
+
+[[entity]]
+id = "papst_leo_xiv"
+name = "Pope Leo XIV"
+type = "person"
+domain = "Religion and spirituality"
+wikipedia = "Leo XIV."
+added = 2026-10-28
+
+# =============================================================================
+# Politics and society
+# =============================================================================
+
+[[entity]]
+id = "bundeswehr"
+name = "Bundeswehr"
+type = "institution"
+domain = "Politics and society"
+wikipedia = "Bundeswehr"
+added = 2026-10-28
+
+[[entity]]
+id = "wehrpflicht"
+name = "Conscription in Germany"
+type = "concept"
+domain = "Politics and society"
+wikipedia = "Wehrpflicht in Deutschland"
+added = 2026-10-28
+
+[[entity]]
+id = "afd"
+name = "Alternative für Deutschland"
+type = "institution"
+domain = "Politics and society"
+wikipedia = "Alternative für Deutschland"
+added = 2026-10-28
+
+[[entity]]
+id = "fridays_for_future"
+name = "Fridays for Future"
+type = "movement"
+domain = "Politics and society"
+wikipedia = "Fridays for Future"
+added = 2026-10-28
+
+[[entity]]
+id = "klimaschutz"
+name = "Climate protection"
+type = "concept"
+domain = "Politics and society"
+wikipedia = "Klimaschutz"
+added = 2026-10-28
+
+[[entity]]
+id = "geschlechtergerechte_sprache"
+name = "Gender-neutral language"
+type = "concept"
+domain = "Politics and society"
+wikipedia = "Geschlechtergerechte Sprache"
+added = 2026-10-28
+
+[[entity]]
+id = "feminismus"
+name = "Feminism"
+type = "movement"
+domain = "Politics and society"
+wikipedia = "Feminismus"
+added = 2026-10-28
+
+[[entity]]
+id = "transgeschlechtlichkeit"
+name = "Transgender"
+type = "concept"
+domain = "Politics and society"
+wikipedia = "Transgeschlechtlichkeit"
+added = 2026-10-28
+
+[[entity]]
+id = "woke"
+name = "Woke"
+type = "concept"
+domain = "Politics and society"
+wikipedia = "Woke"
+added = 2026-10-28
+
+[[entity]]
+id = "cancel_culture"
+name = "Cancel culture"
+type = "concept"
+domain = "Politics and society"
+wikipedia = "Cancel Culture"
+added = 2026-10-28
+
+[[entity]]
+id = "cannabisgesetz"
+name = "Cannabis Act"
+type = "concept"
+domain = "Politics and society"
+wikipedia = "Cannabisgesetz"
+added = 2026-10-28
+
+[[entity]]
+id = "oeffentlich_rechtlicher_rundfunk"
+name = "Public broadcasting"
+type = "institution"
+domain = "TV and streaming"
+wikipedia = "Öffentlich-rechtlicher Rundfunk"
+added = 2026-10-28
+
+[[entity]]
+id = "rundfunkbeitrag"
+name = "Broadcasting licence fee"
+type = "concept"
+domain = "TV and streaming"
+wikipedia = "Rundfunkbeitrag"
+added = 2026-10-28

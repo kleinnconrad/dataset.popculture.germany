@@ -1,0 +1,43 @@
+# Test registry
+
+[[entity]]
+id = "helene_fischer"
+name = "Helene Fischer"
+type = "person"
+domain = "Music"
+wikipedia = "Helene Fischer"
+added = 2026-10-28
+
+[[entity]]
+id = "bundeswehr"
+name = "Bundeswehr"
+type = "institution"
+domain = "Politics and society"
+wikipedia = "Bundeswehr"
+added = 2026-10-28
+
+[[entity]]
+id = "knossi"
+name = "Knossi"
+type = "person"
+domain = "Influencers and social media"
+wikipedia = "Knossi"
+added = 2026-10-28
+
+[[entity]]
+id = "unknown_show"
+name = "A show without an article"
+type = "tv_show"
+domain = "TV and streaming"
+wikipedia = "Gibt es nicht (Fernsehsendung)"
+added = 2026-10-28
+
+[[entity]]
+id = "old_entity"
+name = "Removed entity"
+type = "concept"
+domain = "Other"
+wikipedia = "Alte Sache"
+added = 2026-10-01
+removed = 2026-10-20
+removed_reason = "test of a removed entry"

@@ -1,0 +1,92 @@
+{
+ "feed": {
+  "title": "Top-Titel",
+  "id": "https://rss.marketingtools.apple.com/api/v2/de/music/most-played/100/songs.json",
+  "author": {
+   "name": "Apple",
+   "url": "https://www.apple.com/"
+  },
+  "links": [
+   {
+    "self": "https://rss.marketingtools.apple.com/api/v2/de/music/most-played/100/songs.json"
+   }
+  ],
+  "copyright": "Copyright © 2026 Apple Inc. All rights reserved.",
+  "country": "de",
+  "icon": "https://www.apple.com/favicon.ico",
+  "updated": "Wed, 28 Oct 2026 12:24:25 +0000",
+  "results": [
+   {
+    "artistName": "Tate McRae",
+    "id": "6822497774",
+    "name": "Housewife",
+    "releaseDate": "2026-10-15",
+    "kind": "songs",
+    "artistId": "1446365464",
+    "artistUrl": "https://music.apple.com/de/artist/tate-mcrae/1446365464",
+    "genres": [
+     {
+      "genreId": "14",
+      "name": "Pop",
+      "url": "https://itunes.apple.com/de/genre/id14"
+     },
+     {
+      "genreId": "34",
+      "name": "Musik",
+      "url": "https://itunes.apple.com/de/genre/id34"
+     }
+    ],
+    "url": "https://music.apple.com/de/album/housewife/6822497770?i=6822497774"
+   },
+   {
+    "artistName": "HUGEL, Imael Angel & Ultra Naté",
+    "id": "6769070199",
+    "name": "Movin' To The Sun",
+    "releaseDate": "2026-05-22",
+    "kind": "songs",
+    "artistId": "978839124",
+    "artistUrl": "https://music.apple.com/de/artist/hugel/978839124",
+    "genres": [
+     {
+      "genreId": "7",
+      "name": "Electronic",
+      "url": "https://itunes.apple.com/de/genre/id7"
+     },
+     {
+      "genreId": "34",
+      "name": "Musik",
+      "url": "https://itunes.apple.com/de/genre/id34"
+     },
+     {
+      "genreId": "17",
+      "name": "Dance",
+      "url": "https://itunes.apple.com/de/genre/id17"
+     }
+    ],
+    "url": "https://music.apple.com/de/album/movin-to-the-sun/6769069923?i=6769070199"
+   },
+   {
+    "artistName": "Ashe",
+    "id": "6805240960",
+    "name": "Stop The Wedding!",
+    "releaseDate": "2026-08-07",
+    "kind": "songs",
+    "artistId": "1234718215",
+    "artistUrl": "https://music.apple.com/de/artist/ashe/1234718215",
+    "genres": [
+     {
+      "genreId": "14",
+      "name": "Pop",
+      "url": "https://itunes.apple.com/de/genre/id14"
+     },
+     {
+      "genreId": "34",
+      "name": "Musik",
+      "url": "https://itunes.apple.com/de/genre/id34"
+     }
+    ],
+    "url": "https://music.apple.com/de/album/stop-the-wedding/6805240956?i=6805240960"
+   }
+  ]
+ }
+}

@@ -1,0 +1,292 @@
+# Charts and rankings observed by the pipeline (collector `charts`).
+#
+# [[provider]]: an organization that publishes charts; `license` is copied into the field `license`
+#   of every record of its charts.
+# [[chart]]: one list. `format` names the parser in src/collectors/charts.py; `period` is live (the
+#   source shows only its current list) or day (the source publishes a list per day, the address
+#   contains {year}, {month} and {day}). `respect_robots = false` only for documented APIs.
+#   `expect` is a regular expression that the title of the list at the source must match.
+# [[excluded]]: candidates that were considered and not admitted, with the day and the reason.
+#
+# Ids are permanent. A chart that is no longer collected keeps its entry with `removed` and
+# `removed_reason`; a new or changed address is checked with the probe of source_review.yml first.
+
+# =============================================================================
+# Providers
+# =============================================================================
+
+# RSS Builder of Apple Marketing Tools: generates feeds of the Apple charts per storefront; the page
+# states the copyright of Apple Inc. and no further terms. The Apple terms page was not reachable
+# from the development environment on 2026-10-28.
+[[provider]]
+id = "apple"
+name = "Apple (RSS Builder of Apple Marketing Tools)"
+homepage = "https://rss.marketingtools.apple.com/"
+terms_url = "https://www.apple.com/legal/internet-services/terms/site.html"
+license = "Copyright Apple Inc.; chart positions and metadata only"
+added = 2026-10-28
+
+# Google Trends links its terms (policies.google.com/terms); the terms permit automated access that
+# follows the machine-readable instructions of the pages (robots.txt).
+[[provider]]
+id = "google_trends"
+name = "Google Trends"
+homepage = "https://trends.google.com/trending?geo=DE"
+terms_url = "https://policies.google.com/terms"
+license = "Google Terms of Service; search terms and approximate volumes as published"
+added = 2026-10-28
+
+[[provider]]
+id = "wikimedia"
+name = "Wikimedia Foundation (Pageviews API)"
+homepage = "https://wikimedia.org/api/rest_v1/"
+terms_url = "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use"
+license = "CC0-1.0"
+added = 2026-10-28
+
+# =============================================================================
+# Music
+# =============================================================================
+
+# Checked on 2026-10-28: robots.txt allows, no TDM reservation; 100 entries, title "Top-Titel"
+[[chart]]
+id = "apple.music_top_songs"
+name = "Apple Music: most played songs, Germany"
+provider = "apple"
+domain = "music"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/music/most-played/100/songs.json"
+country = "DE"
+period = "live"
+entry_kind = "song"
+added = 2026-10-28
+
+# Checked on 2026-10-28: 100 entries, title "Top-Alben"
+[[chart]]
+id = "apple.music_top_albums"
+name = "Apple Music: most played albums, Germany"
+provider = "apple"
+domain = "music"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/music/most-played/100/albums.json"
+country = "DE"
+period = "live"
+entry_kind = "album"
+added = 2026-10-28
+
+# =============================================================================
+# Podcasts
+# =============================================================================
+
+# Checked on 2026-10-28: 100 entries, title "Top-Podcasts"
+[[chart]]
+id = "apple.podcasts_top_shows"
+name = "Apple Podcasts: top shows, Germany"
+provider = "apple"
+domain = "podcasts"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/podcasts/top/100/podcasts.json"
+country = "DE"
+period = "live"
+entry_kind = "podcast"
+added = 2026-10-28
+
+# Checked on 2026-10-28: 100 entries, title "Angesagte Folgen"
+[[chart]]
+id = "apple.podcasts_top_episodes"
+name = "Apple Podcasts: trending episodes, Germany"
+provider = "apple"
+domain = "podcasts"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/podcasts/top/100/podcast-episodes.json"
+country = "DE"
+period = "live"
+entry_kind = "podcast_episode"
+added = 2026-10-28
+
+# =============================================================================
+# Apps: what people install and pay for
+# =============================================================================
+
+# Checked on 2026-10-28: 100 entries, title "Charts (gratis)"
+[[chart]]
+id = "apple.apps_top_free"
+name = "App Store: top free iPhone apps, Germany"
+provider = "apple"
+domain = "apps"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/apps/top-free/100/apps.json"
+country = "DE"
+period = "live"
+entry_kind = "app"
+added = 2026-10-28
+
+# Checked on 2026-10-28: 100 entries, title "Charts (gekauft)"
+[[chart]]
+id = "apple.apps_top_paid"
+name = "App Store: top paid iPhone apps, Germany"
+provider = "apple"
+domain = "apps"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/apps/top-paid/100/apps.json"
+country = "DE"
+period = "live"
+entry_kind = "app"
+added = 2026-10-28
+
+# =============================================================================
+# Books
+# =============================================================================
+
+# Checked on 2026-10-28: 100 entries, title "Charts (gekauft)"
+[[chart]]
+id = "apple.books_top_paid"
+name = "Apple Books: top paid books, Germany"
+provider = "apple"
+domain = "books"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/books/top-paid/100/books.json"
+country = "DE"
+period = "live"
+entry_kind = "book"
+added = 2026-10-28
+
+# Checked on 2026-10-28: 100 entries, title "Charts (gratis)"
+[[chart]]
+id = "apple.books_top_free"
+name = "Apple Books: top free books, Germany"
+provider = "apple"
+domain = "books"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/books/top-free/100/books.json"
+country = "DE"
+period = "live"
+entry_kind = "book"
+added = 2026-10-28
+
+# Checked on 2026-10-28: 100 entries, title "Top-Hörbücher"
+[[chart]]
+id = "apple.audiobooks_top"
+name = "Apple Books: top audiobooks, Germany"
+provider = "apple"
+domain = "books"
+format = "apple_rss"
+url = "https://rss.marketingtools.apple.com/api/v2/de/audio-books/top/100/audio-books.json"
+country = "DE"
+period = "live"
+entry_kind = "audiobook"
+added = 2026-10-28
+
+# =============================================================================
+# Search and attention
+# =============================================================================
+
+# Checked on 2026-10-28: robots.txt allows /trending/rss, no TDM reservation; 10 items with the
+# approximate search volume and the linked news articles; the list changes within hours
+[[chart]]
+id = "google_trends.trending_searches_de"
+name = "Google Trends: trending searches, Germany"
+provider = "google_trends"
+domain = "search"
+format = "google_trends_rss"
+url = "https://trends.google.com/trending/rss?geo=DE"
+country = "DE"
+period = "live"
+entry_kind = "search_term"
+metric_name = "approximate searches (lower bound)"
+added = 2026-10-28
+
+# Documented API (Wikimedia REST API, CC0). The format is the one of the Pageviews API that
+# dataset.politics.germany and dataset.technology use; the development environment received
+# HTTP 403 and 429 from Wikimedia on 2026-10-28, so the first run is the live check.
+[[chart]]
+id = "wikimedia.top_articles_dewiki"
+name = "German Wikipedia: most viewed articles per day"
+provider = "wikimedia"
+domain = "attention"
+format = "wikimedia_top"
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/de.wikipedia.org/all-access/{year}/{month}/{day}"
+period = "day"
+entry_kind = "article"
+metric_name = "views"
+respect_robots = false
+history_days = 30
+options = { project = "de.wikipedia" }
+added = 2026-10-28
+
+# Documented API (Wikimedia REST API, CC0): articles of all editions viewed most from Germany; views
+# are rounded up to the next thousand and listed only above a privacy threshold
+[[chart]]
+id = "wikimedia.top_articles_germany"
+name = "Wikipedia: most viewed articles from Germany per day, all editions"
+provider = "wikimedia"
+domain = "attention"
+format = "wikimedia_top_country"
+url = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/DE/all-access/{year}/{month}/{day}"
+country = "DE"
+period = "day"
+entry_kind = "article"
+metric_name = "views, rounded up to the next thousand"
+respect_robots = false
+history_days = 30
+added = 2026-10-28
+
+# =============================================================================
+# Candidates that were not admitted
+# =============================================================================
+
+[[excluded]]
+id = "apple.itunes_top_movies"
+name = "iTunes Store: top movies and TV seasons, Germany (legacy RSS)"
+url = "https://itunes.apple.com/de/rss/topmovies/limit=100/json"
+checked = 2026-10-28
+reason = "robots.txt of itunes.apple.com disallows /*/rss/*"
+
+[[excluded]]
+id = "deezer.top_germany"
+name = "Deezer: playlist Top Germany"
+url = "https://api.deezer.com/playlist/1111143121"
+checked = 2026-10-28
+reason = "robots.txt of api.deezer.com disallows all paths, and its tdmrep.json reserves text and data mining"
+
+[[excluded]]
+id = "netflix.top10_de"
+name = "Netflix Top 10 by country (all-weeks-countries.tsv)"
+url = "https://www.netflix.com/tudum/top10/data/all-weeks-countries.tsv"
+checked = 2026-10-28
+reason = "robots.txt of www.netflix.com disallows all paths for user agents that it does not name"
+
+[[excluded]]
+id = "steam.top_sellers_de"
+name = "Steam: top sellers, Germany (store API featuredcategories)"
+url = "https://store.steampowered.com/api/featuredcategories?cc=de&l=german"
+checked = 2026-10-28
+reason = "robots.txt allows, but the Steam Subscriber Agreement (section 4.C) forbids scripts and bots that interact with Steam in any manner, and the store API is not a documented interface"
+
+[[excluded]]
+id = "mydealz.trending_deals"
+name = "mydealz: trending deals (RSS)"
+url = "https://www.mydealz.de/rss/trending"
+checked = 2026-10-28
+reason = "robots.txt allows, but the AGB (part A, 4.1) count the unauthorized copying of platform content and making it available to third parties as misuse"
+
+[[excluded]]
+id = "spotify.charts_de"
+name = "Spotify Charts: Top 50 and Top 200, Germany"
+url = "https://charts.spotify.com/charts/view/regional-de-weekly/latest"
+checked = 2026-10-28
+reason = "not checked live (host not reachable from the development environment); the chart download requires a Spotify account"
+
+[[excluded]]
+id = "youtube.trending_de"
+name = "YouTube: trending videos, Germany (YouTube Data API)"
+url = "https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&regionCode=DE"
+checked = 2026-10-28
+reason = "not checked live; the API needs a key, and the YouTube API Services terms limit the storage of API data, which does not fit a long-term dataset"
+
+[[excluded]]
+id = "offizielle_charts.singles_de"
+name = "Offizielle Deutsche Charts (GfK Entertainment): single and album charts"
+url = "https://www.offiziellecharts.de/charts/single"
+checked = 2026-10-28
+reason = "not checked live (host not reachable from the development environment); check robots.txt, TDM reservation and the terms of use with the probe of source_review.yml before admission"
