@@ -335,6 +335,62 @@ feeds = ["https://utopia.de/feed/"]
 fetch_pages = false
 added = 2026-10-28
 
+# source review 2026-11-01: admitted from the excluded candidates; feeds: 20 recent items; no TDM reservation found
+[[outlet]]
+id = "gala"
+name = "Gala"
+homepage = "https://www.gala.de/"
+outlet_type = "celebrity_magazine"
+owner_group = "RTL Deutschland"
+focus = "Celebrities and royals"
+paywall_model = "free"
+feeds = ["https://www.gala.de/feed/standard-rss/"]
+fetch_pages = true
+added = 2026-11-01
+
+# source review 2026-11-01: admitted from the excluded candidates; feeds: 20 recent items; no TDM reservation found
+[[outlet]]
+id = "brigitte"
+name = "Brigitte"
+homepage = "https://www.brigitte.de/"
+outlet_type = "womens_magazine"
+owner_group = "RTL Deutschland"
+focus = "Relationships and sexuality"
+audience = "women"
+paywall_model = "free"
+feeds = ["https://www.brigitte.de/feed.rss"]
+fetch_pages = true
+added = 2026-11-01
+
+# source review 2026-11-01: admitted from the excluded candidates; feeds: 20 recent items; no TDM reservation found
+[[outlet]]
+id = "eltern"
+name = "Eltern"
+homepage = "https://www.eltern.de/"
+outlet_type = "family_magazine"
+owner_group = "RTL Deutschland"
+focus = "Family and parenting"
+audience = "parents"
+paywall_model = "free"
+feeds = ["https://www.eltern.de/feed/all/"]
+fetch_pages = true
+added = 2026-11-01
+
+# source review 2026-11-01: admitted from the excluded candidates; feeds: 21 recent items; TDM reservation in natural language, therefore fetch_pages = false
+[[outlet]]
+id = "einslive"
+name = "1LIVE"
+homepage = "https://www1.wdr.de/radio/1live/"
+outlet_type = "public_youth_media"
+owner_group = "public"
+home_state = "DE-NW"
+focus = "Music"
+audience = "youth"
+paywall_model = "free"
+feeds = ["https://www1.wdr.de/radio/1live/musik/uebersicht-einslive-100.feed"]
+fetch_pages = false
+added = 2026-11-01
+
 # =============================================================================
 # Press releases of the culture industry
 # =============================================================================
@@ -350,6 +406,17 @@ jurisdiction = "DE"
 feeds = ["https://www.game.de/feed/"]
 fetch_pages = true
 added = 2026-10-28
+
+# source review 2026-11-01: admitted from the excluded candidates; feeds: 1 recent items; no TDM reservation found
+[[press_source]]
+id = "bvmi"
+name = "Bundesverband Musikindustrie"
+homepage = "https://www.musikindustrie.de/"
+actor_type = "industry_association"
+jurisdiction = "DE"
+feeds = ["https://for-the-recorded.podigee.io/feed/mp3/"]
+fetch_pages = true
+added = 2026-11-01
 
 # =============================================================================
 # Candidates that were checked and not admitted
@@ -522,17 +589,6 @@ actor_type = "industry_association"
 jurisdiction = "DE"
 
 [[excluded]]
-id = "bvmi"
-name = "Bundesverband Musikindustrie"
-homepage = "https://www.musikindustrie.de/"
-status = "no_feed"
-reason = "the homepage links only a podcast feed on another host"
-checked = 2026-10-28
-kind = "press_source"
-actor_type = "industry_association"
-jurisdiction = "DE"
-
-[[excluded]]
 id = "stern"
 name = "Stern"
 homepage = "https://www.stern.de/"
@@ -556,9 +612,9 @@ checked = 2026-10-19
 id = "bunte"
 name = "Bunte"
 homepage = "https://www.bunte.de/"
-status = "unchecked"
-reason = "not checked yet"
-checked = 2026-10-28
+status = "no_feed"
+reason = "no readable feed (no feed link on the homepage)"
+checked = 2026-11-01
 kind = "outlet"
 outlet_type = "celebrity_magazine"
 owner_group = "Hubert Burda Media"
@@ -566,39 +622,12 @@ focus = "Celebrities and royals"
 paywall_model = "free"
 
 [[excluded]]
-id = "gala"
-name = "Gala"
-homepage = "https://www.gala.de/"
-status = "unchecked"
-reason = "not checked yet"
-checked = 2026-10-28
-kind = "outlet"
-outlet_type = "celebrity_magazine"
-owner_group = "RTL Deutschland"
-focus = "Celebrities and royals"
-paywall_model = "free"
-
-[[excluded]]
-id = "brigitte"
-name = "Brigitte"
-homepage = "https://www.brigitte.de/"
-status = "unchecked"
-reason = "not checked yet"
-checked = 2026-10-28
-kind = "outlet"
-outlet_type = "womens_magazine"
-owner_group = "RTL Deutschland"
-focus = "Relationships and sexuality"
-audience = "women"
-paywall_model = "free"
-
-[[excluded]]
 id = "elle"
 name = "Elle (Deutschland)"
 homepage = "https://www.elle.de/"
-status = "unchecked"
-reason = "not checked yet"
-checked = 2026-10-28
+status = "no_feed"
+reason = "no readable feed (no feed link on the homepage)"
+checked = 2026-11-01
 kind = "outlet"
 outlet_type = "womens_magazine"
 owner_group = "Hubert Burda Media"
@@ -610,43 +639,14 @@ paywall_model = "free"
 id = "mens_health"
 name = "Men's Health (Deutschland)"
 homepage = "https://www.menshealth.de/"
-status = "unchecked"
-reason = "not checked yet"
-checked = 2026-10-28
+status = "no_feed"
+reason = "no readable feed (no feed link on the homepage)"
+checked = 2026-11-01
 kind = "outlet"
 outlet_type = "mens_magazine"
 owner_group = "Motor Presse Stuttgart"
 focus = "Fitness and wellness"
 audience = "men"
-paywall_model = "free"
-
-[[excluded]]
-id = "eltern"
-name = "Eltern"
-homepage = "https://www.eltern.de/"
-status = "unchecked"
-reason = "not checked yet"
-checked = 2026-10-28
-kind = "outlet"
-outlet_type = "family_magazine"
-owner_group = "RTL Deutschland"
-focus = "Family and parenting"
-audience = "parents"
-paywall_model = "free"
-
-[[excluded]]
-id = "einslive"
-name = "1LIVE"
-homepage = "https://www1.wdr.de/radio/1live/"
-status = "unchecked"
-reason = "not checked yet"
-checked = 2026-10-28
-kind = "outlet"
-outlet_type = "public_youth_media"
-owner_group = "public"
-home_state = "DE-NW"
-focus = "Music"
-audience = "youth"
 paywall_model = "free"
 
 [[excluded]]
