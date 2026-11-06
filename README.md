@@ -93,26 +93,26 @@ The table lists the variables that carry content and the dataset (table) that st
 
 ## Dataset Overview
 <!-- DATASET_OVERVIEW_START -->
-**Last updated:** 2026-11-03 07:56 UTC
+**Last updated:** 2026-11-06 07:57 UTC
 
 | Dataset | Records | Items | Files | Observed | Content |
 |---|---|---|---|---|---|
-| `chart_snapshots` | 1,198 | 771 | 3 | 2026-10-28 to 2026-11-03 | A chart or ranking as published at one observation; stored again only when the source changes it. |
+| `chart_snapshots` | 1,204 | 776 | 4 | 2026-10-28 to 2026-11-06 | A chart or ranking as published at one observation; stored again only when the source changes it. |
 | `chart_catalog` | 12 | 12 | 1 | 2026-10-28 to 2026-10-28 | An entry of the chart configuration, recorded when it appears or changes. |
 | `entities` | 215 | 215 | 1 | 2026-10-28 to 2026-10-28 | An entry of the entity registry, recorded when it appears or changes. |
 | `wikipedia_pageviews` | 430 | 430 | 2 | 2026-10-28 to 2026-11-03 | Daily views of the German Wikipedia article of a registered entity. |
-| `news_items` | 2,394 | 2,394 | 2 | 2026-10-30 to 2026-11-03 | Metadata of one news article. The text is not stored. |
+| `news_items` | 3,577 | 3,577 | 3 | 2026-10-30 to 2026-11-06 | Metadata of one news article. The text is not stored. |
 | `press_releases` | 0 | 0 | 0 | none | Metadata of one press release. The text is not stored. |
-| `text_annotations` | 700 | 700 | 2 | 2026-10-30 to 2026-11-03 | Gemini labels of one news article or press release. |
+| `text_annotations` | 1,050 | 1,050 | 3 | 2026-10-30 to 2026-11-06 | Gemini labels of one news article or press release. |
 
 **Runs**
 
-- **Latest run:** 2026-11-03 07:49 UTC (normal)
+- **Latest run:** 2026-11-06 07:51 UTC (normal)
   - `chart_catalog`: ok
-  - `charts`: ok (chart_snapshots 21)
+  - `charts`: ok (chart_snapshots 6)
   - `entities`: ok
-  - `feeds`: ok (news_items 1,182, text_annotations 350)
-  - `wikipedia_pageviews`: ok (wikipedia_pageviews 215)
+  - `feeds`: ok (news_items 1,183, text_annotations 350)
+  - `wikipedia_pageviews`: not_due
 
 **Charts**
 
@@ -129,9 +129,9 @@ The table lists the variables that carry content and the dataset (table) that st
 | Apple Books: top paid books, Germany | 3 | 2026-11-03 | 1. Mord beim Debütantinnenball (C.J. Archer); 2. Moorland. Die Braut (Andreas Winkelmann); 3. Black Forest (Wolfgang Schorlau) |
 | Apple Books: top free books, Germany | 3 | 2026-11-03 | 1. Ausgerechnet Sylt (Thomas Herzberg); 2. Absolute Bedrohung (Ein Jake Mercer Politthriller — Band 1) (Jack Mars); 3. Herzklopfen im Cottage am Strand (Teil 1) (Holly Hepburn) |
 | Apple Books: top audiobooks, Germany | 3 | 2026-11-03 | 1. Der erste Fall für Detective Cross - Der Kriminalist, Band 1 (ungekürzt) (Tim Sullivan); 2. Der Nachtzug (Sebastian Fitzek); 3. Kalte Tage (Charlotte Link) |
-| Google Trends: trending searches, Germany | 4 | 2026-11-03 | 1. schäffler; 2. motorola signature; 3. wahlen usa midterms |
-| German Wikipedia: most viewed articles per day | 443 | 2026-11-02 | 1. Diane Warren; 2. René Benko; 3. Andrea Kimi Antonelli |
-| Wikipedia: most viewed articles from Germany per day, all editions | 724 | 2026-11-02 | 1. Diane Warren (de.wikipedia); 2. René Benko (de.wikipedia); 3. Andrea Kimi Antonelli (de.wikipedia) |
+| Google Trends: trending searches, Germany | 5 | 2026-11-06 | 1. lemgo; 2. fabian reese; 3. schiffswrack |
+| German Wikipedia: most viewed articles per day | 446 | 2026-11-05 | 1. Hubert Aiwanger; 2. Tanja Schweiger; 3. Janosch |
+| Wikipedia: most viewed articles from Germany per day, all editions | 726 | 2026-11-03 | 1. Jesús de Miguel (de.wikipedia); 2. Liste der größten Auslegerbrücken (de.wikipedia); 3. Die purpurnen Flüsse (Film) (de.wikipedia) |
 
 **Entities and Wikipedia views**
 
@@ -162,31 +162,31 @@ The table lists the variables that carry content and the dataset (table) that st
 
 | Source | Type | Status | Items | Last 30 days | Annotated | With lead text | Latest publication |
 |---|---|---|---|---|---|---|---|
-| 1LIVE | public youth media | active | 15 | 15 | 93.3% (14) | 0.0% (0) | 2026-11-03 |
-| Berliner Zeitung | regional daily | active | 46 | 46 | 67.4% (31) | 67.4% (31) | 2026-11-02 |
-| Bild | tabloid | active | 423 | 423 | 7.3% (31) | 7.3% (31) | 2026-11-03 |
-| Brigitte | womens magazine | active | 20 | 20 | 70.0% (14) | 40.0% (8) | 2026-11-03 |
-| Der Spiegel | weekly magazine | active | 79 | 79 | 41.8% (33) | 0.0% (0) | 2026-11-03 |
-| Der Tagesspiegel | national daily | active | 157 | 157 | 21.0% (33) | 0.0% (0) | 2026-11-03 |
-| Die Welt | national daily | active | 237 | 237 | 13.9% (33) | 13.1% (31) | 2026-11-03 |
-| DWDL.de | trade press | active | 59 | 59 | 52.5% (31) | 52.5% (31) | 2026-11-03 |
-| Eltern | family magazine | active | 19 | 19 | 73.7% (14) | 68.4% (13) | 2026-11-03 |
-| Focus Online | weekly magazine | active | 278 | 278 | 11.5% (32) | 11.5% (32) | 2026-11-03 |
-| Gala | celebrity magazine | active | 20 | 20 | 70.0% (14) | 40.0% (8) | 2026-11-03 |
-| Hamburger Abendblatt | regional daily | active | 119 | 119 | 26.1% (31) | 0.0% (0) | 2026-11-03 |
-| laut.de | music magazine | active | 58 | 58 | 53.4% (31) | 53.4% (31) | 2026-11-03 |
-| Mein-MMO | games magazine | active | 20 | 20 | 100.0% (20) | 100.0% (20) | 2026-11-03 |
-| Moviepilot | film tv magazine | active | 40 | 40 | 77.5% (31) | 77.5% (31) | 2026-11-03 |
-| Musikexpress | music magazine | active | 81 | 81 | 38.3% (31) | 0.0% (0) | 2026-11-02 |
-| n-tv.de | online only | active | 140 | 140 | 22.1% (31) | 22.1% (31) | 2026-11-03 |
-| Promiflash | celebrity magazine | active | 40 | 40 | 77.5% (31) | 77.5% (31) | 2026-11-03 |
-| Quotenmeter.de | trade press | active | 128 | 128 | 24.2% (31) | 24.2% (31) | 2026-11-03 |
-| Rolling Stone (Deutschland) | music magazine | active | 60 | 60 | 51.7% (31) | 0.0% (0) | 2026-11-03 |
-| Süddeutsche Zeitung | national daily | active | 57 | 57 | 57.9% (33) | 0.0% (0) | 2026-11-02 |
-| t-online | online only | active | 170 | 170 | 18.8% (32) | 0.0% (0) | 2026-11-03 |
-| taz | national daily | active | 25 | 25 | 100.0% (25) | 0.0% (0) | 2026-11-02 |
-| Utopia | lifestyle magazine | active | 40 | 40 | 77.5% (31) | 0.0% (0) | 2026-11-03 |
-| ZDFheute | public broadcaster national | active | 63 | 63 | 49.2% (31) | 39.7% (25) | 2026-11-02 |
+| 1LIVE | public youth media | active | 24 | 24 | 95.8% (23) | 0.0% (0) | 2026-11-06 |
+| Berliner Zeitung | regional daily | active | 65 | 65 | 70.8% (46) | 70.8% (46) | 2026-11-05 |
+| Bild | tabloid | active | 658 | 658 | 7.0% (46) | 7.0% (46) | 2026-11-06 |
+| Brigitte | womens magazine | active | 40 | 40 | 70.0% (28) | 40.0% (16) | 2026-11-06 |
+| Der Spiegel | weekly magazine | active | 128 | 128 | 37.5% (48) | 0.0% (0) | 2026-11-06 |
+| Der Tagesspiegel | national daily | active | 237 | 237 | 20.3% (48) | 0.0% (0) | 2026-11-06 |
+| Die Welt | national daily | active | 347 | 347 | 13.8% (48) | 13.3% (46) | 2026-11-06 |
+| DWDL.de | trade press | active | 89 | 89 | 50.6% (45) | 50.6% (45) | 2026-11-06 |
+| Eltern | family magazine | active | 37 | 37 | 75.7% (28) | 67.6% (25) | 2026-11-06 |
+| Focus Online | weekly magazine | active | 386 | 386 | 12.2% (47) | 12.2% (47) | 2026-11-06 |
+| Gala | celebrity magazine | active | 40 | 40 | 70.0% (28) | 40.0% (16) | 2026-11-06 |
+| Hamburger Abendblatt | regional daily | active | 155 | 155 | 29.0% (45) | 0.0% (0) | 2026-11-06 |
+| laut.de | music magazine | active | 76 | 76 | 59.2% (45) | 59.2% (45) | 2026-11-06 |
+| Mein-MMO | games magazine | active | 28 | 28 | 100.0% (28) | 100.0% (28) | 2026-11-06 |
+| Moviepilot | film tv magazine | active | 60 | 60 | 75.0% (45) | 75.0% (45) | 2026-11-06 |
+| Musikexpress | music magazine | active | 136 | 136 | 33.1% (45) | 0.0% (0) | 2026-11-05 |
+| n-tv.de | online only | active | 210 | 210 | 21.9% (46) | 21.9% (46) | 2026-11-06 |
+| Promiflash | celebrity magazine | active | 60 | 60 | 75.0% (45) | 75.0% (45) | 2026-11-06 |
+| Quotenmeter.de | trade press | active | 175 | 175 | 25.7% (45) | 25.7% (45) | 2026-11-06 |
+| Rolling Stone (Deutschland) | music magazine | active | 90 | 90 | 50.0% (45) | 0.0% (0) | 2026-11-06 |
+| Süddeutsche Zeitung | national daily | active | 94 | 94 | 51.1% (48) | 0.0% (0) | 2026-11-05 |
+| t-online | online only | active | 253 | 253 | 18.6% (47) | 0.0% (0) | 2026-11-06 |
+| taz | national daily | active | 45 | 45 | 88.9% (40) | 0.0% (0) | 2026-11-06 |
+| Utopia | lifestyle magazine | active | 60 | 60 | 75.0% (45) | 0.0% (0) | 2026-11-06 |
+| ZDFheute | public broadcaster national | active | 84 | 84 | 54.8% (46) | 45.2% (38) | 2026-11-06 |
 
 </details>
 
@@ -202,84 +202,84 @@ The table lists the variables that carry content and the dataset (table) that st
 
 **Annotations**
 
-- **Annotated items:** 700 of 2,394 (29.2%)
-- **Text seen by the model:** title_teaser 1,427, title_only 582, lead_text 385
-- **Pop culture items of the last 30 days:** 601
+- **Annotated items:** 1,050 of 3,577 (29.4%)
+- **Text seen by the model:** title_teaser 2,117, title_only 881, lead_text 579
+- **Pop culture items of the last 30 days:** 909
 
 **Main fields**
 
 | Field | Items | Share |
 |---|---|---|
-| Celebrities and royals | 126 | 21.0% |
-| Music | 114 | 19.0% |
-| TV and streaming | 104 | 17.3% |
-| Film and cinema | 57 | 9.5% |
-| Food and drink | 23 | 3.8% |
-| Games and esports | 22 | 3.7% |
-| Events and festivals | 17 | 2.8% |
-| Influencers and social media | 17 | 2.8% |
-| Family and parenting | 16 | 2.7% |
-| Fashion and beauty | 13 | 2.2% |
+| Celebrities and royals | 182 | 20.0% |
+| Music | 174 | 19.1% |
+| TV and streaming | 155 | 17.1% |
+| Film and cinema | 95 | 10.5% |
+| Food and drink | 32 | 3.5% |
+| Family and parenting | 30 | 3.3% |
+| Games and esports | 30 | 3.3% |
+| Events and festivals | 20 | 2.2% |
+| Influencers and social media | 20 | 2.2% |
+| Fashion and beauty | 19 | 2.1% |
 
 **People named most often**
 
 | Person or group | Items | Share |
 |---|---|---|
-| Patrick Stewart | 26 | 4.3% |
-| Elke Sommer | 9 | 1.5% |
-| Deep Purple | 9 | 1.5% |
-| Ian Gillan | 8 | 1.3% |
-| Heidi Klum | 7 | 1.2% |
-| Diane Morgan | 6 | 1.0% |
-| Helene Fischer | 6 | 1.0% |
-| Donald Trump | 4 | 0.7% |
-| Wolf Alice | 4 | 0.7% |
-| William Shatner | 4 | 0.7% |
+| Patrick Stewart | 26 | 2.9% |
+| Deep Purple | 10 | 1.1% |
+| Elke Sommer | 9 | 1.0% |
+| Heidi Klum | 9 | 1.0% |
+| Ian Gillan | 9 | 1.0% |
+| Donald Trump | 8 | 0.9% |
+| Russell Brand | 8 | 0.9% |
+| Bryan Adams | 7 | 0.8% |
+| Diane Morgan | 6 | 0.7% |
+| Kim Kardashian | 6 | 0.7% |
 
 **Brands and products named most often**
 
 | Brand or product | Items | Share |
 |---|---|---|
-| AIDA | 3 | 0.5% |
-| Schokoriegel | 3 | 0.5% |
-| Süßwaren | 2 | 0.3% |
-| Mientus | 2 | 0.3% |
-| Planet Harvest | 1 | 0.2% |
-| Deko | 1 | 0.2% |
-| Schminke | 1 | 0.2% |
-| E-Scooter | 1 | 0.2% |
-| Galaxy-Tablets | 1 | 0.2% |
-| Galaxy-Smartphones | 1 | 0.2% |
+| AIDA | 3 | 0.3% |
+| Schokoriegel | 3 | 0.3% |
+| Süßwaren | 2 | 0.2% |
+| Mientus | 2 | 0.2% |
+| Planet Harvest | 1 | 0.1% |
+| Deko | 1 | 0.1% |
+| Schminke | 1 | 0.1% |
+| E-Scooter | 1 | 0.1% |
+| Galaxy-Tablets | 1 | 0.1% |
+| Galaxy-Smartphones | 1 | 0.1% |
 
 **Lifestyle advice**
 
 | Topic | Items | Share |
 |---|---|---|
-| Parenting | 26 | 4.3% |
-| Diet and nutrition | 14 | 2.3% |
-| Fitness and exercise | 9 | 1.5% |
-| Style and fashion | 8 | 1.3% |
-| Travel | 7 | 1.2% |
-| Home and interior | 6 | 1.0% |
-| Mental health and self-care | 6 | 1.0% |
-| Dating and relationships | 5 | 0.8% |
-| Sustainability | 4 | 0.7% |
-| Self-optimization | 3 | 0.5% |
+| Parenting | 38 | 4.2% |
+| Diet and nutrition | 25 | 2.8% |
+| Style and fashion | 16 | 1.8% |
+| Mental health and self-care | 13 | 1.4% |
+| Fitness and exercise | 13 | 1.4% |
+| Travel | 10 | 1.1% |
+| Home and interior | 9 | 1.0% |
+| Sustainability | 7 | 0.8% |
+| Dating and relationships | 5 | 0.6% |
+| Plant-based eating | 3 | 0.3% |
 
 **Opinions: targets named most often**
 
 | Target | Mentions | Favorable | Unfavorable | Neutral or mixed |
 |---|---|---|---|---|
-| Artificial intelligence | 5 | 0 | 2 | 3 |
+| Artificial intelligence | 7 | 1 | 3 | 3 |
+| Social media | 5 | 0 | 5 | 0 |
 | Political parties and politicians | 4 | 0 | 4 | 0 |
-| Social media | 4 | 0 | 4 | 0 |
+| Traditional gender roles | 3 | 0 | 2 | 1 |
 | LGBTQ rights | 3 | 1 | 2 | 0 |
 | Diversity and inclusion | 2 | 1 | 1 | 0 |
-| Traditional gender roles | 2 | 0 | 1 | 1 |
 | Consumerism and shopping | 2 | 0 | 2 | 0 |
+| Veganism and vegetarianism | 2 | 2 | 0 | 0 |
+| Climate protection | 2 | 2 | 0 | 0 |
 | Sustainability and conscious consumption | 2 | 2 | 0 | 0 |
-| Democracy | 2 | 1 | 1 | 0 |
-| Patriotism and national pride | 2 | 1 | 1 | 0 |
 
 **Fields** (Filled: records with a value that is not null and not empty)
 
@@ -288,27 +288,27 @@ The table lists the variables that carry content and the dataset (table) that st
 
 | Field | Description | Filled | Distinct values |
 |---|---|---|---|
-| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (1,198) | 771 |
-| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (1,198) | 2 |
-| `dataset` | Name of the dataset. | 100.0% (1,198) | 1 |
-| `schema_version` | Version of the record schema. | 100.0% (1,198) | 1 |
-| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (1,198) | 244 |
-| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (1,198) | 12 |
-| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (1,198) | 751 |
-| `license` | License or terms of the source. | 100.0% (1,198) | 3 |
-| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (1,198) | 2 |
-| `chart_id` | Stable id of the chart in config/charts.toml, e.g. 'apple.music_top_songs'. | 100.0% (1,198) | 12 |
-| `chart_name` | Name of the chart. | 100.0% (1,198) | 12 |
-| `domain` | Field of pop culture the chart measures. | 100.0% (1,198) | 6 |
-| `provider` | Provider id of config/charts.toml. | 100.0% (1,198) | 3 |
-| `country` | Country of the chart (ISO 3166-1 alpha-2); null for a chart of a language edition such as de.wikipedia. | 63.0% (755) | 1 |
-| `period` | live: the current list of a source without history, dated by the day of observation; day: the list of a past day as published by the source. | 100.0% (1,198) | 2 |
-| `chart_date` | Day the list refers to: the day of observation (UTC) for live lists, the day of the list for daily lists. | 100.0% (1,198) | 372 |
-| `source_updated` | Time at which the source states it updated the list (UTC), if given. | 2.3% (27) | 27 |
-| `entry_kind` | Kind of the entries. | 100.0% (1,198) | 9 |
-| `metric_name` | Meaning of the metric of the entries, e.g. 'views' or 'approximate searches'; null if the chart has no metric. | 97.7% (1,171) | 3 |
-| `entries` | The positions of the list in order of rank. | 100.0% (1,198) | 106,081 |
-| `entry_count` | Number of entries. | 100.0% (1,198) | 3 |
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (1,204) | 776 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (1,204) | 2 |
+| `dataset` | Name of the dataset. | 100.0% (1,204) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (1,204) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (1,204) | 246 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (1,204) | 12 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (1,204) | 755 |
+| `license` | License or terms of the source. | 100.0% (1,204) | 3 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (1,204) | 2 |
+| `chart_id` | Stable id of the chart in config/charts.toml, e.g. 'apple.music_top_songs'. | 100.0% (1,204) | 12 |
+| `chart_name` | Name of the chart. | 100.0% (1,204) | 12 |
+| `domain` | Field of pop culture the chart measures. | 100.0% (1,204) | 6 |
+| `provider` | Provider id of config/charts.toml. | 100.0% (1,204) | 3 |
+| `country` | Country of the chart (ISO 3166-1 alpha-2); null for a chart of a language edition such as de.wikipedia. | 63.0% (758) | 1 |
+| `period` | live: the current list of a source without history, dated by the day of observation; day: the list of a past day as published by the source. | 100.0% (1,204) | 2 |
+| `chart_date` | Day the list refers to: the day of observation (UTC) for live lists, the day of the list for daily lists. | 100.0% (1,204) | 375 |
+| `source_updated` | Time at which the source states it updated the list (UTC), if given. | 2.2% (27) | 27 |
+| `entry_kind` | Kind of the entries. | 100.0% (1,204) | 9 |
+| `metric_name` | Meaning of the metric of the entries, e.g. 'views' or 'approximate searches'; null if the chart has no metric. | 97.8% (1,177) | 3 |
+| `entries` | The positions of the list in order of rank. | 100.0% (1,204) | 106,578 |
+| `entry_count` | Number of entries. | 100.0% (1,204) | 3 |
 
 </details>
 
@@ -396,37 +396,37 @@ The table lists the variables that carry content and the dataset (table) that st
 
 | Field | Description | Filled | Distinct values |
 |---|---|---|---|
-| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (2,394) | 2,394 |
-| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (2,394) | 1 |
-| `dataset` | Name of the dataset. | 100.0% (2,394) | 1 |
-| `schema_version` | Version of the record schema. | 100.0% (2,394) | 1 |
-| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (2,394) | 259 |
-| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (2,394) | 25 |
-| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (2,394) | 2,394 |
-| `license` | License or terms of the source. | 100.0% (2,394) | 1 |
-| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (2,394) | 1 |
-| `outlet_id` | Id of the outlet. | 100.0% (2,394) | 25 |
-| `outlet_type` | Type of the outlet. | 100.0% (2,394) | 15 |
-| `owner_group` | Publisher group of the outlet, or 'public' for public broadcasters. | 100.0% (2,394) | 19 |
-| `home_state` | State of a regional outlet; null for national outlets. | 7.5% (180) | 3 |
-| `outlet_focus` | Field of a specialist outlet; null for general outlets. | 25.1% (600) | 8 |
-| `audience` | Main audience of the outlet. | 100.0% (2,394) | 4 |
-| `channel` | Where the article was found: RSS/Atom feed or news sitemap. | 100.0% (2,394) | 2 |
-| `url` | URL of the article. | 100.0% (2,394) | 2,394 |
-| `canonical_url` | Canonical URL declared by the article page. | 16.9% (405) | 405 |
-| `title` | Title of the article. | 100.0% (2,394) | 2,368 |
-| `published_at` | Publication time (UTC). | 94.5% (2,263) | 2,065 |
-| `updated_at` | Last modification time from the article page (UTC). | 9.5% (227) | 222 |
-| `section` | Section of the outlet, from the page or the feed. | 53.6% (1,282) | 188 |
-| `feed_categories` | Categories of the item in the feed. | 50.0% (1,196) | 1,839 |
-| `keywords` | Keywords from the article page or the news sitemap. | 22.6% (541) | 1,899 |
-| `jsonld_type` | schema.org type of the article page, e.g. NewsArticle or ReviewNewsArticle. | 10.9% (262) | 3 |
-| `is_agency_copy` | True if the article is credited to a news agency (dpa, AFP, Reuters, epd, KNA, AP, SID). Null without page data. | 10.9% (262) | 2 |
-| `author_count` | Number of named authors. Author names are not stored. Null without page data. | 10.9% (262) | 3 |
-| `word_count` | Word count from the article page. Null if not given. | 0.8% (20) | 20 |
-| `is_paywalled` | True if the page marks the article as not accessible for free. Null without page data. | 5.2% (125) | 2 |
-| `has_video` | True if the article page embeds a video. Null without page data. | 17.0% (406) | 2 |
-| `content_basis` | Text available for the annotation: title only, title and teaser, or lead text of the page. | 100.0% (2,394) | 3 |
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (3,577) | 3,577 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (3,577) | 1 |
+| `dataset` | Name of the dataset. | 100.0% (3,577) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (3,577) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (3,577) | 388 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (3,577) | 25 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (3,577) | 3,577 |
+| `license` | License or terms of the source. | 100.0% (3,577) | 1 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (3,577) | 1 |
+| `outlet_id` | Id of the outlet. | 100.0% (3,577) | 25 |
+| `outlet_type` | Type of the outlet. | 100.0% (3,577) | 15 |
+| `owner_group` | Publisher group of the outlet, or 'public' for public broadcasters. | 100.0% (3,577) | 19 |
+| `home_state` | State of a regional outlet; null for national outlets. | 6.8% (244) | 3 |
+| `outlet_focus` | Field of a specialist outlet; null for general outlets. | 25.6% (915) | 8 |
+| `audience` | Main audience of the outlet. | 100.0% (3,577) | 4 |
+| `channel` | Where the article was found: RSS/Atom feed or news sitemap. | 100.0% (3,577) | 2 |
+| `url` | URL of the article. | 100.0% (3,577) | 3,577 |
+| `canonical_url` | Canonical URL declared by the article page. | 17.2% (615) | 615 |
+| `title` | Title of the article. | 100.0% (3,577) | 3,526 |
+| `published_at` | Publication time (UTC). | 95.0% (3,398) | 3,110 |
+| `updated_at` | Last modification time from the article page (UTC). | 9.6% (345) | 337 |
+| `section` | Section of the outlet, from the page or the feed. | 53.5% (1,913) | 244 |
+| `feed_categories` | Categories of the item in the feed. | 50.0% (1,787) | 2,536 |
+| `keywords` | Keywords from the article page or the news sitemap. | 24.0% (860) | 2,724 |
+| `jsonld_type` | schema.org type of the article page, e.g. NewsArticle or ReviewNewsArticle. | 11.0% (394) | 3 |
+| `is_agency_copy` | True if the article is credited to a news agency (dpa, AFP, Reuters, epd, KNA, AP, SID). Null without page data. | 11.0% (394) | 2 |
+| `author_count` | Number of named authors. Author names are not stored. Null without page data. | 11.0% (394) | 3 |
+| `word_count` | Word count from the article page. Null if not given. | 0.8% (28) | 28 |
+| `is_paywalled` | True if the page marks the article as not accessible for free. Null without page data. | 5.1% (184) | 2 |
+| `has_video` | True if the article page embeds a video. Null without page data. | 17.2% (616) | 2 |
+| `content_basis` | Text available for the annotation: title only, title and teaser, or lead text of the page. | 100.0% (3,577) | 3 |
 
 </details>
 
@@ -435,42 +435,42 @@ The table lists the variables that carry content and the dataset (table) that st
 
 | Field | Description | Filled | Distinct values |
 |---|---|---|---|
-| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (700) | 700 |
-| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (700) | 1 |
-| `dataset` | Name of the dataset. | 100.0% (700) | 1 |
-| `schema_version` | Version of the record schema. | 100.0% (700) | 1 |
-| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (700) | 70 |
-| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (700) | 25 |
-| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (700) | 700 |
-| `license` | License or terms of the source. | 100.0% (700) | 1 |
-| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (700) | 1 |
-| `item_dataset` | Dataset of the annotated item. | 100.0% (700) | 1 |
-| `item_id` | record_id of the annotated item. | 100.0% (700) | 700 |
-| `model` | Gemini model that produced the labels. | 100.0% (700) | 1 |
-| `extraction_hash` | Hash of the prompt, response schema and model settings. Labels with the same hash were produced under the same conditions. | 100.0% (700) | 1 |
-| `content_basis` | Text the model saw: title only, title and teaser, or lead text. | 100.0% (700) | 3 |
-| `is_pop_culture` | Whether the item is about popular or everyday culture. | 100.0% (700) | 2 |
-| `domain` | Main field of the item. | 100.0% (700) | 26 |
-| `domains_secondary` | Further fields of the item. | 55.9% (391) | 26 |
-| `issue_detail` | Specific subject in a few words. | 85.9% (601) | 564 |
-| `article_type` | Form of the item. | 100.0% (700) | 11 |
-| `works` | Works the item refers to, with kind, role and tone. | 43.3% (303) | 554 |
-| `people` | Public figures and music groups with a German Wikipedia article, with role and tone. | 56.4% (395) | 693 |
-| `unresolved_person_count` | Number of named persons without a German Wikipedia article; their names are not stored. | 100.0% (700) | 8 |
-| `products` | Brands, products and services with category and role. | 9.4% (66) | 112 |
-| `platforms` | Platforms the item refers to. | 20.7% (145) | 27 |
-| `purchase_recommendation` | Whether the item recommends buying, booking or subscribing to something. | 100.0% (700) | 2 |
-| `sponsored` | Whether the item is marked as advertisement, sponsored or with affiliate links. | 100.0% (700) | 1 |
-| `lifestyle_advice` | Topics on which the item gives advice on a way of living. | 13.6% (95) | 17 |
-| `family_forms` | Forms of family or relationship the item depicts, with the tone of their presentation. | 6.3% (44) | 5 |
-| `stances` | Opinions on fixed targets, with stance and holder. | 7.0% (49) | 43 |
-| `promoted_values` | Values the item presents as desirable (Schwartz). | 20.0% (140) | 10 |
-| `generations` | Generations the item addresses or discusses. | 2.0% (14) | 5 |
-| `content_origin_countries` | Countries of origin of the works and people of the item (ISO 3166-1 alpha-2). | 58.0% (406) | 34 |
-| `overall_tone` | Overall tone of the item. | 100.0% (700) | 4 |
-| `reports_controversy` | Whether the item reports a scandal, shitstorm, boycott or public dispute. | 100.0% (700) | 2 |
-| `upcoming_events` | Future events with type and date. | 11.3% (79) | 68 |
-| `communication_type` | Purpose of a press release; 'Not applicable' for news. | 100.0% (700) | 1 |
+| `record_id` | Stable id of the item. Together with revision it identifies a record. | 100.0% (1,050) | 1,050 |
+| `revision` | 0 for the first observation; incremented each time the source changes the item. | 100.0% (1,050) | 1 |
+| `dataset` | Name of the dataset. | 100.0% (1,050) | 1 |
+| `schema_version` | Version of the record schema. | 100.0% (1,050) | 1 |
+| `observed_at` | UTC time at which the pipeline observed this version of the item. Filtering observed_at <= t gives the state of knowledge at time t. | 100.0% (1,050) | 105 |
+| `source_id` | Id of the source (chart, API, configuration file, outlet or press source). | 100.0% (1,050) | 25 |
+| `source_url` | URL of the item or of the API resource it was read from. | 100.0% (1,050) | 1,050 |
+| `license` | License or terms of the source. | 100.0% (1,050) | 1 |
+| `backfilled` | True if the item is older than the start of collection for its dataset, so that observed_at does not reflect when it became public. | 100.0% (1,050) | 1 |
+| `item_dataset` | Dataset of the annotated item. | 100.0% (1,050) | 1 |
+| `item_id` | record_id of the annotated item. | 100.0% (1,050) | 1,050 |
+| `model` | Gemini model that produced the labels. | 100.0% (1,050) | 2 |
+| `extraction_hash` | Hash of the prompt, response schema and model settings. Labels with the same hash were produced under the same conditions. | 100.0% (1,050) | 2 |
+| `content_basis` | Text the model saw: title only, title and teaser, or lead text. | 100.0% (1,050) | 3 |
+| `is_pop_culture` | Whether the item is about popular or everyday culture. | 100.0% (1,050) | 2 |
+| `domain` | Main field of the item. | 100.0% (1,050) | 26 |
+| `domains_secondary` | Further fields of the item. | 54.7% (574) | 26 |
+| `issue_detail` | Specific subject in a few words. | 89.0% (934) | 883 |
+| `article_type` | Form of the item. | 100.0% (1,050) | 11 |
+| `works` | Works the item refers to, with kind, role and tone. | 40.9% (429) | 778 |
+| `people` | Public figures and music groups with a German Wikipedia article, with role and tone. | 57.3% (602) | 1,036 |
+| `unresolved_person_count` | Number of named persons without a German Wikipedia article; their names are not stored. | 100.0% (1,050) | 9 |
+| `products` | Brands, products and services with category and role. | 7.0% (73) | 120 |
+| `platforms` | Platforms the item refers to. | 20.2% (212) | 29 |
+| `purchase_recommendation` | Whether the item recommends buying, booking or subscribing to something. | 100.0% (1,050) | 2 |
+| `sponsored` | Whether the item is marked as advertisement, sponsored or with affiliate links. | 100.0% (1,050) | 2 |
+| `lifestyle_advice` | Topics on which the item gives advice on a way of living. | 14.3% (150) | 19 |
+| `family_forms` | Forms of family or relationship the item depicts, with the tone of their presentation. | 6.4% (67) | 7 |
+| `stances` | Opinions on fixed targets, with stance and holder. | 6.7% (70) | 60 |
+| `promoted_values` | Values the item presents as desirable (Schwartz). | 20.8% (218) | 10 |
+| `generations` | Generations the item addresses or discusses. | 2.0% (21) | 6 |
+| `content_origin_countries` | Countries of origin of the works and people of the item (ISO 3166-1 alpha-2). | 70.0% (735) | 40 |
+| `overall_tone` | Overall tone of the item. | 100.0% (1,050) | 4 |
+| `reports_controversy` | Whether the item reports a scandal, shitstorm, boycott or public dispute. | 100.0% (1,050) | 2 |
+| `upcoming_events` | Future events with type and date. | 10.1% (106) | 88 |
+| `communication_type` | Purpose of a press release; 'Not applicable' for news. | 100.0% (1,050) | 1 |
 
 </details>
 <!-- DATASET_OVERVIEW_END -->
