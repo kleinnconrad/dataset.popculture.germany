@@ -379,6 +379,9 @@
 "2026-11-07": {"data": {"parser": 2}, "first_seen": "2026-11-10", "hash": "6501cb00904698e7", "last_seen": "2026-11-10", "revision": 0},
 "2026-11-08": {"data": {"parser": 2}, "first_seen": "2026-11-10", "hash": "13541f029250f5c9", "last_seen": "2026-11-10", "revision": 0},
 "2026-11-09": {"data": {"parser": 2}, "first_seen": "2026-11-10", "hash": "ab6039b7bf2cfd0a", "last_seen": "2026-11-10", "revision": 0},
-"days": {"data": {"last_day": "2026-11-09", "missing": []}, "first_seen": "2026-10-28", "hash": "days", "last_seen": "2026-11-10", "revision": 0}
+"2026-11-10": {"data": {"parser": 2}, "first_seen": "2026-11-13", "hash": "cc0594b1b78d52ce", "last_seen": "2026-11-13", "revision": 0},
+"2026-11-11": {"data": {"parser": 2}, "first_seen": "2026-11-13", "hash": "fb15cb25ae6e47b2", "last_seen": "2026-11-13", "revision": 0},
+"2026-11-12": {"data": {"parser": 2}, "first_seen": "2026-11-13", "hash": "923172a43c598f75", "last_seen": "2026-11-13", "revision": 0},
+"days": {"data": {"last_day": "2026-11-12", "missing": []}, "first_seen": "2026-10-28", "hash": "days", "last_seen": "2026-11-13", "revision": 0}
 }
 }
