@@ -8,7 +8,7 @@ dependencies = [
     "beautifulsoup4==4.15.0",
     "defusedxml==0.7.1",
     "feedparser==6.0.14",
-    "google-genai==3.0.0",
+    "google-genai==3.3.0",
     "httpx==0.28.1",
     "pydantic==2.14.3",
     "python-dotenv==1.2.4",
@@ -17,7 +17,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest==9.2.0",
-    "ruff==0.17.4",
+    "ruff==0.17.5",
 ]
 
 [tool.pytest.ini_options]
